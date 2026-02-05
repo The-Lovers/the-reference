@@ -44,7 +44,7 @@ Route::group([
 ], function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::post('/contact', [HomeController::class, 'contact'])->name('contact');
-    Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 });
 

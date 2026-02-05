@@ -2,4 +2,5 @@
 
 @section('content_2')
     @include('layouts.admin.sidebar')
+    @include('layouts.admin.hearder')
 @endsection
