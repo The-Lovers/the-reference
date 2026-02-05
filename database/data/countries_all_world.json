@@ -1,0 +1,2252 @@
+[
+  {
+    "continent_en": "America",
+    "label_fr": "Aruba",
+    "label_en": "Aruba",
+    "code": "AW",
+    "phone_code": "+297",
+    "devise_label": "Aruban florin",
+    "devise_code": "AWG"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Afghanistan",
+    "label_en": "Afghanistan",
+    "code": "AF",
+    "phone_code": "+93",
+    "devise_label": "Afghan afghani",
+    "devise_code": "AFN"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Angola",
+    "label_en": "Angola",
+    "code": "AO",
+    "phone_code": "+244",
+    "devise_label": "Angolan kwanza",
+    "devise_code": "AOA"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Anguilla",
+    "label_en": "Anguilla",
+    "code": "AI",
+    "phone_code": "+1264",
+    "devise_label": "Eastern Caribbean dollar",
+    "devise_code": "XCD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Ahvenanmaa",
+    "label_en": "Åland Islands",
+    "code": "AX",
+    "phone_code": "+35818",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Albanie",
+    "label_en": "Albania",
+    "code": "AL",
+    "phone_code": "+355",
+    "devise_label": "Albanian lek",
+    "devise_code": "ALL"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Andorre",
+    "label_en": "Andorra",
+    "code": "AD",
+    "phone_code": "+376",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Émirats arabes unis",
+    "label_en": "United Arab Emirates",
+    "code": "AE",
+    "phone_code": "+971",
+    "devise_label": "United Arab Emirates dirham",
+    "devise_code": "AED"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Argentine",
+    "label_en": "Argentina",
+    "code": "AR",
+    "phone_code": "+54",
+    "devise_label": "Argentine peso",
+    "devise_code": "ARS"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Arménie",
+    "label_en": "Armenia",
+    "code": "AM",
+    "phone_code": "+374",
+    "devise_label": "Armenian dram",
+    "devise_code": "AMD"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Samoa américaines",
+    "label_en": "American Samoa",
+    "code": "AS",
+    "phone_code": "+1684",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "Antarctic",
+    "label_fr": "Antarctique",
+    "label_en": "Antarctica",
+    "code": "AQ",
+    "phone_code": null,
+    "devise_label": null,
+    "devise_code": null
+  },
+  {
+    "continent_en": "Antarctic",
+    "label_fr": "Terres australes et antarctiques françaises",
+    "label_en": "French Southern and Antarctic Lands",
+    "code": "TF",
+    "phone_code": "+262",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Antigua-et-Barbuda",
+    "label_en": "Antigua and Barbuda",
+    "code": "AG",
+    "phone_code": "+1268",
+    "devise_label": "Eastern Caribbean dollar",
+    "devise_code": "XCD"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Australie",
+    "label_en": "Australia",
+    "code": "AU",
+    "phone_code": "+61",
+    "devise_label": "Australian dollar",
+    "devise_code": "AUD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Autriche",
+    "label_en": "Austria",
+    "code": "AT",
+    "phone_code": "+43",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Azerbaïdjan",
+    "label_en": "Azerbaijan",
+    "code": "AZ",
+    "phone_code": "+994",
+    "devise_label": "Azerbaijani manat",
+    "devise_code": "AZN"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Burundi",
+    "label_en": "Burundi",
+    "code": "BI",
+    "phone_code": "+257",
+    "devise_label": "Burundian franc",
+    "devise_code": "BIF"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Belgique",
+    "label_en": "Belgium",
+    "code": "BE",
+    "phone_code": "+32",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Bénin",
+    "label_en": "Benin",
+    "code": "BJ",
+    "phone_code": "+229",
+    "devise_label": "West African CFA franc",
+    "devise_code": "XOF"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Burkina Faso",
+    "label_en": "Burkina Faso",
+    "code": "BF",
+    "phone_code": "+226",
+    "devise_label": "West African CFA franc",
+    "devise_code": "XOF"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Bangladesh",
+    "label_en": "Bangladesh",
+    "code": "BD",
+    "phone_code": "+880",
+    "devise_label": "Bangladeshi taka",
+    "devise_code": "BDT"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Bulgarie",
+    "label_en": "Bulgaria",
+    "code": "BG",
+    "phone_code": "+359",
+    "devise_label": "Bulgarian lev",
+    "devise_code": "BGN"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Bahreïn",
+    "label_en": "Bahrain",
+    "code": "BH",
+    "phone_code": "+973",
+    "devise_label": "Bahraini dinar",
+    "devise_code": "BHD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Bahamas",
+    "label_en": "Bahamas",
+    "code": "BS",
+    "phone_code": "+1242",
+    "devise_label": "Bahamian dollar",
+    "devise_code": "BSD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Bosnie-Herzégovine",
+    "label_en": "Bosnia and Herzegovina",
+    "code": "BA",
+    "phone_code": "+387",
+    "devise_label": "Bosnia and Herzegovina convertible mark",
+    "devise_code": "BAM"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Saint-Barthélemy",
+    "label_en": "Saint Barthélemy",
+    "code": "BL",
+    "phone_code": "+590",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Sainte-Hélène, Ascension et Tristan da Cunha",
+    "label_en": "Saint Helena, Ascension and Tristan da Cunha",
+    "code": "SH",
+    "phone_code": "+290",
+    "devise_label": "Pound sterling",
+    "devise_code": "GBP"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Biélorussie",
+    "label_en": "Belarus",
+    "code": "BY",
+    "phone_code": "+375",
+    "devise_label": "Belarusian ruble",
+    "devise_code": "BYN"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Belize",
+    "label_en": "Belize",
+    "code": "BZ",
+    "phone_code": "+501",
+    "devise_label": "Belize dollar",
+    "devise_code": "BZD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Bermudes",
+    "label_en": "Bermuda",
+    "code": "BM",
+    "phone_code": "+1441",
+    "devise_label": "Bermudian dollar",
+    "devise_code": "BMD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Bolivie",
+    "label_en": "Bolivia",
+    "code": "BO",
+    "phone_code": "+591",
+    "devise_label": "Bolivian boliviano",
+    "devise_code": "BOB"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Pays-Bas caribéens",
+    "label_en": "Caribbean Netherlands",
+    "code": "BQ",
+    "phone_code": "+599",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Brésil",
+    "label_en": "Brazil",
+    "code": "BR",
+    "phone_code": "+55",
+    "devise_label": "Brazilian real",
+    "devise_code": "BRL"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Barbade",
+    "label_en": "Barbados",
+    "code": "BB",
+    "phone_code": "+1246",
+    "devise_label": "Barbadian dollar",
+    "devise_code": "BBD"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Brunei",
+    "label_en": "Brunei",
+    "code": "BN",
+    "phone_code": "+673",
+    "devise_label": "Brunei dollar",
+    "devise_code": "BND"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Bhoutan",
+    "label_en": "Bhutan",
+    "code": "BT",
+    "phone_code": "+975",
+    "devise_label": "Bhutanese ngultrum",
+    "devise_code": "BTN"
+  },
+  {
+    "continent_en": "Antarctic",
+    "label_fr": "Île Bouvet",
+    "label_en": "Bouvet Island",
+    "code": "BV",
+    "phone_code": "+47",
+    "devise_label": null,
+    "devise_code": null
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Botswana",
+    "label_en": "Botswana",
+    "code": "BW",
+    "phone_code": "+267",
+    "devise_label": "Botswana pula",
+    "devise_code": "BWP"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "République centrafricaine",
+    "label_en": "Central African Republic",
+    "code": "CF",
+    "phone_code": "+236",
+    "devise_label": "Central African CFA franc",
+    "devise_code": "XAF"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Canada",
+    "label_en": "Canada",
+    "code": "CA",
+    "phone_code": "+1204",
+    "devise_label": "Canadian dollar",
+    "devise_code": "CAD"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Îles Cocos",
+    "label_en": "Cocos (Keeling) Islands",
+    "code": "CC",
+    "phone_code": "+61",
+    "devise_label": "Australian dollar",
+    "devise_code": "AUD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Suisse",
+    "label_en": "Switzerland",
+    "code": "CH",
+    "phone_code": "+41",
+    "devise_label": "Swiss franc",
+    "devise_code": "CHF"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Chili",
+    "label_en": "Chile",
+    "code": "CL",
+    "phone_code": "+56",
+    "devise_label": "Chilean peso",
+    "devise_code": "CLP"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Chine",
+    "label_en": "China",
+    "code": "CN",
+    "phone_code": "+86",
+    "devise_label": "Chinese yuan",
+    "devise_code": "CNY"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Côte d'Ivoire",
+    "label_en": "Ivory Coast",
+    "code": "CI",
+    "phone_code": "+225",
+    "devise_label": "West African CFA franc",
+    "devise_code": "XOF"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Cameroun",
+    "label_en": "Cameroon",
+    "code": "CM",
+    "phone_code": "+237",
+    "devise_label": "Central African CFA franc",
+    "devise_code": "XAF"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Congo (Rép. dém.)",
+    "label_en": "DR Congo",
+    "code": "CD",
+    "phone_code": "+243",
+    "devise_label": "Congolese franc",
+    "devise_code": "CDF"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Congo",
+    "label_en": "Congo",
+    "code": "CG",
+    "phone_code": "+242",
+    "devise_label": "Central African CFA franc",
+    "devise_code": "XAF"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Îles Cook",
+    "label_en": "Cook Islands",
+    "code": "CK",
+    "phone_code": "+682",
+    "devise_label": "Cook Islands dollar",
+    "devise_code": "CKD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Colombie",
+    "label_en": "Colombia",
+    "code": "CO",
+    "phone_code": "+57",
+    "devise_label": "Colombian peso",
+    "devise_code": "COP"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Comores",
+    "label_en": "Comoros",
+    "code": "KM",
+    "phone_code": "+269",
+    "devise_label": "Comorian franc",
+    "devise_code": "KMF"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Îles du Cap-Vert",
+    "label_en": "Cape Verde",
+    "code": "CV",
+    "phone_code": "+238",
+    "devise_label": "Cape Verdean escudo",
+    "devise_code": "CVE"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Costa Rica",
+    "label_en": "Costa Rica",
+    "code": "CR",
+    "phone_code": "+506",
+    "devise_label": "Costa Rican colón",
+    "devise_code": "CRC"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Cuba",
+    "label_en": "Cuba",
+    "code": "CU",
+    "phone_code": "+53",
+    "devise_label": "Cuban convertible peso",
+    "devise_code": "CUC"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Curaçao",
+    "label_en": "Curaçao",
+    "code": "CW",
+    "phone_code": "+599",
+    "devise_label": "Netherlands Antillean guilder",
+    "devise_code": "ANG"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Île Christmas",
+    "label_en": "Christmas Island",
+    "code": "CX",
+    "phone_code": "+61",
+    "devise_label": "Australian dollar",
+    "devise_code": "AUD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Îles Caïmans",
+    "label_en": "Cayman Islands",
+    "code": "KY",
+    "phone_code": "+1345",
+    "devise_label": "Cayman Islands dollar",
+    "devise_code": "KYD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Chypre",
+    "label_en": "Cyprus",
+    "code": "CY",
+    "phone_code": "+357",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Tchéquie",
+    "label_en": "Czechia",
+    "code": "CZ",
+    "phone_code": "+420",
+    "devise_label": "Czech koruna",
+    "devise_code": "CZK"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Allemagne",
+    "label_en": "Germany",
+    "code": "DE",
+    "phone_code": "+49",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Djibouti",
+    "label_en": "Djibouti",
+    "code": "DJ",
+    "phone_code": "+253",
+    "devise_label": "Djiboutian franc",
+    "devise_code": "DJF"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Dominique",
+    "label_en": "Dominica",
+    "code": "DM",
+    "phone_code": "+1767",
+    "devise_label": "Eastern Caribbean dollar",
+    "devise_code": "XCD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Danemark",
+    "label_en": "Denmark",
+    "code": "DK",
+    "phone_code": "+45",
+    "devise_label": "Danish krone",
+    "devise_code": "DKK"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "République dominicaine",
+    "label_en": "Dominican Republic",
+    "code": "DO",
+    "phone_code": "+1809",
+    "devise_label": "Dominican peso",
+    "devise_code": "DOP"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Algérie",
+    "label_en": "Algeria",
+    "code": "DZ",
+    "phone_code": "+213",
+    "devise_label": "Algerian dinar",
+    "devise_code": "DZD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Équateur",
+    "label_en": "Ecuador",
+    "code": "EC",
+    "phone_code": "+593",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Égypte",
+    "label_en": "Egypt",
+    "code": "EG",
+    "phone_code": "+20",
+    "devise_label": "Egyptian pound",
+    "devise_code": "EGP"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Érythrée",
+    "label_en": "Eritrea",
+    "code": "ER",
+    "phone_code": "+291",
+    "devise_label": "Eritrean nakfa",
+    "devise_code": "ERN"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Sahara Occidental",
+    "label_en": "Western Sahara",
+    "code": "EH",
+    "phone_code": "+2125288",
+    "devise_label": "Algerian dinar",
+    "devise_code": "DZD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Espagne",
+    "label_en": "Spain",
+    "code": "ES",
+    "phone_code": "+34",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Estonie",
+    "label_en": "Estonia",
+    "code": "EE",
+    "phone_code": "+372",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Éthiopie",
+    "label_en": "Ethiopia",
+    "code": "ET",
+    "phone_code": "+251",
+    "devise_label": "Ethiopian birr",
+    "devise_code": "ETB"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Finlande",
+    "label_en": "Finland",
+    "code": "FI",
+    "phone_code": "+358",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Fidji",
+    "label_en": "Fiji",
+    "code": "FJ",
+    "phone_code": "+679",
+    "devise_label": "Fijian dollar",
+    "devise_code": "FJD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Îles Malouines",
+    "label_en": "Falkland Islands",
+    "code": "FK",
+    "phone_code": "+500",
+    "devise_label": "Falkland Islands pound",
+    "devise_code": "FKP"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "France",
+    "label_en": "France",
+    "code": "FR",
+    "phone_code": "+33",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Îles Féroé",
+    "label_en": "Faroe Islands",
+    "code": "FO",
+    "phone_code": "+298",
+    "devise_label": "Danish krone",
+    "devise_code": "DKK"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Micronésie",
+    "label_en": "Micronesia",
+    "code": "FM",
+    "phone_code": "+691",
+    "devise_label": null,
+    "devise_code": null
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Gabon",
+    "label_en": "Gabon",
+    "code": "GA",
+    "phone_code": "+241",
+    "devise_label": "Central African CFA franc",
+    "devise_code": "XAF"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Royaume-Uni",
+    "label_en": "United Kingdom",
+    "code": "GB",
+    "phone_code": "+44",
+    "devise_label": "British pound",
+    "devise_code": "GBP"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Géorgie",
+    "label_en": "Georgia",
+    "code": "GE",
+    "phone_code": "+995",
+    "devise_label": "lari",
+    "devise_code": "GEL"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Guernesey",
+    "label_en": "Guernsey",
+    "code": "GG",
+    "phone_code": "+44",
+    "devise_label": "British pound",
+    "devise_code": "GBP"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Ghana",
+    "label_en": "Ghana",
+    "code": "GH",
+    "phone_code": "+233",
+    "devise_label": "Ghanaian cedi",
+    "devise_code": "GHS"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Gibraltar",
+    "label_en": "Gibraltar",
+    "code": "GI",
+    "phone_code": "+350",
+    "devise_label": "Gibraltar pound",
+    "devise_code": "GIP"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Guinée",
+    "label_en": "Guinea",
+    "code": "GN",
+    "phone_code": "+224",
+    "devise_label": "Guinean franc",
+    "devise_code": "GNF"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Guadeloupe",
+    "label_en": "Guadeloupe",
+    "code": "GP",
+    "phone_code": "+590",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Gambie",
+    "label_en": "Gambia",
+    "code": "GM",
+    "phone_code": "+220",
+    "devise_label": "dalasi",
+    "devise_code": "GMD"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Guinée-Bissau",
+    "label_en": "Guinea-Bissau",
+    "code": "GW",
+    "phone_code": "+245",
+    "devise_label": "West African CFA franc",
+    "devise_code": "XOF"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Guinée équatoriale",
+    "label_en": "Equatorial Guinea",
+    "code": "GQ",
+    "phone_code": "+240",
+    "devise_label": "Central African CFA franc",
+    "devise_code": "XAF"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Grèce",
+    "label_en": "Greece",
+    "code": "GR",
+    "phone_code": "+30",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Grenade",
+    "label_en": "Grenada",
+    "code": "GD",
+    "phone_code": "+1473",
+    "devise_label": "Eastern Caribbean dollar",
+    "devise_code": "XCD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Groenland",
+    "label_en": "Greenland",
+    "code": "GL",
+    "phone_code": "+299",
+    "devise_label": "krone",
+    "devise_code": "DKK"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Guatemala",
+    "label_en": "Guatemala",
+    "code": "GT",
+    "phone_code": "+502",
+    "devise_label": "Guatemalan quetzal",
+    "devise_code": "GTQ"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Guyane",
+    "label_en": "French Guiana",
+    "code": "GF",
+    "phone_code": "+594",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Guam",
+    "label_en": "Guam",
+    "code": "GU",
+    "phone_code": "+1671",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Guyana",
+    "label_en": "Guyana",
+    "code": "GY",
+    "phone_code": "+592",
+    "devise_label": "Guyanese dollar",
+    "devise_code": "GYD"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Hong Kong",
+    "label_en": "Hong Kong",
+    "code": "HK",
+    "phone_code": "+852",
+    "devise_label": "Hong Kong dollar",
+    "devise_code": "HKD"
+  },
+  {
+    "continent_en": "Antarctic",
+    "label_fr": "Îles Heard-et-MacDonald",
+    "label_en": "Heard Island and McDonald Islands",
+    "code": "HM",
+    "phone_code": null,
+    "devise_label": null,
+    "devise_code": null
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Honduras",
+    "label_en": "Honduras",
+    "code": "HN",
+    "phone_code": "+504",
+    "devise_label": "Honduran lempira",
+    "devise_code": "HNL"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Croatie",
+    "label_en": "Croatia",
+    "code": "HR",
+    "phone_code": "+385",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Haïti",
+    "label_en": "Haiti",
+    "code": "HT",
+    "phone_code": "+509",
+    "devise_label": "Haitian gourde",
+    "devise_code": "HTG"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Hongrie",
+    "label_en": "Hungary",
+    "code": "HU",
+    "phone_code": "+36",
+    "devise_label": "Hungarian forint",
+    "devise_code": "HUF"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Indonésie",
+    "label_en": "Indonesia",
+    "code": "ID",
+    "phone_code": "+62",
+    "devise_label": "Indonesian rupiah",
+    "devise_code": "IDR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Île de Man",
+    "label_en": "Isle of Man",
+    "code": "IM",
+    "phone_code": "+44",
+    "devise_label": "British pound",
+    "devise_code": "GBP"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Inde",
+    "label_en": "India",
+    "code": "IN",
+    "phone_code": "+91",
+    "devise_label": "Indian rupee",
+    "devise_code": "INR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Territoire britannique de l'océan Indien",
+    "label_en": "British Indian Ocean Territory",
+    "code": "IO",
+    "phone_code": "+246",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Irlande",
+    "label_en": "Ireland",
+    "code": "IE",
+    "phone_code": "+353",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Iran",
+    "label_en": "Iran",
+    "code": "IR",
+    "phone_code": "+98",
+    "devise_label": "Iranian rial",
+    "devise_code": "IRR"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Irak",
+    "label_en": "Iraq",
+    "code": "IQ",
+    "phone_code": "+964",
+    "devise_label": "Iraqi dinar",
+    "devise_code": "IQD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Islande",
+    "label_en": "Iceland",
+    "code": "IS",
+    "phone_code": "+354",
+    "devise_label": "Icelandic króna",
+    "devise_code": "ISK"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Israël",
+    "label_en": "Israel",
+    "code": "IL",
+    "phone_code": "+972",
+    "devise_label": "Israeli new shekel",
+    "devise_code": "ILS"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Italie",
+    "label_en": "Italy",
+    "code": "IT",
+    "phone_code": "+39",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Jamaïque",
+    "label_en": "Jamaica",
+    "code": "JM",
+    "phone_code": "+1876",
+    "devise_label": "Jamaican dollar",
+    "devise_code": "JMD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Jersey",
+    "label_en": "Jersey",
+    "code": "JE",
+    "phone_code": "+44",
+    "devise_label": "British pound",
+    "devise_code": "GBP"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Jordanie",
+    "label_en": "Jordan",
+    "code": "JO",
+    "phone_code": "+962",
+    "devise_label": "Jordanian dinar",
+    "devise_code": "JOD"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Japon",
+    "label_en": "Japan",
+    "code": "JP",
+    "phone_code": "+81",
+    "devise_label": "Japanese yen",
+    "devise_code": "JPY"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Kazakhstan",
+    "label_en": "Kazakhstan",
+    "code": "KZ",
+    "phone_code": "+76",
+    "devise_label": "Kazakhstani tenge",
+    "devise_code": "KZT"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Kenya",
+    "label_en": "Kenya",
+    "code": "KE",
+    "phone_code": "+254",
+    "devise_label": "Kenyan shilling",
+    "devise_code": "KES"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Kirghizistan",
+    "label_en": "Kyrgyzstan",
+    "code": "KG",
+    "phone_code": "+996",
+    "devise_label": "Kyrgyzstani som",
+    "devise_code": "KGS"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Cambodge",
+    "label_en": "Cambodia",
+    "code": "KH",
+    "phone_code": "+855",
+    "devise_label": "Cambodian riel",
+    "devise_code": "KHR"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Kiribati",
+    "label_en": "Kiribati",
+    "code": "KI",
+    "phone_code": "+686",
+    "devise_label": "Australian dollar",
+    "devise_code": "AUD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Saint-Christophe-et-Niévès",
+    "label_en": "Saint Kitts and Nevis",
+    "code": "KN",
+    "phone_code": "+1869",
+    "devise_label": "Eastern Caribbean dollar",
+    "devise_code": "XCD"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Corée du Sud",
+    "label_en": "South Korea",
+    "code": "KR",
+    "phone_code": "+82",
+    "devise_label": "South Korean won",
+    "devise_code": "KRW"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Kosovo",
+    "label_en": "Kosovo",
+    "code": "XK",
+    "phone_code": "+383",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Koweït",
+    "label_en": "Kuwait",
+    "code": "KW",
+    "phone_code": "+965",
+    "devise_label": "Kuwaiti dinar",
+    "devise_code": "KWD"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Laos",
+    "label_en": "Laos",
+    "code": "LA",
+    "phone_code": "+856",
+    "devise_label": "Lao kip",
+    "devise_code": "LAK"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Liban",
+    "label_en": "Lebanon",
+    "code": "LB",
+    "phone_code": "+961",
+    "devise_label": "Lebanese pound",
+    "devise_code": "LBP"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Liberia",
+    "label_en": "Liberia",
+    "code": "LR",
+    "phone_code": "+231",
+    "devise_label": "Liberian dollar",
+    "devise_code": "LRD"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Libye",
+    "label_en": "Libya",
+    "code": "LY",
+    "phone_code": "+218",
+    "devise_label": "Libyan dinar",
+    "devise_code": "LYD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Sainte-Lucie",
+    "label_en": "Saint Lucia",
+    "code": "LC",
+    "phone_code": "+1758",
+    "devise_label": "Eastern Caribbean dollar",
+    "devise_code": "XCD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Liechtenstein",
+    "label_en": "Liechtenstein",
+    "code": "LI",
+    "phone_code": "+423",
+    "devise_label": "Swiss franc",
+    "devise_code": "CHF"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Sri Lanka",
+    "label_en": "Sri Lanka",
+    "code": "LK",
+    "phone_code": "+94",
+    "devise_label": "Sri Lankan rupee",
+    "devise_code": "LKR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Lesotho",
+    "label_en": "Lesotho",
+    "code": "LS",
+    "phone_code": "+266",
+    "devise_label": "Lesotho loti",
+    "devise_code": "LSL"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Lituanie",
+    "label_en": "Lithuania",
+    "code": "LT",
+    "phone_code": "+370",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Luxembourg",
+    "label_en": "Luxembourg",
+    "code": "LU",
+    "phone_code": "+352",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Lettonie",
+    "label_en": "Latvia",
+    "code": "LV",
+    "phone_code": "+371",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Macao",
+    "label_en": "Macau",
+    "code": "MO",
+    "phone_code": "+853",
+    "devise_label": "Macanese pataca",
+    "devise_code": "MOP"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Saint-Martin",
+    "label_en": "Saint Martin",
+    "code": "MF",
+    "phone_code": "+590",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Maroc",
+    "label_en": "Morocco",
+    "code": "MA",
+    "phone_code": "+212",
+    "devise_label": "Moroccan dirham",
+    "devise_code": "MAD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Monaco",
+    "label_en": "Monaco",
+    "code": "MC",
+    "phone_code": "+377",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Moldavie",
+    "label_en": "Moldova",
+    "code": "MD",
+    "phone_code": "+373",
+    "devise_label": "Moldovan leu",
+    "devise_code": "MDL"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Madagascar",
+    "label_en": "Madagascar",
+    "code": "MG",
+    "phone_code": "+261",
+    "devise_label": "Malagasy ariary",
+    "devise_code": "MGA"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Maldives",
+    "label_en": "Maldives",
+    "code": "MV",
+    "phone_code": "+960",
+    "devise_label": "Maldivian rufiyaa",
+    "devise_code": "MVR"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Mexique",
+    "label_en": "Mexico",
+    "code": "MX",
+    "phone_code": "+52",
+    "devise_label": "Mexican peso",
+    "devise_code": "MXN"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Îles Marshall",
+    "label_en": "Marshall Islands",
+    "code": "MH",
+    "phone_code": "+692",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Macédoine du Nord",
+    "label_en": "North Macedonia",
+    "code": "MK",
+    "phone_code": "+389",
+    "devise_label": "denar",
+    "devise_code": "MKD"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Mali",
+    "label_en": "Mali",
+    "code": "ML",
+    "phone_code": "+223",
+    "devise_label": "West African CFA franc",
+    "devise_code": "XOF"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Malte",
+    "label_en": "Malta",
+    "code": "MT",
+    "phone_code": "+356",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Birmanie",
+    "label_en": "Myanmar",
+    "code": "MM",
+    "phone_code": "+95",
+    "devise_label": "Burmese kyat",
+    "devise_code": "MMK"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Monténégro",
+    "label_en": "Montenegro",
+    "code": "ME",
+    "phone_code": "+382",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Mongolie",
+    "label_en": "Mongolia",
+    "code": "MN",
+    "phone_code": "+976",
+    "devise_label": "Mongolian tögrög",
+    "devise_code": "MNT"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Îles Mariannes du Nord",
+    "label_en": "Northern Mariana Islands",
+    "code": "MP",
+    "phone_code": "+1670",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Mozambique",
+    "label_en": "Mozambique",
+    "code": "MZ",
+    "phone_code": "+258",
+    "devise_label": "Mozambican metical",
+    "devise_code": "MZN"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Mauritanie",
+    "label_en": "Mauritania",
+    "code": "MR",
+    "phone_code": "+222",
+    "devise_label": "Mauritanian ouguiya",
+    "devise_code": "MRU"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Montserrat",
+    "label_en": "Montserrat",
+    "code": "MS",
+    "phone_code": "+1664",
+    "devise_label": "Eastern Caribbean dollar",
+    "devise_code": "XCD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Martinique",
+    "label_en": "Martinique",
+    "code": "MQ",
+    "phone_code": "+596",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Île Maurice",
+    "label_en": "Mauritius",
+    "code": "MU",
+    "phone_code": "+230",
+    "devise_label": "Mauritian rupee",
+    "devise_code": "MUR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Malawi",
+    "label_en": "Malawi",
+    "code": "MW",
+    "phone_code": "+265",
+    "devise_label": "Malawian kwacha",
+    "devise_code": "MWK"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Malaisie",
+    "label_en": "Malaysia",
+    "code": "MY",
+    "phone_code": "+60",
+    "devise_label": "Malaysian ringgit",
+    "devise_code": "MYR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Mayotte",
+    "label_en": "Mayotte",
+    "code": "YT",
+    "phone_code": "+262",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Namibie",
+    "label_en": "Namibia",
+    "code": "NA",
+    "phone_code": "+264",
+    "devise_label": "Namibian dollar",
+    "devise_code": "NAD"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Nouvelle-Calédonie",
+    "label_en": "New Caledonia",
+    "code": "NC",
+    "phone_code": "+687",
+    "devise_label": "CFP franc",
+    "devise_code": "XPF"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Niger",
+    "label_en": "Niger",
+    "code": "NE",
+    "phone_code": "+227",
+    "devise_label": "West African CFA franc",
+    "devise_code": "XOF"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Île Norfolk",
+    "label_en": "Norfolk Island",
+    "code": "NF",
+    "phone_code": "+672",
+    "devise_label": "Australian dollar",
+    "devise_code": "AUD"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Nigéria",
+    "label_en": "Nigeria",
+    "code": "NG",
+    "phone_code": "+234",
+    "devise_label": "Nigerian naira",
+    "devise_code": "NGN"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Nicaragua",
+    "label_en": "Nicaragua",
+    "code": "NI",
+    "phone_code": "+505",
+    "devise_label": "Nicaraguan córdoba",
+    "devise_code": "NIO"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Niue",
+    "label_en": "Niue",
+    "code": "NU",
+    "phone_code": "+683",
+    "devise_label": "New Zealand dollar",
+    "devise_code": "NZD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Pays-Bas",
+    "label_en": "Netherlands",
+    "code": "NL",
+    "phone_code": "+31",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Norvège",
+    "label_en": "Norway",
+    "code": "NO",
+    "phone_code": "+47",
+    "devise_label": "Norwegian krone",
+    "devise_code": "NOK"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Népal",
+    "label_en": "Nepal",
+    "code": "NP",
+    "phone_code": "+977",
+    "devise_label": "Nepalese rupee",
+    "devise_code": "NPR"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Nauru",
+    "label_en": "Nauru",
+    "code": "NR",
+    "phone_code": "+674",
+    "devise_label": "Australian dollar",
+    "devise_code": "AUD"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Nouvelle-Zélande",
+    "label_en": "New Zealand",
+    "code": "NZ",
+    "phone_code": "+64",
+    "devise_label": "New Zealand dollar",
+    "devise_code": "NZD"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Oman",
+    "label_en": "Oman",
+    "code": "OM",
+    "phone_code": "+968",
+    "devise_label": "Omani rial",
+    "devise_code": "OMR"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Pakistan",
+    "label_en": "Pakistan",
+    "code": "PK",
+    "phone_code": "+92",
+    "devise_label": "Pakistani rupee",
+    "devise_code": "PKR"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Panama",
+    "label_en": "Panama",
+    "code": "PA",
+    "phone_code": "+507",
+    "devise_label": "Panamanian balboa",
+    "devise_code": "PAB"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Îles Pitcairn",
+    "label_en": "Pitcairn Islands",
+    "code": "PN",
+    "phone_code": "+64",
+    "devise_label": "New Zealand dollar",
+    "devise_code": "NZD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Pérou",
+    "label_en": "Peru",
+    "code": "PE",
+    "phone_code": "+51",
+    "devise_label": "Peruvian sol",
+    "devise_code": "PEN"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Philippines",
+    "label_en": "Philippines",
+    "code": "PH",
+    "phone_code": "+63",
+    "devise_label": "Philippine peso",
+    "devise_code": "PHP"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Palaos (Palau)",
+    "label_en": "Palau",
+    "code": "PW",
+    "phone_code": "+680",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Papouasie-Nouvelle-Guinée",
+    "label_en": "Papua New Guinea",
+    "code": "PG",
+    "phone_code": "+675",
+    "devise_label": "Papua New Guinean kina",
+    "devise_code": "PGK"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Pologne",
+    "label_en": "Poland",
+    "code": "PL",
+    "phone_code": "+48",
+    "devise_label": "Polish złoty",
+    "devise_code": "PLN"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Porto Rico",
+    "label_en": "Puerto Rico",
+    "code": "PR",
+    "phone_code": "+1787",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Corée du Nord",
+    "label_en": "North Korea",
+    "code": "KP",
+    "phone_code": "+850",
+    "devise_label": "North Korean won",
+    "devise_code": "KPW"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Portugal",
+    "label_en": "Portugal",
+    "code": "PT",
+    "phone_code": "+351",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Paraguay",
+    "label_en": "Paraguay",
+    "code": "PY",
+    "phone_code": "+595",
+    "devise_label": "Paraguayan guaraní",
+    "devise_code": "PYG"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Palestine",
+    "label_en": "Palestine",
+    "code": "PS",
+    "phone_code": "+970",
+    "devise_label": "Egyptian pound",
+    "devise_code": "EGP"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Polynésie française",
+    "label_en": "French Polynesia",
+    "code": "PF",
+    "phone_code": "+689",
+    "devise_label": "CFP franc",
+    "devise_code": "XPF"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Qatar",
+    "label_en": "Qatar",
+    "code": "QA",
+    "phone_code": "+974",
+    "devise_label": "Qatari riyal",
+    "devise_code": "QAR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Réunion",
+    "label_en": "Réunion",
+    "code": "RE",
+    "phone_code": "+262",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Roumanie",
+    "label_en": "Romania",
+    "code": "RO",
+    "phone_code": "+40",
+    "devise_label": "Romanian leu",
+    "devise_code": "RON"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Russie",
+    "label_en": "Russia",
+    "code": "RU",
+    "phone_code": "+73",
+    "devise_label": "Russian ruble",
+    "devise_code": "RUB"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Rwanda",
+    "label_en": "Rwanda",
+    "code": "RW",
+    "phone_code": "+250",
+    "devise_label": "Rwandan franc",
+    "devise_code": "RWF"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Arabie Saoudite",
+    "label_en": "Saudi Arabia",
+    "code": "SA",
+    "phone_code": "+966",
+    "devise_label": "Saudi riyal",
+    "devise_code": "SAR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Soudan",
+    "label_en": "Sudan",
+    "code": "SD",
+    "phone_code": "+249",
+    "devise_label": "Sudanese pound",
+    "devise_code": "SDG"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Sénégal",
+    "label_en": "Senegal",
+    "code": "SN",
+    "phone_code": "+221",
+    "devise_label": "West African CFA franc",
+    "devise_code": "XOF"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Singapour",
+    "label_en": "Singapore",
+    "code": "SG",
+    "phone_code": "+65",
+    "devise_label": "Singapore dollar",
+    "devise_code": "SGD"
+  },
+  {
+    "continent_en": "Antarctic",
+    "label_fr": "Géorgie du Sud-et-les Îles Sandwich du Sud",
+    "label_en": "South Georgia",
+    "code": "GS",
+    "phone_code": "+500",
+    "devise_label": "Saint Helena pound",
+    "devise_code": "SHP"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Svalbard et Jan Mayen",
+    "label_en": "Svalbard and Jan Mayen",
+    "code": "SJ",
+    "phone_code": "+4779",
+    "devise_label": "krone",
+    "devise_code": "NOK"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Îles Salomon",
+    "label_en": "Solomon Islands",
+    "code": "SB",
+    "phone_code": "+677",
+    "devise_label": "Solomon Islands dollar",
+    "devise_code": "SBD"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Sierra Leone",
+    "label_en": "Sierra Leone",
+    "code": "SL",
+    "phone_code": "+232",
+    "devise_label": "Sierra Leonean leone",
+    "devise_code": "SLL"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Salvador",
+    "label_en": "El Salvador",
+    "code": "SV",
+    "phone_code": "+503",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Saint-Marin",
+    "label_en": "San Marino",
+    "code": "SM",
+    "phone_code": "+378",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Somalie",
+    "label_en": "Somalia",
+    "code": "SO",
+    "phone_code": "+252",
+    "devise_label": "Somali shilling",
+    "devise_code": "SOS"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Saint-Pierre-et-Miquelon",
+    "label_en": "Saint Pierre and Miquelon",
+    "code": "PM",
+    "phone_code": "+508",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Serbie",
+    "label_en": "Serbia",
+    "code": "RS",
+    "phone_code": "+381",
+    "devise_label": "Serbian dinar",
+    "devise_code": "RSD"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Soudan du Sud",
+    "label_en": "South Sudan",
+    "code": "SS",
+    "phone_code": "+211",
+    "devise_label": "South Sudanese pound",
+    "devise_code": "SSP"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "São Tomé et Príncipe",
+    "label_en": "São Tomé and Príncipe",
+    "code": "ST",
+    "phone_code": "+239",
+    "devise_label": "São Tomé and Príncipe dobra",
+    "devise_code": "STN"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Surinam",
+    "label_en": "Suriname",
+    "code": "SR",
+    "phone_code": "+597",
+    "devise_label": "Surinamese dollar",
+    "devise_code": "SRD"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Slovaquie",
+    "label_en": "Slovakia",
+    "code": "SK",
+    "phone_code": "+421",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Slovénie",
+    "label_en": "Slovenia",
+    "code": "SI",
+    "phone_code": "+386",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Suède",
+    "label_en": "Sweden",
+    "code": "SE",
+    "phone_code": "+46",
+    "devise_label": "Swedish krona",
+    "devise_code": "SEK"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Eswatini",
+    "label_en": "Eswatini",
+    "code": "SZ",
+    "phone_code": "+268",
+    "devise_label": "Swazi lilangeni",
+    "devise_code": "SZL"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Saint-Martin",
+    "label_en": "Sint Maarten",
+    "code": "SX",
+    "phone_code": "+1721",
+    "devise_label": "Netherlands Antillean guilder",
+    "devise_code": "ANG"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Seychelles",
+    "label_en": "Seychelles",
+    "code": "SC",
+    "phone_code": "+248",
+    "devise_label": "Seychellois rupee",
+    "devise_code": "SCR"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Syrie",
+    "label_en": "Syria",
+    "code": "SY",
+    "phone_code": "+963",
+    "devise_label": "Syrian pound",
+    "devise_code": "SYP"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Îles Turques-et-Caïques",
+    "label_en": "Turks and Caicos Islands",
+    "code": "TC",
+    "phone_code": "+1649",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Tchad",
+    "label_en": "Chad",
+    "code": "TD",
+    "phone_code": "+235",
+    "devise_label": "Central African CFA franc",
+    "devise_code": "XAF"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Togo",
+    "label_en": "Togo",
+    "code": "TG",
+    "phone_code": "+228",
+    "devise_label": "West African CFA franc",
+    "devise_code": "XOF"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Thaïlande",
+    "label_en": "Thailand",
+    "code": "TH",
+    "phone_code": "+66",
+    "devise_label": "Thai baht",
+    "devise_code": "THB"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Tadjikistan",
+    "label_en": "Tajikistan",
+    "code": "TJ",
+    "phone_code": "+992",
+    "devise_label": "Tajikistani somoni",
+    "devise_code": "TJS"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Tokelau",
+    "label_en": "Tokelau",
+    "code": "TK",
+    "phone_code": "+690",
+    "devise_label": "New Zealand dollar",
+    "devise_code": "NZD"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Turkménistan",
+    "label_en": "Turkmenistan",
+    "code": "TM",
+    "phone_code": "+993",
+    "devise_label": "Turkmenistan manat",
+    "devise_code": "TMT"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Timor oriental",
+    "label_en": "Timor-Leste",
+    "code": "TL",
+    "phone_code": "+670",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Tonga",
+    "label_en": "Tonga",
+    "code": "TO",
+    "phone_code": "+676",
+    "devise_label": "Tongan paʻanga",
+    "devise_code": "TOP"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Trinité-et-Tobago",
+    "label_en": "Trinidad and Tobago",
+    "code": "TT",
+    "phone_code": "+1868",
+    "devise_label": "Trinidad and Tobago dollar",
+    "devise_code": "TTD"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Tunisie",
+    "label_en": "Tunisia",
+    "code": "TN",
+    "phone_code": "+216",
+    "devise_label": "Tunisian dinar",
+    "devise_code": "TND"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Turquie",
+    "label_en": "Türkiye",
+    "code": "TR",
+    "phone_code": "+90",
+    "devise_label": "Turkish lira",
+    "devise_code": "TRY"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Tuvalu",
+    "label_en": "Tuvalu",
+    "code": "TV",
+    "phone_code": "+688",
+    "devise_label": "Australian dollar",
+    "devise_code": "AUD"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Taïwan",
+    "label_en": "Taiwan",
+    "code": "TW",
+    "phone_code": "+886",
+    "devise_label": "New Taiwan dollar",
+    "devise_code": "TWD"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Tanzanie",
+    "label_en": "Tanzania",
+    "code": "TZ",
+    "phone_code": "+255",
+    "devise_label": "Tanzanian shilling",
+    "devise_code": "TZS"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Ouganda",
+    "label_en": "Uganda",
+    "code": "UG",
+    "phone_code": "+256",
+    "devise_label": "Ugandan shilling",
+    "devise_code": "UGX"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Ukraine",
+    "label_en": "Ukraine",
+    "code": "UA",
+    "phone_code": "+380",
+    "devise_label": "Ukrainian hryvnia",
+    "devise_code": "UAH"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Îles mineures éloignées des États-Unis",
+    "label_en": "United States Minor Outlying Islands",
+    "code": "UM",
+    "phone_code": "+268",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Uruguay",
+    "label_en": "Uruguay",
+    "code": "UY",
+    "phone_code": "+598",
+    "devise_label": "Uruguayan peso",
+    "devise_code": "UYU"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "États-Unis",
+    "label_en": "United States",
+    "code": "US",
+    "phone_code": "+1201",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Ouzbékistan",
+    "label_en": "Uzbekistan",
+    "code": "UZ",
+    "phone_code": "+998",
+    "devise_label": "Uzbekistani soʻm",
+    "devise_code": "UZS"
+  },
+  {
+    "continent_en": "Europe",
+    "label_fr": "Cité du Vatican",
+    "label_en": "Vatican City",
+    "code": "VA",
+    "phone_code": "+3906698",
+    "devise_label": "Euro",
+    "devise_code": "EUR"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Saint-Vincent-et-les-Grenadines",
+    "label_en": "Saint Vincent and the Grenadines",
+    "code": "VC",
+    "phone_code": "+1784",
+    "devise_label": "Eastern Caribbean dollar",
+    "devise_code": "XCD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Venezuela",
+    "label_en": "Venezuela",
+    "code": "VE",
+    "phone_code": "+58",
+    "devise_label": "Venezuelan bolívar soberano",
+    "devise_code": "VES"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Îles Vierges britanniques",
+    "label_en": "British Virgin Islands",
+    "code": "VG",
+    "phone_code": "+1284",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "America",
+    "label_fr": "Îles Vierges des États-Unis",
+    "label_en": "United States Virgin Islands",
+    "code": "VI",
+    "phone_code": "+1340",
+    "devise_label": "United States dollar",
+    "devise_code": "USD"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Viêt Nam",
+    "label_en": "Vietnam",
+    "code": "VN",
+    "phone_code": "+84",
+    "devise_label": "Vietnamese đồng",
+    "devise_code": "VND"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Vanuatu",
+    "label_en": "Vanuatu",
+    "code": "VU",
+    "phone_code": "+678",
+    "devise_label": "Vanuatu vatu",
+    "devise_code": "VUV"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Wallis-et-Futuna",
+    "label_en": "Wallis and Futuna",
+    "code": "WF",
+    "phone_code": "+681",
+    "devise_label": "CFP franc",
+    "devise_code": "XPF"
+  },
+  {
+    "continent_en": "Oceania",
+    "label_fr": "Samoa",
+    "label_en": "Samoa",
+    "code": "WS",
+    "phone_code": "+685",
+    "devise_label": "Samoan tālā",
+    "devise_code": "WST"
+  },
+  {
+    "continent_en": "Asia",
+    "label_fr": "Yémen",
+    "label_en": "Yemen",
+    "code": "YE",
+    "phone_code": "+967",
+    "devise_label": "Yemeni rial",
+    "devise_code": "YER"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Afrique du Sud",
+    "label_en": "South Africa",
+    "code": "ZA",
+    "phone_code": "+27",
+    "devise_label": "South African rand",
+    "devise_code": "ZAR"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Zambie",
+    "label_en": "Zambia",
+    "code": "ZM",
+    "phone_code": "+260",
+    "devise_label": "Zambian kwacha",
+    "devise_code": "ZMW"
+  },
+  {
+    "continent_en": "Africa",
+    "label_fr": "Zimbabwe",
+    "label_en": "Zimbabwe",
+    "code": "ZW",
+    "phone_code": "+263",
+    "devise_label": "Botswana pula",
+    "devise_code": "BWP"
+  }
+]
