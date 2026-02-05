@@ -7,7 +7,7 @@
                     <div class="d-flex align-items-start justify-content-between mb-4">
                         <div class="d-flex gap-4 align-items-center">
                             <div class="avatar-text avatar-lg bg-gray-200">
-                                <i class="feather-dollar-sign"></i>
+                                <i class="fa-solid fa-dollar-sign"></i>
                             </div>
                             <div>
                                 <div class="fs-4 fw-bold text-dark"><span class="counter">45</span>/<span class="counter">76</span></div>
@@ -15,7 +15,7 @@
                             </div>
                         </div>
                         <a href="javascript:void(0);" class="">
-                            <i class="feather-more-vertical"></i>
+                            <i class="fa-solid fa-more-vertical"></i>
                         </a>
                     </div>
                     <div class="pt-4">
@@ -41,7 +41,7 @@
                     <div class="d-flex align-items-start justify-content-between mb-4">
                         <div class="d-flex gap-4 align-items-center">
                             <div class="avatar-text avatar-lg bg-gray-200">
-                                <i class="feather-cast"></i>
+                                <i class="fa-solid fa-cast"></i>
                             </div>
                             <div>
                                 <div class="fs-4 fw-bold text-dark"><span class="counter">48</span>/<span class="counter">86</span></div>
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <a href="javascript:void(0);" class="">
-                            <i class="feather-more-vertical"></i>
+                            <i class="fa-solid fa-more-vertical"></i>
                         </a>
                     </div>
                     <div class="pt-4">
@@ -75,7 +75,7 @@
                     <div class="d-flex align-items-start justify-content-between mb-4">
                         <div class="d-flex gap-4 align-items-center">
                             <div class="avatar-text avatar-lg bg-gray-200">
-                                <i class="feather-briefcase"></i>
+                                <i class="fa-solid fa-briefcase"></i>
                             </div>
                             <div>
                                 <div class="fs-4 fw-bold text-dark"><span class="counter">16</span>/<span class="counter">20</span></div>
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <a href="javascript:void(0);" class="">
-                            <i class="feather-more-vertical"></i>
+                            <i class="fa-solid fa-more-vertical"></i>
                         </a>
                     </div>
                     <div class="pt-4">
@@ -109,7 +109,7 @@
                     <div class="d-flex align-items-start justify-content-between mb-4">
                         <div class="d-flex gap-4 align-items-center">
                             <div class="avatar-text avatar-lg bg-gray-200">
-                                <i class="feather-activity"></i>
+                                <i class="fa-solid fa-activity"></i>
                             </div>
                             <div>
                                 <div class="fs-4 fw-bold text-dark"><span class="counter">46.59</span>%</div>
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                         <a href="javascript:void(0);" class="">
-                            <i class="feather-more-vertical"></i>
+                            <i class="fa-solid fa-more-vertical"></i>
                         </a>
                     </div>
                     <div class="pt-4">
@@ -156,17 +156,17 @@
                         <div class="dropdown">
                             <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
                                 <div data-bs-toggle="tooltip" title="Options">
-                                    <i class="feather-more-vertical"></i>
+                                    <i class="fa-solid fa-more-vertical"></i>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-at-sign"></i>New</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-calendar"></i>Event</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-bell"></i>Snoozed</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-trash-2"></i>Deleted</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-settings"></i>Settings</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-life-buoy"></i>Tips & Tricks</a>
                             </div>
                         </div>
                     </div>
@@ -289,7 +289,7 @@
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <div class="d-flex gap-3 align-items-center">
                         <div class="avatar-text">
-                            <i class="feather feather-star"></i>
+                            <i class="fa-solid fa fa-solid fa-star"></i>
                         </div>
                         <div>
                             <div class="fw-semibold text-dark">Tasks Completed</div>
@@ -312,7 +312,7 @@
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <div class="d-flex gap-3 align-items-center">
                         <div class="avatar-text">
-                            <i class="feather feather-file-text"></i>
+                            <i class="fa-solid fa fa-solid fa-file-text"></i>
                         </div>
                         <div>
                             <div class="fw-semibold text-dark">New Tasks</div>
@@ -335,7 +335,7 @@
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <div class="d-flex gap-3 align-items-center">
                         <div class="avatar-text">
-                            <i class="feather feather-airplay"></i>
+                            <i class="fa-solid fa fa-solid fa-airplay"></i>
                         </div>
                         <div>
                             <div class="fw-semibold text-dark">Project Done</div>
@@ -374,17 +374,17 @@
                         <div class="dropdown">
                             <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
                                 <div data-bs-toggle="tooltip" title="Options">
-                                    <i class="feather-more-vertical"></i>
+                                    <i class="fa-solid fa-more-vertical"></i>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-at-sign"></i>New</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-calendar"></i>Event</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-bell"></i>Snoozed</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-trash-2"></i>Deleted</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-settings"></i>Settings</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-life-buoy"></i>Tips & Tricks</a>
                             </div>
                         </div>
                     </div>
@@ -471,17 +471,17 @@
                         <div class="dropdown">
                             <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
                                 <div data-bs-toggle="tooltip" title="Options">
-                                    <i class="feather-more-vertical"></i>
+                                    <i class="fa-solid fa-more-vertical"></i>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-at-sign"></i>New</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-calendar"></i>Event</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-bell"></i>Snoozed</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-trash-2"></i>Deleted</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-settings"></i>Settings</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-life-buoy"></i>Tips & Tricks</a>
                             </div>
                         </div>
                     </div>
@@ -519,7 +519,7 @@
                                         <span class="badge bg-soft-success text-success">Completed</span>
                                     </td>
                                     <td class="text-end">
-                                        <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>
+                                        <a href="javascript:void(0);"><i class="fa-solid fa-more-vertical"></i></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -542,7 +542,7 @@
                                         <span class="badge bg-soft-primary text-primary">In Progress </span>
                                     </td>
                                     <td class="text-end">
-                                        <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>
+                                        <a href="javascript:void(0);"><i class="fa-solid fa-more-vertical"></i></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -565,7 +565,7 @@
                                         <span class="badge bg-soft-success text-success">Completed</span>
                                     </td>
                                     <td class="text-end">
-                                        <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>
+                                        <a href="javascript:void(0);"><i class="fa-solid fa-more-vertical"></i></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -588,7 +588,7 @@
                                         <span class="badge bg-soft-warning text-warning">Not Interested</span>
                                     </td>
                                     <td class="text-end">
-                                        <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>
+                                        <a href="javascript:void(0);"><i class="fa-solid fa-more-vertical"></i></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -611,7 +611,7 @@
                                         <span class="badge bg-soft-success text-success">Completed</span>
                                     </td>
                                     <td class="text-end">
-                                        <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>
+                                        <a href="javascript:void(0);"><i class="fa-solid fa-more-vertical"></i></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -658,17 +658,17 @@
                         <div class="dropdown">
                             <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
                                 <div data-bs-toggle="tooltip" title="Options">
-                                    <i class="feather-more-vertical"></i>
+                                    <i class="fa-solid fa-more-vertical"></i>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-at-sign"></i>New</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-calendar"></i>Event</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-bell"></i>Snoozed</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-trash-2"></i>Deleted</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-settings"></i>Settings</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-life-buoy"></i>Tips & Tricks</a>
                             </div>
                         </div>
                     </div>
@@ -701,7 +701,7 @@
                                     <img src="assets/images/avatar/6.png" class="img-fluid" alt="image" />
                                 </a>
                                 <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
-                                    <i class="feather-more-horizontal"></i>
+                                    <i class="fa-solid fa-more-horizontal"></i>
                                 </a>
                             </div>
                         </div>
@@ -733,7 +733,7 @@
                                     <img src="assets/images/avatar/6.png" class="img-fluid" alt="image" />
                                 </a>
                                 <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
-                                    <i class="feather-more-horizontal"></i>
+                                    <i class="fa-solid fa-more-horizontal"></i>
                                 </a>
                             </div>
                         </div>
@@ -765,7 +765,7 @@
                                     <img src="assets/images/avatar/5.png" class="img-fluid" alt="image" />
                                 </a>
                                 <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
-                                    <i class="feather-more-horizontal"></i>
+                                    <i class="fa-solid fa-more-horizontal"></i>
                                 </a>
                             </div>
                         </div>
@@ -797,7 +797,7 @@
                                     <img src="assets/images/avatar/6.png" class="img-fluid" alt="image" />
                                 </a>
                                 <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
-                                    <i class="feather-more-horizontal"></i>
+                                    <i class="fa-solid fa-more-horizontal"></i>
                                 </a>
                             </div>
                         </div>
@@ -827,17 +827,17 @@
                         <div class="dropdown">
                             <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
                                 <div data-bs-toggle="tooltip" title="Options">
-                                    <i class="feather-more-vertical"></i>
+                                    <i class="fa-solid fa-more-vertical"></i>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-at-sign"></i>New</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-calendar"></i>Event</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-bell"></i>Snoozed</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-trash-2"></i>Deleted</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-settings"></i>Settings</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-life-buoy"></i>Tips & Tricks</a>
                             </div>
                         </div>
                     </div>
@@ -949,17 +949,17 @@
                         <div class="dropdown">
                             <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">
                                 <div data-bs-toggle="tooltip" title="Options">
-                                    <i class="feather-more-vertical"></i>
+                                    <i class="fa-solid fa-more-vertical"></i>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-at-sign"></i>New</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-calendar"></i>Event</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-bell"></i>Snoozed</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-trash-2"></i>Deleted</a>
                                 <div class="dropdown-divider"></div>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>
-                                <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-settings"></i>Settings</a>
+                                <a href="javascript:void(0);" class="dropdown-item"><i class="fa-solid fa-life-buoy"></i>Tips & Tricks</a>
                             </div>
                         </div>
                     </div>

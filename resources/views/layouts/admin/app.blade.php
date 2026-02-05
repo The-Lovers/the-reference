@@ -6,6 +6,12 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/daterangepicker.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/theme.min.css') }}" />
     <style>
+        .title{
+            text-transform: uppercase;
+        }
+        .log{
+            max-width: 40%;
+        }
         .page-header{
             position: fixed !important;
         }
@@ -27,7 +33,14 @@
 @endsection
 
 @section('content')
-    @yield('content_2')
+    @include('layouts.admin.sidebar')
+    @include('layouts.admin.header')
+    <main class="nxl-container">
+        <div class="nxl-content">
+            @include('layouts.admin.head')
+            @yield('content_2')
+        </div>
+    </main>
 @endsection
 
 @section('js')

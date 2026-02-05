@@ -2,8 +2,10 @@
     <div class="navbar-wrapper">
         <div class="m-header">
             <a href="{{ route('index') }}" class="b-brand">
-                <!-- ========   change your logo hear   ============ -->
-                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo logo-lg log" />
+                <span class="title">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo logo-lg log"/>
+                    {{ __('index.title') }}
+                </span>
                 <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo logo-sm" />
             </a>
         </div>
@@ -80,8 +82,3 @@
         </div>
     </div>
 </nav>
-<style>
-    .log{
-        max-width: 40%;
-    }
-</style>
