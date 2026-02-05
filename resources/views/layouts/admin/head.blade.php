@@ -12,7 +12,7 @@
         <div class="page-header-right-items">
             <div class="d-flex d-md-none">
                 <a href="javascript:void(0)" class="page-header-right-close-toggle">
-                    <i class="feather-arrow-left me-2"></i>
+                    <i class="fa-solid fa-arrow-left me-2"></i>
                     <span>{{ __('dashboard.header.back') }}</span>
                 </a>
             </div>

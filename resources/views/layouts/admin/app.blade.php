@@ -12,6 +12,14 @@
         header{
             padding-bottom: 0 !important;
         }
+        @media (max-width: 767px) {
+            .page-header{
+                left: 0;
+            }
+            .page-header .breadcrumb{
+                display: none !important;
+            }
+        }
     </style>
     @yield('css_2')
     <script src="{{ asset('admin/sidebar/lib/html5_shiv_3.7.3/dist/html5shiv.min.js') }}"></script>
@@ -31,6 +39,6 @@
     <script src="{{ asset('admin/sidebar/lib/js/common-init.min.js') }}"></script>
     <script src="{{ asset('admin/sidebar/lib/js/dashboard-init.min.js') }}"></script>
     <script src="{{ asset('admin/sidebar/lib/js/theme-customizer-init.min.js') }}"></script>
-    <script src="{{ asset('admin/sidebar/lib/js') }}"></script>
+    <script src="{{ asset('admin/sidebar/lib/js/nxlNavigation.min.js') }}"></script>
     @yield('js_2')
 @endsection
