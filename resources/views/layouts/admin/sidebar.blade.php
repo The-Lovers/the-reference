@@ -1,7 +1,7 @@
 <nav class="nxl-navigation">
     <div class="navbar-wrapper">
         <div class="m-header">
-            <a href="{{ route('dashboard') }}" class="b-brand">
+            <a href="{{ route('index') }}" class="b-brand">
                 <!-- ========   change your logo hear   ============ -->
                 <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo logo-lg log" />
                 <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo logo-sm" />
@@ -12,21 +12,21 @@
                 <li class="nxl-item nxl-caption">
                     <a href="{{ route('dashboard') }}">
                         <span class="nxl-mtext">
-                            {{ __('sidebar.dashboard') }}
+                            {{ __('dashboard.sidebar.dashboard') }}
                         </span>
                     </a>
                 </li>
                 <li class="nxl-item nxl-hasmenu">
                     <a href="javascript:void(0);" class="nxl-link">
                         <span class="nxl-micon"><i class="fa-solid fa-airplay"></i></span>
-                        <span class="nxl-mtext">{{ __('sidebar.dashboard') }}</span>
+                        <span class="nxl-mtext">{{ __('dashboard.sidebar.dashboard') }}</span>
                         <span class="nxl-arrow"><i class="fa-solid fa-chevron-right"></i></span>
                     </a>
                 </li>
                 <li class="nxl-item nxl-hasmenu">
                     <a href="javascript:void(0);" class="nxl-link">
                         <span class="nxl-micon"><i class="fa-solid fa-users"></i></span>
-                        <span class="nxl-mtext">{{ __('sidebar.users') }}</span>
+                        <span class="nxl-mtext">{{ __('dashboard.sidebar.users') }}</span>
                         <span class="nxl-arrow"><i class="fa-solid fa-chevron-right"></i></span>
                     </a>
                     <ul class="nxl-submenu">
@@ -39,7 +39,7 @@
                 <li class="nxl-item nxl-hasmenu">
                     <a href="javascript:void(0);" class="nxl-link">
                         <span class="nxl-micon"><i class="fa-solid fa-tasks"></i></span>
-                        <span class="nxl-mtext">{{ __('sidebar.missions') }}</span>
+                        <span class="nxl-mtext">{{ __('dashboard.sidebar.missions') }}</span>
                         <span class="nxl-arrow"><i class="fa-solid fa-chevron-right"></i></span>
                     </a>
                     <ul class="nxl-submenu">
@@ -54,7 +54,7 @@
                 <li class="nxl-item nxl-hasmenu">
                     <a href="javascript:void(0);" class="nxl-link">
                         <span class="nxl-micon"><i class="fa-solid fa-server"></i></span>
-                        <span class="nxl-mtext">{{ __('sidebar.domains') }}</span>
+                        <span class="nxl-mtext">{{ __('dashboard.sidebar.domains') }}</span>
                         <span class="nxl-arrow"><i class="fa-solid fa-chevron-right"></i></span>
                     </a>
                     <ul class="nxl-submenu">
@@ -67,7 +67,7 @@
                 <li class="nxl-item nxl-hasmenu">
                     <a href="javascript:void(0);" class="nxl-link">
                         <span class="nxl-micon"><i class="fa-solid fa-business-time"></i></span>
-                        <span class="nxl-mtext">{{ __('sidebar.services') }}</span>
+                        <span class="nxl-mtext">{{ __('dashboard.sidebar.services') }}</span>
                         <span class="nxl-arrow"><i class="fa-solid fa-chevron-right"></i></span>
                     </a>
                     <ul class="nxl-submenu">

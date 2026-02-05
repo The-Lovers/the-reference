@@ -11,9 +11,15 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('index') }}">{{ __('index.nav.home') }}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('index.nav.login') }}</a>
-                </li>
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('index.nav.login') }}</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('dashboard') }}">{{ __('index.nav.dashboard') }}</a>
+                    </li>
+                @endguest
                 <li class="nav-item">
                     <a class="nav-link" href="#">{{ __('index.nav.contact') }}</a>
                 </li>
@@ -23,9 +29,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle d-flex align-items-center lang" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         @if(app()->getLocale() === 'fr')
-                            <img src="{{ asset('images/fr.png') }}" class="me-1" alt="Fr"> Fr
+                            <img src="{{ asset('images/fr.png') }}" class="me-1" alt="Fr">
                         @else
-                            <img src="{{ asset('images/us.png') }}" class="me-1" alt="En"> En
+                            <img src="{{ asset('images/us.png') }}" class="me-1" alt="En">
                         @endif
                     </a>
 
@@ -34,14 +40,12 @@
                             <a class="dropdown-item d-flex align-items-center"
                             href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'fr'])) }}">
                                 <img src="{{ asset('images/fr.png') }}" class="me-2">
-                                Fr
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item d-flex align-items-center"
                             href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}">
                                 <img src="{{ asset('images/us.png') }}" class="me-2">
-                                En
                             </a>
                         </li>
                     </ul>

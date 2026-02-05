@@ -8,6 +8,7 @@ return [
         'about' => "À propos",
         'contact' => "Contact",
         'login' => "Connexion",
+        'dashboard' => "Tableau de bord",
     ],
     'contain' => [
         'missions' => "Notre mission & notre vision",

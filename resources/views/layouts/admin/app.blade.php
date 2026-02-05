@@ -5,6 +5,14 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/vendors.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/daterangepicker.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/theme.min.css') }}" />
+    <style>
+        .page-header{
+            position: fixed !important;
+        }
+        header{
+            padding-bottom: 0 !important;
+        }
+    </style>
     @yield('css_2')
     <script src="{{ asset('admin/sidebar/lib/html5_shiv_3.7.3/dist/html5shiv.min.js') }}"></script>
     <script src="{{ asset('admin/sidebar/lib/respond_1.4.2/dist/respond.min.js') }}"></script>

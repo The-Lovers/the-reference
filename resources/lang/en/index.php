@@ -8,6 +8,7 @@ return [
         'about' => "About",
         'contact' => "Contact",
         'login' => "Login",
+        'dashboard' => "Dashboard",
     ],
     'contain' => [
         'missions' => "Our mission & vision",
