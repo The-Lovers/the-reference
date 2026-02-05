@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <meta name="keyword" content="" />
-    <meta name="author" content="flexilecode" />
+    <meta name="author" content="Jango" />
     <title>@yield('title', 'La Référence')</title>
     <link rel="stylesheet" href="{{ asset('lib/bootstrap-5.3.8/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('lib/font-awesome-6.5.0/css/all.css') }}">

@@ -11,5 +11,10 @@ return [
     'header' => [
         'home' => "Home",
         'back' => "Back",
+        'fr' => "French",
+        'en' => "English",
+        'profile' => "Profile Details",
+        'setting' => "Account Settings",
+        'logout' => "Logout",
     ],
 ];

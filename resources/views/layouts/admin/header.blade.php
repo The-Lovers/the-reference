@@ -49,20 +49,23 @@
                         @else
                             <img src="{{ asset('images/us.png') }}" class="me-1" alt="En">
                         @endif
+                        @php
+                            $active = 'active';
+                        @endphp
                     </a>
                     <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-language-dropdown">
                         <div class="language-items-wrapper">
                             <div class="row px-4 pt-3">
-                                <div class="col-sm-4 col-6 language_select active">
+                                <div class="col-sm-4 col-6 language_select @if(app()->getLocale() === 'fr') {{ $active }} @endif">
                                     <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="assets/vendors/img/flags/1x1/us.svg" alt="" class="img-fluid" /></div>
-                                        <span>English</span>
+                                        <div class="avatar-image avatar-sm"><img src="{{ asset('images/fr.png') }}" alt="" class="img-fluid" /></div>
+                                        <span>{{ __('dashboard.header.fr') }}</span>
                                     </a>
                                 </div>
-                                <div class="col-sm-4 col-6 language_select">
+                                <div class="col-sm-4 col-6 language_select @if(app()->getLocale() === 'en') {{ $active }} @endif">
                                     <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="assets/vendors/img/flags/1x1/fr.svg" alt="" class="img-fluid" /></div>
-                                        <span>French</span>
+                                        <div class="avatar-image avatar-sm"><img src="{{ asset('images/us.png') }}" alt="" class="img-fluid" /></div>
+                                        <span>{{ __('dashboard.header.en') }}</span>
                                     </a>
                                 </div>
                             </div>
@@ -79,14 +82,14 @@
                 </div>
                 <div class="dropdown nxl-h-item">
                     <a href="javascript:void(0);" class="nxl-head-link me-0" data-bs-toggle="dropdown" role="button" data-bs-auto-close="outside">
-                        <i class="fa-solid fa-clock"></i>
+                        <i class="fa-regular fa-clock"></i>
                         <span class="badge bg-success nxl-h-badge">2</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-timesheets-menu">
                         <div class="d-flex justify-content-between align-items-center timesheets-head">
                             <h6 class="fw-bold text-dark mb-0">Timesheets</h6>
                             <a href="javascript:void(0);" class="fs-11 text-success text-end ms-auto" data-bs-toggle="tooltip" title="Upcomming Timers">
-                                <i class="fa-solid fa-clock"></i>
+                                <i class="fa-regular fa-clock"></i>
                                 <span>3 Upcomming</span>
                             </a>
                         </div>
@@ -102,14 +105,14 @@
                 </div>
                 <div class="dropdown nxl-h-item">
                     <a class="nxl-head-link me-3" data-bs-toggle="dropdown" href="#" role="button" data-bs-auto-close="outside">
-                        <i class="fa-solid fa-bell"></i>
+                        <i class="fa-regular fa-bell"></i>
                         <span class="badge bg-danger nxl-h-badge">3</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-notifications-menu">
                         <div class="d-flex justify-content-between align-items-center notifications-head">
                             <h6 class="fw-bold text-dark mb-0">Notifications</h6>
                             <a href="javascript:void(0);" class="fs-11 text-success text-end ms-auto" data-bs-toggle="tooltip" title="Make as Read">
-                                <i class="feather-check"></i>
+                                <i class="fa-solid fa-check"></i>
                                 <span>Make as Read</span>
                             </a>
                         </div>
@@ -122,7 +125,7 @@
                                     <div class="d-flex align-items-center float-end gap-2">
                                         <a href="javascript:void(0);" class="d-block wd-8 ht-8 rounded-circle bg-gray-300" data-bs-toggle="tooltip" title="Make as Read"></a>
                                         <a href="javascript:void(0);" class="text-danger" data-bs-toggle="tooltip" title="Remove">
-                                            <i class="feather-x fs-12"></i>
+                                            <i class="fa-solid fa-x fs-12"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -137,7 +140,7 @@
                                     <div class="d-flex align-items-center float-end gap-2">
                                         <a href="javascript:void(0);" class="d-block wd-8 ht-8 rounded-circle bg-gray-300" data-bs-toggle="tooltip" title="Make as Read"></a>
                                         <a href="javascript:void(0);" class="text-danger" data-bs-toggle="tooltip" title="Remove">
-                                            <i class="feather-x fs-12"></i>
+                                            <i class="fa-solid fa-x fs-12"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -152,7 +155,7 @@
                                     <div class="d-flex align-items-center float-end gap-2">
                                         <a href="javascript:void(0);" class="d-block wd-8 ht-8 rounded-circle bg-gray-300" data-bs-toggle="tooltip" title="Make as Read"></a>
                                         <a href="javascript:void(0);" class="text-danger" data-bs-toggle="tooltip" title="Remove">
-                                            <i class="feather-x fs-12"></i>
+                                            <i class="fa-solid fa-x fs-12"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -177,79 +180,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="dropdown">
-                                <span class="hstack">
-                                    <i class="wd-10 ht-10 border border-2 border-gray-1 bg-success rounded-circle me-2"></i>
-                                    <span>Active</span>
-                                </span>
-                                <i class="feather-chevron-right ms-auto me-0"></i>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-10 ht-10 border border-2 border-gray-1 bg-warning rounded-circle me-2"></i>
-                                        <span>Always</span>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-10 ht-10 border border-2 border-gray-1 bg-success rounded-circle me-2"></i>
-                                        <span>Active</span>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-10 ht-10 border border-2 border-gray-1 bg-danger rounded-circle me-2"></i>
-                                        <span>Bussy</span>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-10 ht-10 border border-2 border-gray-1 bg-info rounded-circle me-2"></i>
-                                        <span>Inactive</span>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-10 ht-10 border border-2 border-gray-1 bg-dark rounded-circle me-2"></i>
-                                        <span>Disabled</span>
-                                    </span>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-10 ht-10 border border-2 border-gray-1 bg-primary rounded-circle me-2"></i>
-                                        <span>Cutomization</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <i class="feather-user"></i>
-                            <span>Profile Details</span>
+                        <a href="javascript:void(0);" class="dropdown-item prof">
+                            <i class="fa-solid fa-user"></i>
+                            <span>{{ __('dashboard.header.profile') }}</span>
                         </a>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <i class="feather-activity"></i>
-                            <span>Activity Feed</span>
-                        </a>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <i class="feather-dollar-sign"></i>
-                            <span>Billing Details</span>
-                        </a>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <i class="feather-bell"></i>
-                            <span>Notifications</span>
-                        </a>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <i class="feather-settings"></i>
-                            <span>Account Settings</span>
+                        <a href="javascript:void(0);" class="dropdown-item prof">
+                            <i class="fa-solid fa-gear"></i>
+                            <span>{{ __('dashboard.header.setting') }}</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="./auth-login-minimal.html" class="dropdown-item">
-                            <i class="feather-log-out"></i>
-                            <span>Logout</span>
+                        <a href="{{ route('logout') }}" class="dropdown-item prof">
+                            <i class="fa-solid fa-power-off"></i>
+                            <span>{{ __('dashboard.header.logout') }}</span>
                         </a>
                     </div>
                 </div>
@@ -258,3 +200,12 @@
         <!--! [End] Header Right !-->
     </div>
 </header>
+<style>
+    .prof{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: flex-start;
+        column-gap: 1rem;
+    }
+</style>
