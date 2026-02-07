@@ -45,9 +45,13 @@
                 <div class="dropdown nxl-h-item nxl-header-language d-none d-sm-flex">
                     <a href="javascript:void(0);" class="nxl-head-link me-0 nxl-language-link" data-bs-toggle="dropdown" data-bs-auto-close="outside">
                         @if(app()->getLocale() === 'fr')
-                            <img src="{{ asset('images/fr.png') }}" class="me-1" alt="Fr">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'fr'])) }}">
+                                <img src="{{ asset('images/flags/fr.svg') }}" class="me-1" alt="Fr">
+                            </a>
                         @else
-                            <img src="{{ asset('images/us.png') }}" class="me-1" alt="En">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}">
+                                <img src="{{ asset('images/flags/us.svg') }}" class="me-1" alt="En">
+                            </a>
                         @endif
                         @php
                             $active = 'active';

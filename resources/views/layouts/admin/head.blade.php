@@ -18,9 +18,7 @@
             </div>
             <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
                 <div id="reportranges" class="d-flex align-items-center">
-                    <span class="show-date">
-                        {{ ucfirst($date->locale('fr')->translatedFormat('l j F Y')) }}
-                    </span>
+                    <span id="show-date"></span>
                 </div>
             </div>
         </div>
@@ -31,3 +29,9 @@
         </div>
     </div>
 </div>
+<script>
+  const today = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = today.toLocaleDateString('fr-FR', options);
+  document.getElementById('show-date').textContent = formattedDate;
+</script>

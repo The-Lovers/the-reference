@@ -32,10 +32,24 @@
                         <span class="nxl-arrow"><i class="fa-solid fa-chevron-right"></i></span>
                     </a>
                     <ul class="nxl-submenu">
-                        <li class="nxl-item"><a class="nxl-link" href="reports-sales.html">Sales Report</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="reports-leads.html">Leads Report</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="reports-project.html">Project Report</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="reports-timesheets.html">Timesheets Report</a></li>
+                        <li class="nxl-item">
+                            <a class="nxl-link" href="#">
+                                <i class="fa-solid fa-list"></i>
+                                {{ __('dashboard.sidebar.user.list') }}
+                            </a>
+                        </li>
+                        <li class="nxl-item">
+                            <a class="nxl-link" href="{{ route('register') }}">
+                                <i class="fa-solid fa-plus"></i>
+                                {{ __('dashboard.sidebar.user.new') }}
+                            </a>
+                        </li>
+                        <li class="nxl-item">
+                            <a class="nxl-link" href="#">
+                                <i class="fa-solid fa-lock"></i>
+                                {{ __('dashboard.sidebar.user.role') }}
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nxl-item nxl-hasmenu">

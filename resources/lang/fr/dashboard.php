@@ -7,6 +7,12 @@ return [
         'domains' => "Gestions Domaines",
         'services' => "Gestions Services",
         'testimonies' => "Gestions Témoignages",
+        'user' => [
+            'list' => "Liste des Utilisateurs",
+            'new' => "Nouvel Utlisateur",
+            'create' => "Création d'un Utilisateur",
+            'role' => "Rôles & Permissions",
+        ],
     ],
     'header' => [
         'home' => "Accueil",
@@ -16,5 +22,32 @@ return [
         'profile' => "Détails du Profil",
         'setting' => "Paramètres du compte",
         'logout' => "Déconnexion",
+    ],
+    'register' => [
+        'name' => "Nom",
+        'surname' => "Prénom",
+        'username' => "Nom d'utilisateur",
+        'email' => "Adresse email",
+        'password' => "Mot de passe",
+        'confirm-pass' => "Confirmation de mot de passe",
+        'phone' => [
+            'title' => "Numéro de téléphone",
+            'placeholder' => "Code",
+        ],
+        'role' => [
+            'title' => "Role",
+            'placeholder' => "Choisir le role de l'utilisateur",
+        ],
+        'gender' => [
+            'title' => "Sexe",
+            'm' => "Homme",
+            'f' => "Femme",
+            'placeholder' => "Choisir le sexe",
+        ],
+        'btn' => [
+            'confirm' => "Enregistrer",
+            'cancel' => "Annuler",
+            'reset' => "Réinitialiser",
+        ],
     ],
 ];

@@ -58,6 +58,7 @@ class CountrySeeder extends Seeder
                 ['code' => $country['code']],
                 [
                     'continent_id' => $continent->id,
+                    'flag' => 'images/flags/'.strtoupper($country['code']) . '.svg',
                     'label_fr'     => $country['label_fr'],
                     'label_en'     => $country['label_en'],
                     'phone_code'   => $country['phone_code'] ?? null,

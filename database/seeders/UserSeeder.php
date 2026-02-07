@@ -31,25 +31,28 @@ class UserSeeder extends Seeder
                 'username' => 'Jango',
                 'email' => 'djiogaphermann@yahoo.fr',
                 'password' => 'password123',
-                'phone' => '651251425',
+                'phone' => '+237651251425',
+                'gender' => 'M',
                 'role' => $superAdminRole
             ],
             [
                 'name' => 'JIODA',
                 'surname' => 'Adolphe',
                 'username' => 'Dj Naf',
-                'email' => 'superadmin2@example.com',
+                'email' => 'jiodaadolphe@gmail.com',
                 'password' => 'password123',
-                'phone' => '123-456-7890',
+                'phone' => '+237653476952',
+                'gender' => 'M',
                 'role' => $superAdminRole
             ],
             [
                 'name' => 'SEGAIN',
                 'surname' => 'Alex',
                 'username' => 'Skaf',
-                'email' => 'admin@example.com',
+                'email' => 'kanyoualex@gmail.com',
                 'password' => 'password123',
-                'phone' => '681181820',
+                'phone' => '+237681181820',
+                'gender' => 'M',
                 'role' => $adminRole
             ],
         ];
@@ -63,6 +66,7 @@ class UserSeeder extends Seeder
                     'surname' => $u['surname'],
                     'username' => $u['username'],
                     'phone' => $u['phone'],
+                    'gender' => $u['gender'],
                     'password' => Hash::make($u['password']),
                 ]
             );

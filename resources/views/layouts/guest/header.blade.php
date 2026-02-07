@@ -37,15 +37,13 @@
 
                     <ul class="dropdown-menu dropdown-menu-end lang-content">
                         <li>
-                            <a class="dropdown-item d-flex align-items-center"
-                            href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'fr'])) }}">
-                                <img src="{{ asset('images/fr.png') }}" class="me-2">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'fr'])) }}">
+                                <img src="{{ asset('images/flags/fr.svg') }}" class="me-2">
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center"
-                            href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}">
-                                <img src="{{ asset('images/us.png') }}" class="me-2">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}">
+                                <img src="{{ asset('images/flags/us.svg') }}" class="me-2">
                             </a>
                         </li>
                     </ul>

@@ -14,6 +14,7 @@ class Country extends Model
         'label_fr',
         'label_en',
         'code',
+        'flag',
         'phone_code',
         'devise_label',
         'devise_code',
