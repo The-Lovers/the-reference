@@ -7,23 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class RoleMiddleware
+class RedirectAfterLogin
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, ...$roles): Response
+    public function handle(Request $request, Closure $next): Response
     {
-        // Vérifier si l'utilisateur est connecté
-        if (!Auth::check()) {
-            return redirect()->route('login');
-        }
-
-        // Vérifier le rôle
-        if (!in_array(Auth::user()->role, $roles)) {
-            abort(403, 'Accès non autorisé');
+        if (Auth::check() && $request->path() === 'login') {
+            $locale = $request->route('locale') ?? session('locale', 'fr');
+            return redirect("/{$locale}/dashboard");
         }
 
         return $next($request);

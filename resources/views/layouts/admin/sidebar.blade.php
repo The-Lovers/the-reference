@@ -33,13 +33,13 @@
                     </a>
                     <ul class="nxl-submenu">
                         <li class="nxl-item">
-                            <a class="nxl-link" href="#">
+                            <a class="nxl-link" href="{{ route('users.index') }}">
                                 <i class="fa-solid fa-list"></i>
                                 {{ __('dashboard.sidebar.user.list') }}
                             </a>
                         </li>
                         <li class="nxl-item">
-                            <a class="nxl-link" href="{{ route('register') }}">
+                            <a class="nxl-link" href="{{ route('users.create') }}">
                                 <i class="fa-solid fa-plus"></i>
                                 {{ __('dashboard.sidebar.user.new') }}
                             </a>

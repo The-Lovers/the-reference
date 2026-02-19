@@ -25,10 +25,10 @@
     </main>
 
     <script src="{{ asset('lib/jquery/jquery-3.2.1.min.js') }}"></script>
-    <script src="{{ asset('lib/bootstrap-5.3.8/dist/js/bootstrap.bundle.js') }}"></script>
-    <script src="{{ asset('lib/font-awesome-6.5.0/js/all.js') }}"></script>
-    <script src="{{ asset('lib/select2/select2.min.js') }}"></script>
     <script src="{{ asset('lib/tilt/tilt.jquery.min.js') }}"></script>
+    <script src="{{ asset('lib/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('lib/font-awesome-6.5.0/js/all.js') }}"></script>
+    <script src="{{ asset('lib/bootstrap-5.3.8/dist/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('lib/swiper-12.1.0/package/swiper-bundle.min.js') }}"></script>
     <script>
         function openBox(){ document.getElementById('lightbox').style.display='flex'; }

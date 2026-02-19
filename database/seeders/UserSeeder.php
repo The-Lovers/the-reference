@@ -55,6 +55,16 @@ class UserSeeder extends Seeder
                 'gender' => 'M',
                 'role' => $adminRole
             ],
+            [
+                'name' => 'LEKEUFACK',
+                'surname' => 'Ricardo',
+                'username' => 'Brigueur',
+                'email' => 'sonfackricardo03@gmail.com',
+                'password' => 'password123',
+                'phone' => '+79808468897',
+                'gender' => 'M',
+                'role' => $adminRole
+            ],
         ];
 
         foreach ($users as $u) {

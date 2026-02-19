@@ -15,8 +15,8 @@
 					<img src="{{ asset('auth/login/images/img-01.png') }}" alt="images">
 				</div>
 
-				<form class="login100-form validate-form" action="{{ route('login') }}">
-                    @csrf
+				<form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
+					@csrf
 					<span class="login100-form-title">
                         <a href="{{ route('index') }}">
                             <img src="{{ asset('images/logo.png') }}" alt="accueil" class="img-fluid">
@@ -24,8 +24,8 @@
 						{{ __('login.login') }}
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="username" placeholder="{{ __('login.username') }}">
+					<div class="wrap-input100 validate-input" data-validate = "Email or username is required">
+						<input class="input100" type="text" name="email" placeholder="Email or username">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('label_en');
 
             $table->string('code', 5)->unique();
-            $table->string('flag', 5)->unique();
+            $table->string('flag')->unique();
             $table->string('phone_code', 10)->nullable();
             $table->string('devise_label')->nullable();
             $table->string('devise_code', 5)->nullable();

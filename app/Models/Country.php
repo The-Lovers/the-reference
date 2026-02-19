@@ -30,4 +30,8 @@ class Country extends Model
     public function regions(){
         return $this->hasMany(Region::class);
     }
+    public function destinations()
+    {
+        return $this->hasMany(Destination::class);
+    }
 }

@@ -193,10 +193,13 @@
                             <span>{{ __('dashboard.header.setting') }}</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ route('logout') }}" class="dropdown-item prof">
-                            <i class="fa-solid fa-power-off"></i>
-                            <span>{{ __('dashboard.header.logout') }}</span>
-                        </a>
+                        <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                            @csrf
+                            <button type="submit" class="dropdown-item prof" style="border: none; background: none; cursor: pointer; width: 100%; text-align: left;">
+                                <i class="fa-solid fa-power-off"></i>
+                                <span>{{ __('dashboard.header.logout') }}</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

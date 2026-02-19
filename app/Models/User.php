@@ -68,4 +68,12 @@ class User extends Authenticatable
     public function localisation(): HasOne {
         return $this->hasOne(Localisation::class);
     }
+    public function getGenderLabelAttribute(){
+        return $this->gender == 'M' ? __('user.index.male') : __('user.index.female');
+    }
+    protected static function booted() {
+        static::deleting(function ($user) {
+            $user->roles()->detach();
+        });
+    }
 }
