@@ -1,13 +1,13 @@
+@php
+    $platformName = config('app.name');
+    $loginUrl = route('login');
+@endphp
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Compte créé sur {{ $platformName }}</title>
 </head>
-@php
-    $platformName = config('app.name');
-    $loginUrl = route('login');
-@endphp
 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
     <h2>Bonjour {{ $user->surname }} {{ $user->name }},</h2>
 

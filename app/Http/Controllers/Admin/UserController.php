@@ -10,9 +10,10 @@ use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserCreate;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -82,22 +83,23 @@ class UserController extends Controller
 
         // Combiner code et téléphone
         $validated['phone'] = $validated['code'] . ' ' . $validated['phone'];
-        $password = Password::generate(8, true, true, true);
+        $password = Str::random(8);
 
-        $user = User::create([
-            'name' => $validated['name'],
-            'surname' => $validated['surname'],
-            'username' => $validated['username'],
-            'email' => $validated['email'],
-            'gender' => $validated['gender'],
-            'phone' => $validated['phone'],
-            'password' => Hash::make($password),
-        ]);
+        DB::transaction(function () use ($validated, $password, &$user) {
+            $user = User::create([
+                'name' => $validated['name'],
+                'surname' => $validated['surname'],
+                'username' => $validated['username'],
+                'email' => $validated['email'],
+                'gender' => $validated['gender'],
+                'phone' => $validated['phone'],
+                'password' => Hash::make($password),
+            ]);
 
-        $user->roles()->attach($validated['role']);
-        Mail::to($user->email)->send(
-            new UserCreate($user, $password)
-        );
+            $user->roles()->attach($validated['role']);
+            Mail::to($user->email)->send(new UserCreate($user, $password));
+        });
+
         return redirect()->route('users.index')
             ->with('success', __('dashboard.user.created'));
     }
