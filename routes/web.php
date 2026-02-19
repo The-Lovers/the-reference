@@ -45,6 +45,7 @@ Route::group([
     'middleware' => 'setlocale'
 ], function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/not-found', [HomeController::class, 'error_404'])->name('access_denied');
     Route::post('/contact', [HomeController::class, 'contact'])->name('contact');
 
     Route::middleware('auth')->group(function () {

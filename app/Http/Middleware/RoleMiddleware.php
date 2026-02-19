@@ -18,12 +18,12 @@ class RoleMiddleware
     {
         // Vérifier si l'utilisateur est connecté
         if (!Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->route('access_denied');
         }
 
         // Vérifier le rôle
         if (!in_array(Auth::user()->role, $roles)) {
-            abort(403, 'Accès non autorisé');
+            return redirect()->route('access_denied');
         }
 
         return $next($request);

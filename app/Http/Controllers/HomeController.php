@@ -14,6 +14,11 @@ class HomeController extends Controller
         return view('index');
     }
 
+    public function error_404()
+    {
+        return view('layouts.not_found');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
