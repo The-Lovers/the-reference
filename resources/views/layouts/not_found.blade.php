@@ -103,8 +103,8 @@
 </style>
 
 <div id="httpresponse">
-    <h1>403</h1>
-    <h2>Access denied</h2>
+    <h1>{{ __('guest.not-found.code') }}</h1>
+    <h2>{{ __('guest.not-found.label') }}</h2>
     <h3>
         <a href="{{ route('index') }}">
             <i class="fas fa-arrow-left"></i>
@@ -164,7 +164,7 @@
             </g>
         </g>
     </svg>
-
+<script src="{{ asset('js/tweenMax.min.js') }}"></script>
 <script>
     TweenMax.set('#policeman',{xPercent:-50, yPercent:0, left:"50%", bottom:"0%"});
     TweenMax.set('#hand',{transformOrigin:"center bottom",y:50});

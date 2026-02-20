@@ -108,10 +108,10 @@
                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
-                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Delete this user?');">
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST"  id="deleteForm-{{ $user->id }}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">
+                                        <button  type="button" onclick="confirmDelete({{ $user->id }})" class="btn btn-sm btn-danger">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>
@@ -156,10 +156,10 @@
                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
-                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Delete this user?');">
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" id="deleteForm-{{ $user->id }}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">
+                                        <button  type="button" onclick="confirmDelete({{ $user->id }})" class="btn btn-sm btn-danger">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>

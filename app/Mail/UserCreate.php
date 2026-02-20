@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\User;
+use Illuminate\Mail\Mailables\Attachment;
 
 class UserCreate extends Mailable
 {
@@ -31,7 +32,7 @@ class UserCreate extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Votre compte a été créé',
+            subject: __('config.email.new-user.subject'),
         );
     }
 
@@ -52,6 +53,11 @@ class UserCreate extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            // Attachment::fromPath(public_path('images/logo.png'))
+            //     ->as('logo.png')
+            //     ->withMime('image/png')
+            //     ->asInline(),
+        ];
     }
 }

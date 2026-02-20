@@ -2,106 +2,113 @@
 <link rel="stylesheet" href="{{ asset('lib/font-awesome-6.5.0/css/all.css') }}"/>
 
 <style>
-:root {
-    --bg-light: #ffffff;
-    --bg-dark: #1e1e1e;
-    --text-light: #333;
-    --text-dark: #eee;
-}
-
-.popup-container {
-    position: fixed;
-    z-index: 9999;
-    top: 20px;
-    right: 20px;
-}
-
-@media (max-width: 768px) {
-    .popup-container {
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
-        width: 95%;
+    :root {
+        --bg-light: #ffffff;
+        --bg-dark: #1e1e1e;
+        --text-light: #333;
+        --text-dark: #eee;
+        --blue:#0b3c5d;
+        --orange:#f57c00;
+        --light:#f9f9f9;
+        --dark:#1c1c1c;
+        --danger: #d9534f;
+        --sencondary: #6C757D;
+        --info: #5bc0de;
     }
-}
 
-.popup {
-    background: var(--bg-light);
-    color: var(--text-light);
-    border-radius: 10px;
-    padding: 16px 18px 22px;
-    margin-bottom: 10px;
-    box-shadow: 0 12px 30px rgba(0,0,0,.2);
-    min-width: 280px;
-    max-width: 420px;
-    position: relative;
-    animation: fadeSlide .3s ease;
-    overflow: hidden;
-}
+    .popup-container {
+        position: fixed;
+        z-index: 9999;
+        top: 20px;
+        right: 20px;
+    }
 
-.popup.dark {
-    background: var(--bg-dark);
-    color: var(--text-dark);
-}
+    @media (max-width: 768px) {
+        .popup-container {
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+            width: 95%;
+        }
+    }
 
-.popup.confirm {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+    .popup {
+        background: var(--bg-light);
+        color: var(--text-light);
+        border-radius: 10px;
+        padding: 16px 18px 22px;
+        margin-bottom: 10px;
+        box-shadow: 0 12px 30px rgba(0,0,0,.2);
+        min-width: 280px;
+        max-width: 420px;
+        position: relative;
+        animation: fadeSlide .3s ease;
+        overflow: hidden;
+    }
 
-.popup-icon {
-    font-size: 22px;
-    margin-bottom: 8px;
-}
+    .popup.dark {
+        background: var(--bg-dark);
+        color: var(--text-dark);
+    }
 
-.success { border-left: 5px solid #2ecc71; }
-.error   { border-left: 5px solid #e74c3c; }
-.warning { border-left: 5px solid #f39c12; }
-.info    { border-left: 5px solid #3498db; }
+    .popup.confirm {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-.popup-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 12px;
-}
+    .popup-icon {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
 
-.popup-actions button {
-    padding: 7px 14px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-}
+    .success { border-left: 5px solid #0b3c5d; }
+    .error   { border-left: 5px solid #d9534f; }
+    .warning { border-left: 5px solid #f57c00; }
+    .info    { border-left: 5px solid #5bc0de; }
 
-.btn-cancel { background: #7f8c8d; color: #fff; }
-.btn-confirm { background: #2ecc71; color: #fff; }
+    .popup-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 12px;
+    }
 
-.progress {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 4px;
-    width: 100%;
-    background: rgba(0,0,0,.15);
-}
+    .popup-actions button {
+        padding: 7px 14px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+    }
 
-.progress-bar {
-    height: 100%;
-    width: 100%;
-    animation: progress linear forwards;
-}
+    .btn-cancel { background: #7f8c8d; color: #fff; }
+    .btn-confirm { background: #0b3c5d; color: #fff; }
 
-@keyframes progress {
-    from { width: 100%; }
-    to { width: 0%; }
-}
+    .progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        width: 100%;
+        background: rgba(0,0,0,.15);
+    }
 
-@keyframes fadeSlide {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+    .progress-bar {
+        height: 100%;
+        width: 100%;
+        animation: progress linear forwards;
+    }
+
+    @keyframes progress {
+        from { width: 100%; }
+        to { width: 0%; }
+    }
+
+    @keyframes fadeSlide {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 </style>
 
 <div class="popup-container" id="popup-container"></div>

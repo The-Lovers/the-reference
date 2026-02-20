@@ -9,6 +9,8 @@ return [
         'testimonies' => "Testimonies Management",
         'user' => [
             'list'   => "Users",
+            'detail' => "User Details",
+            'edit' => "User Update",
             'new'    => "Add New User",
             'create' => "Create a User",
             'role'   => "Roles & Permissions",

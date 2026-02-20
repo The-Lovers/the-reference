@@ -20,8 +20,38 @@
 <body>
     <main>
         @yield('header')
+        <x-popUp.popup />
+        {{-- Flash messages global --}}
+        @php
+            $flashTypes = ['success','error','warning','info'];
+        @endphp
+
+        @if(collect($flashTypes)->contains(fn($type) => session()->has($type)))
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            @foreach($flashTypes as $type)
+                @if(session($type))
+                    showPopup('{{ $type }}', @json(session($type)));
+                @endif
+            @endforeach
+        });
+        </script>
+        @endif
+        
         @yield('content')
         @yield('footer')
+
+        <script>
+            function confirmDelete(id) {
+                showPopup('confirm', "Confirmer la suppression ?", {
+                    theme: 'dark',
+                    onConfirm: function () {
+                        document.getElementById('deleteForm-' + id).submit();
+                    }
+                });
+            }
+        </script>
+
     </main>
 
     <script src="{{ asset('lib/jquery/jquery-3.2.1.min.js') }}"></script>

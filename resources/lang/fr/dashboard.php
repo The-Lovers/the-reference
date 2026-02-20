@@ -9,6 +9,8 @@ return [
         'testimonies' => "Gestions Témoignages",
         'user' => [
             'list' => "Liste des Utilisateurs",
+            'detail' => "Détails Utilisateur",
+            'edit' => "Modifier Utilisateur",
             'new' => "Nouvel Utlisateur",
             'create' => "Création d'un Utilisateur",
             'role' => "Rôles & Permissions",

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\UserCreate;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
@@ -82,33 +83,40 @@ class UserController extends Controller
             'phone' => ['required', 'string'],
         ]);
 
-        // Combiner code et téléphone
-        $validated['phone'] = $validated['code'] . ' ' . $validated['phone'];
-        $password = Str::random(8);
+        try {
+            // Combiner code et téléphone
+            $validated['phone'] = $validated['code'] . ' ' . $validated['phone'];
+            $password = Str::random(8);
 
-        DB::transaction(function () use ($validated, $password, &$user) {
-            $user = User::create([
-                'name' => $validated['name'],
-                'surname' => $validated['surname'],
-                'username' => $validated['username'],
-                'email' => $validated['email'],
-                'gender' => $validated['gender'],
-                'phone' => $validated['phone'],
-                'password' => Hash::make($password),
-            ]);
+            DB::transaction(function () use ($validated, $password, &$user) {
+                $user = User::create([
+                    'name' => $validated['name'],
+                    'surname' => $validated['surname'],
+                    'username' => $validated['username'],
+                    'email' => $validated['email'],
+                    'gender' => $validated['gender'],
+                    'phone' => $validated['phone'],
+                    'password' => Hash::make($password),
+                ]);
 
-            $user->roles()->attach($validated['role']);
-            Mail::to($user->email)->send(new UserCreate($user, $password));
-        });
+                $user->roles()->attach($validated['role']);
+                Mail::to($user->email)->send(new UserCreate($user, $password));
+            });
 
-        return redirect()->route('users.index')
-            ->with('success', __('dashboard.user.created'));
+            return redirect()->route('users.index')
+                ->with('success', __('infos.user.creation-success'));
+        } catch (\Throwable $e) {
+            Log::error(__('infos.user.creation-error-log') . $e->getMessage());
+            return redirect()->back()
+                ->withInput()
+                ->with('error', __('infos.user.creation-error'));
+        }
     }
 
     /**
      * Affichage d'un utilisateur
      */
-    public function show(User $user)
+    public function show($locale, User $user)
     {
         return view('admin.users.show', compact('user'));
     }
@@ -116,7 +124,7 @@ class UserController extends Controller
     /**
      * Formulaire d'édition
      */
-    public function edit(User $user)
+    public function edit($locale, User $user)
     {
         $roles = $this->roleRepository->getAll();
         $phoneCodes = $this->loadPhoneCodes();
@@ -139,23 +147,37 @@ class UserController extends Controller
             'phone' => ['required', 'string'],
         ]);
 
-        $user->update($validated);
+        try {
+            $user->update($validated);
 
-        $user->roles()->sync([$validated['role']]);
+            $user->roles()->sync([$validated['role']]);
 
-        return redirect()->route('users.index')
-            ->with('success', __('dashboard.user.updated'));
+            return redirect()->route('users.index')
+                ->with('success', __('infos.user.edition-success'));
+        } catch (\Throwable $e) {
+            Log::error(__('infos.user.edition-error-log') . $e->getMessage());
+            return redirect()->back()
+                ->withInput()
+                ->with('error', __('infos.user.edition-error'));
+        }
     }
 
     /**
      * Suppression de l'utilisateur
      */
-    public function destroy(User $user)
+    public function destroy($locale, User $user)
     {
-        // $user->roles()->detach();
-        $user->delete();
-        return redirect()->route('users.index')
-            ->with('success', __('dashboard.user.deleted'));
+        try {
+            $user->roles()->detach();
+            $user->delete();
+            return redirect()->route('users.index')
+                ->with('success', __('infos.user.deletion-success'));
+        } catch (\Throwable $e) {
+            Log::error(__('infos.user.deletion-error-log') . $e->getMessage());
+            return redirect()->back()
+                ->withInput()
+                ->with('error', __('infos.user.deletion-error'));
+        }
     }
 
     /**
