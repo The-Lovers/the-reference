@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\UserCreate;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {

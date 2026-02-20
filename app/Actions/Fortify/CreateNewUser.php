@@ -23,42 +23,6 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
-        Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'surname' => ['required', 'string', 'max:255'],
-            'gender' => ['required|string'],
-            'code' => ['required|string'],
-            'phone' => ['required|string'],
-            'role' => ['required|string'],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique(User::class),
-            ],
-            'username' => [
-                'required',
-                'string',
-                'string',
-                'max:255',
-                Rule::unique(User::class),
-            ],
-        ])->validate();
-        // $password = Str::random(10);
-        $password = Password::generate(8, true, true, true);
-        return User::create([
-            'name' => $input['name'],
-            'surname' => $input['surname'],
-            'username' => $input['username'],
-            'email' => $input['email'],
-            'gender' => $input['gender'],
-            'phone' => $input['code'].$input['phone'],
-            'password' => Hash::make($password),
-        ]);
-
-        Mail::to($user->email)->send(
-            new UserCreate($user, $password)
-        );
+        //
     }
 }
