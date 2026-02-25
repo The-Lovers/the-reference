@@ -128,14 +128,18 @@ class UserController extends Controller
     {
         $roles = $this->roleRepository->getAll();
         $phoneCodes = $this->loadPhoneCodes();
+        $phone = $user->phone;
+        $firstSpace = strpos($phone, ' ');
+        $selectedCode = substr($phone, 0, $firstSpace);
+        $phoneNumber  = substr($phone, $firstSpace + 1);
 
-        return view('admin.users.edit', compact('user', 'roles', 'phoneCodes'));
+        return view('admin.users.edit', compact('user', 'roles', 'phoneCodes', 'selectedCode', 'phoneNumber'));
     }
 
     /**
      * Mise à jour de l'utilisateur
      */
-    public function update(Request $request, User $user)
+    public function update($locale, Request $request, User $user)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -231,5 +235,17 @@ class UserController extends Controller
         }
 
         return $phoneCodes;
+    }
+
+    public function show_profile($locale, User $user){
+        // return view('admin.users.profile', compact('user'));
+    }
+
+    public function edit_profile($locale, User $user){
+        // return view('admin.users.profile', compact('user'));
+    }
+
+    public function update_profile($locale, Request $request, User $user){
+        // return view('admin.users.profile', compact('user'));
     }
 }

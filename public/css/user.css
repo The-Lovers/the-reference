@@ -1,0 +1,91 @@
+:root{
+    --blue:#0b3c5d;
+    --orange:#f57c00;
+    --light:#f9f9f9;
+    --dark:#1c1c1c;
+    --danger: #d9534f;
+    --sencondary: #6C757D;
+    --info: #5bc0de;
+}
+.nxl-container{
+    background: white !important;
+}
+.success{
+    background-color: var(--blue);
+    color: var(--light);
+}
+.success:hover{
+    background-color: var(--light);
+    color: var(--blue) !important;
+    border: 1px solid var(--blue)
+}
+.danger{
+    background-color: var(--danger);
+    color: var(--light);
+}
+.danger:hover{
+    background-color: var(--light);
+    color: var(--danger) !important;
+    border: 1px solid var(--danger)
+}
+.secondary{
+    background-color: var(--sencondary);
+    color: var(--light) !important;
+}
+.secondary:hover{
+    background-color: var(--light);
+    color: var(--dark) !important;
+    border: 1px solid var(--dark);
+}
+.form-control, .form-select, .input-group-text{
+    border: none !important;
+    border-bottom: 1px solid var(--orange) !important;
+    border-radius: 0 !important;
+}
+.form-control:hover, .form-select:hover, .input-group-text:hover{
+    border-bottom: 1px solid var(--orange) !important;
+}
+.no-arrow {
+    background: white !important;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: none;
+    border-right: 1px solid var(--blue) !important;
+}
+.no-arrow::-ms-expand {
+    display: none; /* Edge / IE */
+}
+.btn{
+    border: none;
+    width: 32% !important;
+    font-size: 1rem;
+    border-radius: 1rem;
+}
+.myBtn{
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    column-gap: 1% !important;
+    justify-content: space-between !important;
+    padding-left: 1% !important;
+    padding-right: 1% !important;
+}
+.select2-container--default.select2-container {
+    width: 10rem !important;
+    border: none !important;
+    border-bottom: 1px solid var(--orange) !important;
+    border-radius: 0 !important;
+    background-color: white !important;
+}
+.select2-container--default .select2-selection--single {
+    background-color: white !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+.select2-container .select2-selection--single {
+    height: inherit !important;
+}
+.select2-selection__arrow {
+    display: none !important;
+}

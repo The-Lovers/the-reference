@@ -52,11 +52,9 @@ Route::group([
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('users', UserController::class);
-        // Route::get('/users/create', [UserController::class, 'create'])->name('create.user');
-        // Route::post('/users/store', [UserController::class, 'store'])->name('store.user');
-        // Route::get('/users/list', [UserController::class, 'index'])->name('user.list');
-        // Route::get('/user/show/{id}', [UserController::class, 'show'])->name('user.show');
-        // Route::delete('/user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
+        Route::get('/profile/{id}/edit', [UserController::class, 'edit_profile'])->name('profile.edit');
+        Route::patch('/profile/{id}/update', [UserController::class, 'update_profile'])->name('profile.update');
+        Route::get('/profile/{id}/show', [UserController::class, 'show_profile'])->name('profile.show');
     });
 });
 
