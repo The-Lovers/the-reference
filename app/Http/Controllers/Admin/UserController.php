@@ -36,23 +36,22 @@ class UserController extends Controller
     /**
      * Colonnes pour la table générique
      */
-    private function columns(): array
-    {
-        return [
-            ['label' => 'Nom', 'field' => 'name', 'sortable' => true],
-            ['label' => 'Prénom', 'field' => 'surname', 'sortable' => true],
-            ['label' => 'Email', 'field' => 'email', 'sortable' => true],
-            ['label' => 'Téléphone', 'field' => 'phone'],
-            ['label' => 'Genre', 'field' => 'gender'],
-        ];
-    }
 
     /**
      * Affichage de la liste avec filtres et pagination
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->userRepository->getAll();
+        $fields = ['name', 'surname', 'email', 'phone'];
+        $users = $this->userRepository->getAllWithSearch(
+            $request->search,
+            $fields,
+            10
+        );
+        // $users = $this->userRepository->getAll();
+        if ($request->ajax()) {
+            return response()->json($users);
+        }
         return view('admin.users.index', compact('users'));
     }
 
@@ -149,9 +148,11 @@ class UserController extends Controller
             'gender' => ['required', 'in:M,F'],
             'role' => ['required', 'exists:roles,id'],
             'phone' => ['required', 'string'],
+            'code' => ['required', 'string'],
         ]);
 
         try {
+            $validated['phone'] = $validated['code'] . ' ' . $validated['phone'];
             $user->update($validated);
 
             $user->roles()->sync([$validated['role']]);

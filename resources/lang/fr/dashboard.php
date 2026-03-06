@@ -7,6 +7,7 @@ return [
         'domains' => "Gestions Domaines",
         'services' => "Gestions Services",
         'testimonies' => "Gestions Témoignages",
+        'destinations' => "Gestions Destinations",
         'user' => [
             'list' => "Liste des Utilisateurs",
             'detail' => "Détails Utilisateur",
@@ -14,6 +15,42 @@ return [
             'new' => "Nouvel Utlisateur",
             'create' => "Création d'un Utilisateur",
             'role' => "Rôles & Permissions",
+        ],
+        'mission' => [
+            'list' => "Liste des Missions",
+            'detail' => "Détails Mission",
+            'edit' => "Modifier Mission",
+            'new' => "Nouvelle Mission",
+            'create' => "Création d'une Mission",
+        ],
+
+        'domain' => [
+            'list' => "Liste des Domaines",
+            'detail' => "Détails Domaine",
+            'edit' => "Modifier Domaine",
+            'new' => "Nouveau Domaine",
+            'create' => "Création d'un Domaine",
+        ],
+        'service' => [
+            'list' => "Liste des Services",
+            'detail' => "Détails Service",
+            'edit' => "Modifier Service",
+            'new' => "Nouveau Service",
+            'create' => "Création d'un Service",
+        ],
+        'testimony' => [
+            'list' => "Liste des Témoignages",
+            'detail' => "Détails Témoignage",
+            'edit' => "Modifier Témoignage",
+            'new' => "Nouveau Témoignage",
+            'create' => "Création d'un Témoignage",
+        ],
+        'destination' => [
+            'list' => "Liste des Destinations",
+            'detail' => "Détails Destination",
+            'edit' => "Modifier Destination",
+            'new' => "Nouvelle Destination",
+            'create' => "Création d'une Destination",
         ],
     ],
     'header' => [

@@ -5,28 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/vendors.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/daterangepicker.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/theme.min.css') }}" />
-    <style>
-        .title{
-            text-transform: uppercase;
-        }
-        .log{
-            max-width: 40%;
-        }
-        .page-header{
-            position: fixed !important;
-        }
-        header{
-            padding-bottom: 0 !important;
-        }
-        @media (max-width: 767px) {
-            .page-header{
-                left: 0;
-            }
-            .page-header .breadcrumb{
-                display: none !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('admin/styles.css') }}">
     @yield('css_2')
     <script src="{{ asset('admin/sidebar/lib/html5_shiv_3.7.3/dist/html5shiv.min.js') }}"></script>
     <script src="{{ asset('admin/sidebar/lib/respond_1.4.2/dist/respond.min.js') }}"></script>

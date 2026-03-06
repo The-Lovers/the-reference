@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user/edit.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -101,9 +101,9 @@
                 </div> --}}
                 <div class="col-md-12 my-5">
                     <div class="row myBtn">
-                        <a type="button" class="btn col-md-4 secondary" href="{{ route('users.index') }}">{{ __('dashboard.register.btn.cancel') }}</a>
-                        <button type="reset" class="btn col-md-4 danger d-none">{{ __('dashboard.register.btn.reset') }}</button>
-                        <button type="submit" class="btn col-md-4 success" id="validate">{{ __('dashboard.register.btn.confirm') }}</button>
+                        <a type="button" class="btn col-md-4 secondary" href="{{ route('users.index') }}">{{ __('buttons.cancel') }}</a>
+                        {{-- <button type="reset" class="btn col-md-4 danger d-none">{{ __('buttons.reset') }}</button> --}}
+                        <button type="submit" class="btn col-md-4 success" id="validate">{{ __('buttons.confirm') }}</button>
                     </div>
                 </div>
             </div>

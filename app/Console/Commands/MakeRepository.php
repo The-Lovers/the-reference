@@ -54,29 +54,30 @@ class MakeRepository extends Command
     protected function repositoryStub(string $repoName, string $model): string
     {
         return <<<PHP
-<?php
+        <?php
 
-namespace App\Repositories;
+        namespace App\Repositories;
 
-use App\Models\\{$model};
+        use App\Models\\{$model};
 
-class {$repoName} extends ResourceRepository
-{
-    public function __construct({$model} \$model)
-    {
-        parent::__construct(\$model);
-    }
+        class {$repoName} extends ResourceRepository
+        {
+            public function __construct({$model} \$model)
+            {
+                parent::__construct(\$model);
+            }
 
-    public function getAll()
-    {
-        return \$this->model->all();
-    }
+            public function getAll()
+            {
+                return \$this->model->all();
+            }
 
-    public function getById(int \$id): ?{$model}
-    {
-        return \$this->model->find(\$id);
-    }
-}
-PHP;
+            public function getById(int \$id): ?{$model}
+            {
+                return \$this->model->find(\$id);
+            }
+
+        }
+        PHP;
     }
 }

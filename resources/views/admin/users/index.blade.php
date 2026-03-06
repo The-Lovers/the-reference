@@ -5,58 +5,7 @@
 @endphp
 
 @section('css_2')
-    <style>
-        :root{
-            --blue:#0b3c5d;
-            --orange:#f57c00;
-            --light:#f9f9f9;
-            --dark:#1c1c1c;
-            --danger: #d9534f;
-            --sencondary: #6C757D;
-            --info: #5bc0de;
-        }
-       #actions .btn-danger, #actions .btn-primary, #actions .btn-warning,
-       .card-footer .btn-danger, .card-footer .btn-primary, .card-footer .btn-warning {
-        background: none !important;
-        border: none !important;
-        font-size: 1rem !important;;
-       }
-       #actions{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-       }
-       #actions .btn-danger, .card-footer .btn-danger{
-        color: var(--danger) !important;
-       }
-       #actions .btn-warning, .card-footer .btn-warning{
-        color: var(--orange) !important;
-       }
-       #actions .btn-primary, .card-footer .btn-primary{
-        color: var(--info) !important;
-       }
-       thead th {
-        color: var(--dark);
-        font-size: 1rem !important;
-        font-weight: bold !important;
-       }
-       h2{
-        margin-bottom: 0;
-       }
-       a.btn{
-        background-color: var(--blue);
-        color: var(--light);
-        width: 15%;
-        margin-bottom: 2rem;
-        margin-top: 2rem;
-       }
-       a.btn:hover{
-        background-color: var(--orange);
-        color: var(--dark) !important;
-        width: 15%;
-       }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/user/index.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -74,9 +23,9 @@
             <h2 class="title">
                 {{ __('dashboard.sidebar.user.list') }}
             </h2>
-            <a class="btn" href="{{ route('users.create') }}">
+            <a class="btn btn-success" href="{{ route('users.create') }}">
                 <span>
-                    {{ __('user.index.add-user') }}
+                    {{ __('buttons.new') }}
                 </span>
             </a>
             <div class="d-none d-md-block table-responsive">
@@ -92,7 +41,7 @@
                             <th scope="col" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">{{ __('user.index.action') }}</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="desktopTableBody">
                         @forelse ($users as $user)
                             <tr>
                                 <td data-label="#">{{ $index++ }}</td>
@@ -125,7 +74,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="d-md-none" id="userAccordion">
+            <div class="d-md-none" {{-- id="userAccordion"  --}}id="mobileUsers">
                 <div class="accordion" id="userAccordion"></div>
                 @forelse($users as $user)
                     <div class="card my-3">
@@ -216,6 +165,109 @@
 
             lightBtn.style.display = 'none';
             darkBtn.style.display = 'inline-block';
+        });
+    </script>
+
+    <script>
+        let timeout = null;
+
+        document.getElementById('searchInput').addEventListener('keyup', function () {
+
+            clearTimeout(timeout);
+            let search = this.value;
+
+            timeout = setTimeout(() => {
+
+                fetch(`/users?search=${search}`, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+
+                    let desktopHtml = '';
+                    let mobileHtml = '';
+
+                    if (data.data.length === 0) {
+
+                        desktopHtml = `
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    {{ __('user.index.not-found') }}
+                                </td>
+                            </tr>
+                        `;
+
+                        mobileHtml = `
+                            <div class="text-center my-3">
+                                {{ __('user.index.not-found') }}
+                            </div>
+                        `;
+
+                    } else {
+
+                        let index = 1;
+
+                        data.data.forEach(user => {
+
+                            // DESKTOP
+                            desktopHtml += `
+                                <tr>
+                                    <td>${index++}</td>
+                                    <td>${user.name}</td>
+                                    <td>${user.surname}</td>
+                                    <td>${user.email}</td>
+                                    <td>${user.phone ?? ''}</td>
+                                    <td>${user.gender_label ?? ''}</td>
+                                    <td class="d-flex gap-1">
+                                        <a href="/users/${user.id}" class="btn btn-sm btn-primary">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <a href="/users/${user.id}/edit" class="btn btn-sm btn-warning">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            `;
+
+                            // MOBILE
+                            mobileHtml += `
+                                <div class="card my-3">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <strong>${user.name} ${user.surname}</strong>
+                                        <button class="btn btn-link p-0" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse${user.id}">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </button>
+                                    </div>
+
+                                    <div id="collapse${user.id}" class="collapse">
+                                        <div class="card-body">
+                                            <p><strong>Email :</strong> ${user.email}</p>
+                                            <p><strong>Phone :</strong> ${user.phone ?? ''}</p>
+                                            <p><strong>Gender :</strong> ${user.gender_label ?? ''}</p>
+                                        </div>
+                                        <div class="card-footer d-flex gap-2">
+                                            <a href="/users/${user.id}" class="btn btn-sm btn-primary">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+                                            <a href="/users/${user.id}/edit" class="btn btn-sm btn-warning">
+                                                <i class="fa-solid fa-pen"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    }
+
+                    document.getElementById('desktopTableBody').innerHTML = desktopHtml;
+                    document.getElementById('mobileUsers').innerHTML = mobileHtml;
+
+                });
+
+            }, 400); // debounce
         });
     </script>
 @endsection

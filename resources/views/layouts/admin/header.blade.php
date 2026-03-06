@@ -35,7 +35,7 @@
                             <span class="input-group-text">
                                 <i class="fa-solid fa-magnifying-glass fs-6 text-muted"></i>
                             </span>
-                            <input type="text" class="form-control search-input-field" placeholder="Search...." />
+                            <input type="text" id="searchInput" class="form-control search-input-field" placeholder="Search...." />
                             <span class="input-group-text">
                                 <button type="button" class="btn-close"></button>
                             </span>
