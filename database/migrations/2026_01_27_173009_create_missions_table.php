@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('title');
-            $table->text('description')->nullable();
-            $table->json('list')->nullable();
+            $table->longText('description')->nullable();
 
             $table->boolean('status')->default(false);
             $table->boolean('is_featured')->default(false);

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->text('avatar')->nullable();
             $table->string('phone')->nullable();
+            $table->boolean('status')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

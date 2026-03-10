@@ -85,8 +85,83 @@
     background:#ddd;
 }
 
-#editor{
+#description{
     min-height:200px;
     padding:15px;
     outline:none;
+}
+#isFeatured, #isActive{
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.check{
+    color: var(--blue);
+}
+.cross{
+    color: var(--danger);
+}
+.cover{
+    position: relative;
+    bottom: 0.8rem;
+}
+.switch-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+#iconPicker{
+    width:18.75rem;
+    border:0.0625rem solid var(--orange);
+    padding:0.625rem;
+    border-radius:0.32rem;
+}
+
+#searchIcon{
+    width:100%;
+    padding:0.5rem;
+    margin-bottom:0.625rem;
+}
+
+#icons{
+    display:grid;
+    grid-template-columns:repeat(25,1fr);
+    gap:0.625rem;
+    max-height:12.5rem;
+    overflow:auto;
+    border:0.0625rem solid var(--light);
+    padding:0.625rem;
+    border-radius:0.32rem;
+}
+
+.icon-item{
+    cursor:pointer;
+    font-size:1.25rem;
+    padding:0.5rem;
+    text-align:center;
+    border-radius:0.25rem;
+}
+
+.icon-item:hover{
+    background:var(--light);
+}
+
+#preview{
+    font-size:1.8rem;
+    margin-top:0.9rem;
+}
+
+.icon-selected {
+    background: var(--blue);
+    color: var(--orange);
+}
+.form-switch .form-check-input {
+    width: 2.5em;
+    height: 1.25em;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.form-switch .form-check-input:checked {
+    border-color: var(--blue) !important;
+    background-color: var(--blue) !important;
 }

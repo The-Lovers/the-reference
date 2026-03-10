@@ -3,8 +3,18 @@
         'mission' => [
             'title' => "Titre",
             'description' => "Description",
-            'list' => "Liste à puces",
             'cover' => "Couverture",
             'icon' => "Icône descriptive",
+            'status' => [
+                'title' => "Statut de la mission",
+                'active' => "Activée",
+                'inactive' => "Désactivée",
+            ],
+            'featured' => [
+                'title' => "Mettre la mission en vedette",
+                'spotlight' => "En vedette",
+                'set-back' => "En retrait",
+            ],
+            'preview' => "Aperçu de l'icône",
         ],
     ];

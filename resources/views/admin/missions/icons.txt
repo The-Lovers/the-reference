@@ -1,10 +1,10 @@
-fa-solid fa-0
-fa-solid fa-00
-fa-solid fa-1
-fa-solid fa-2
-fa-solid fa-3
-fa-solid fa-360-degrees
-fa-solid fa-4
+"fa-solid fa-0"
+"fa-solid fa-00"
+"fa-solid fa-1"
+"fa-solid fa-2"
+"fa-solid fa-3"
+"fa-solid fa-360-degrees"
+"fa-solid fa-4"
 fa-solid fa-42-group
 fa-solid fa-5
 fa-solid fa-500px

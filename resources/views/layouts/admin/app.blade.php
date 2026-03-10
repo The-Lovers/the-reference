@@ -2,9 +2,9 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/vendors.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/daterangepicker.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/theme.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/vendors.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/daterangepicker.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/theme.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/styles.css') }}">
     @yield('css_2')
     <script src="{{ asset('admin/sidebar/lib/html5_shiv_3.7.3/dist/html5shiv.min.js') }}"></script>
@@ -60,6 +60,7 @@
     <script src="{{ asset('admin/sidebar/lib/js/dashboard-init.min.js') }}"></script>
     <script src="{{ asset('admin/sidebar/lib/js/theme-customizer-init.min.js') }}"></script>
     <script src="{{ asset('admin/sidebar/lib/js/nxlNavigation.min.js') }}"></script>
+    <script src="{{ asset('lib/ckeditor-full-4.7.3/package/ckeditor.js') }}"></script>
     @yield('js_2')
     <script>
         const today = new Date();
