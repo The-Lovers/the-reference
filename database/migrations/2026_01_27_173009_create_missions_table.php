@@ -20,7 +20,7 @@ return new class extends Migration
             $table->boolean('status')->default(false);
             $table->boolean('is_featured')->default(false);
 
-            $table->string('image')->nullable();
+            $table->longText('image')->nullable();
             $table->string('icon')->nullable();
 
             $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();

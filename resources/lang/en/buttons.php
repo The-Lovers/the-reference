@@ -5,4 +5,5 @@
         'reset' => 'Reset',
         'confirm' => 'Confirm',
         'save' => 'Save',
+        'save-continue' => 'Save & Continue',
     ];

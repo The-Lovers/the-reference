@@ -59,3 +59,12 @@
 .select2-selection__arrow {
     display: none !important;
 }
+.icon-item {
+    font-size: 24px;
+    margin: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+.icon-selected {
+    color: var(--orange); /* pour visualiser la sélection */
+}

@@ -15,6 +15,6 @@
                 'spotlight' => "En vedette",
                 'set-back' => "En retrait",
             ],
-            'preview' => "Aperçu de l'icône",
+            'preview' => "Aperçu de l'icône (Ne pas choisir les icones qui passe de ! à ? dans un cercle en traits interrompus)",
         ],
     ];
