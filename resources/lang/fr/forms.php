@@ -3,7 +3,7 @@
         'mission' => [
             'title' => "Titre",
             'description' => "Description",
-            'cover' => "Couverture",
+            'cover' => "Couverture (l'image doit être au format PNG, JPG ou JPEG et ne pas dépasser 2 Mo)",
             'icon' => "Icône descriptive",
             'status' => [
                 'title' => "Statut de la mission",

@@ -135,36 +135,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="notifications-item">
-                            <img src="assets/images/avatar/3.png" alt="" class="rounded me-3 border" />
-                            <div class="notifications-desc">
-                                <a href="javascript:void(0);" class="font-body text-truncate-2-line"> <span class="fw-semibold text-dark">Valentine Maton</span> You can download the latest invoices now.</a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="notifications-date text-muted border-bottom border-bottom-dashed">36 minutes ago</div>
-                                    <div class="d-flex align-items-center float-end gap-2">
-                                        <a href="javascript:void(0);" class="d-block wd-8 ht-8 rounded-circle bg-gray-300" data-bs-toggle="tooltip" title="Make as Read"></a>
-                                        <a href="javascript:void(0);" class="text-danger" data-bs-toggle="tooltip" title="Remove">
-                                            <i class="fa-solid fa-x fs-12"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="notifications-item">
-                            <img src="assets/images/avatar/4.png" alt="" class="rounded me-3 border" />
-                            <div class="notifications-desc">
-                                <a href="javascript:void(0);" class="font-body text-truncate-2-line"> <span class="fw-semibold text-dark">Archie Cantones</span> Don't forget to pickup Jeremy after school!</a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="notifications-date text-muted border-bottom border-bottom-dashed">53 minutes ago</div>
-                                    <div class="d-flex align-items-center float-end gap-2">
-                                        <a href="javascript:void(0);" class="d-block wd-8 ht-8 rounded-circle bg-gray-300" data-bs-toggle="tooltip" title="Make as Read"></a>
-                                        <a href="javascript:void(0);" class="text-danger" data-bs-toggle="tooltip" title="Remove">
-                                            <i class="fa-solid fa-x fs-12"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="text-center notifications-footer">
                             <a href="javascript:void(0);" class="fs-13 fw-semibold text-dark">Alls Notifications</a>
                         </div>
@@ -191,6 +161,15 @@
                         <a href="javascript:void(0);" class="dropdown-item prof">
                             <i class="fa-solid fa-gear"></i>
                             <span>{{ __('dashboard.header.setting') }}</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ url('/telescope') }}" class="dropdown-item prof">
+                            <i class="fa-solid fa-bug"></i>
+                            <span>{{ __('dashboard.header.telescope') }}</span>
+                        </a>
+                        <a href="{{ route('log-viewer::logs.list') }}" class="dropdown-item prof">
+                            <i class="fa-solid fa-bug-slash"></i>
+                            <span>{{ __('dashboard.header.log-viewer') }}</span>
                         </a>
                         <div class="dropdown-divider"></div>
                         <form action="{{ route('logout') }}" method="POST" style="display:inline;">

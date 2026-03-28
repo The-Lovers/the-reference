@@ -108,7 +108,7 @@
                                     <form action="{{ route('users.destroy', $user->id) }}" method="POST" id="deleteForm-{{ $user->id }}">
                                         @csrf
                                         @method('DELETE')
-                                        <button  type="button" onclick="confirmDelete({{ $user->id }})" class="btn btn-sm btn-danger">
+                                        <button  type="button" onclick="confirmDelete({{ $user->id }}, '{{ __('user.delete.confirm') }}')" class="btn btn-sm btn-danger">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>

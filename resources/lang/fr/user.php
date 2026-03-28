@@ -12,4 +12,7 @@ return [
         'female' => "Femme",
         'add-user' => "Ajouter un Utilisateur",
     ],
+    'delete' => [
+        'confirm' => "Voulez-vous vraiment supprimer cet utilisateur ?",
+    ],
 ];

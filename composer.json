@@ -6,10 +6,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "arcanedev/log-viewer": "^10.1",
         "guzzlehttp/guzzle": "^7.10",
         "laravel/fortify": "^1.33",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
+        "laravel/telescope": "^5.19",
         "laravel/tinker": "^2.8",
         "stichoza/google-translate-php": "^5.3"
     },

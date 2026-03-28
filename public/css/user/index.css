@@ -26,7 +26,7 @@
     color: var(--orange) !important;
 }
 #actions .btn-primary, .card-footer .btn-primary{
-    color: var(--info) !important;
+    color: var(--blue) !important;
 }
 thead th {
     color: var(--dark);

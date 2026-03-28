@@ -68,7 +68,7 @@ Route::group([
         Route::get('/profile/{id}/edit', [UserController::class, 'edit_profile'])->name('profile.edit');
         Route::patch('/profile/{id}/update', [UserController::class, 'update_profile'])->name('profile.update');
         Route::get('/profile/{id}/show', [UserController::class, 'show_profile'])->name('profile.show');
-
+        // Routes pour les domaines
         Route::resource('domains', DomainController::class, [
             'description' => [
                 'index' => __("desc.domain.index"),
@@ -78,6 +78,7 @@ Route::group([
                 'destroy' => __("desc.domain.destroy")
             ]
         ]);
+        // Routes pour les missions
         Route::resource('missions', MissionController::class, [
             'description' => [
                 'index' => __("desc.mission.index"),
@@ -87,6 +88,12 @@ Route::group([
                 'destroy' => __("desc.mission.destroy")
             ]
         ]);
+        Route::patch('missions/{mission}/status/{value}', [MissionController::class, 'updateStatus'])
+            ->name('missions.status');
+
+        Route::patch('missions/{mission}/featured/{value}', [MissionController::class, 'updateFeatured'])
+            ->name('missions.featured');
+        // Routes pour les services
         Route::resource('services', ServiceController::class, [
             'description' => [
                 'index' => __("desc.service.index"),
@@ -96,6 +103,7 @@ Route::group([
                 'destroy' => __("desc.service.destroy")
             ]
         ]);
+        // Routes pour les destinations
         Route::resource('destinations', DestinationController::class, [
             'description' => [
                 'index' => __("desc.destination.index"),
@@ -105,6 +113,7 @@ Route::group([
                 'destroy' => __("desc.destination.destroy")
             ]
         ]);
+        // Routes pour les témoignages
         Route::resource('testimonies', TestimonyController::class, [
             'description' => [
                 'index' => __("desc.testimony.index"),

@@ -37,18 +37,35 @@
         });
         </script>
         @endif
-        
+
         @yield('content')
         @yield('footer')
 
         <script>
-            function confirmDelete(id) {
-                showPopup('confirm', "Confirmer la suppression ?", {
-                    theme: 'dark',
-                    onConfirm: function () {
-                        document.getElementById('deleteForm-' + id).submit();
-                    }
-                });
+            function confirmDelete(id, message) {
+                if (typeof showPopup === 'function') {
+                    showPopup('confirm', message, {
+                        theme: 'dark',
+                        onConfirm: function () {
+                            document.getElementById('deleteForm-' + id).submit();
+                        }
+                    });
+                } else if (confirm(message)) {
+                    document.getElementById('deleteForm-' + id).submit();
+                }
+            }
+
+            function confirmToggle(formId, message) {
+                if (typeof showPopup === 'function') {
+                    showPopup('confirm', message, {
+                        theme: 'dark',
+                        onConfirm: function () {
+                            document.getElementById(formId).submit();
+                        }
+                    });
+                } else if (confirm(message)) {
+                    document.getElementById(formId).submit();
+                }
             }
         </script>
 

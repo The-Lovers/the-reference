@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Missions;
-use App\Models\User;
 use App\Repositories\MissionsRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class MissionController extends Controller
 {
@@ -46,41 +48,51 @@ class MissionController extends Controller
      */
     public function store($locale, Request $request)
     {
-        $user = auth()->user();
+        $user = Auth::user();
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
-            'status' => ['required'],
-            'is_featured' => ['required'],
-            'image' => ['required|image|mimes:jpeg,png,jpg,gif|max:2048'],
-            'icon' => ['required'],
+            'description' => ['required', 'string'],
+            'icon' => ['required', 'string', 'max:255'],
+            'status' => ['required ', 'in:0,1'],
+            'is_featured' => ['required ', 'in:0,1'],
+            'action' => ['required', 'string'],
+            'cover'  => ['required', 'image', 'mimes:png,jpg,jpeg', 'max:2048'],
         ]);
-        // Upload image
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = 'mission_' . time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('uploads/missions'), $filename);
-            $validated['image'] = 'uploads/missions/' . $filename;
+
+        try {
+            // Préparer l'icône
+            $validated['icon'] = "fa-solid fa-" . $validated['icon'];
+
+            DB::transaction(function () use (&$validated, $request, $user) {
+                // Upload image
+                if ($request->hasFile('cover')) {
+                    $file = $request->file('cover');
+                    $filename = 'mission_' . time() . '.' . $file->getClientOriginalExtension();
+                    $file->move(public_path('uploads/missions'), $filename);
+                }
+                $validated['cover'] = 'uploads/missions/' . $filename;
+                // Création de la mission
+                $mission = new Missions($validated);
+                $mission->creator()->associate($user);
+                $mission->save();
+            });
+
+            // Gestion des boutons
+            $action = $validated['action'];
+            if ($action === 'continue') {
+                return redirect()->route('missions.create')->with('success', __('missions.create.success-next'));
+            }
+
+            return redirect()->route('missions.index')->with('success', __('missions.create.success-next'));
+
+        } catch (\Throwable $e) {
+            // Log l'erreur
+            Log::error(__('missions.create.error') . ': ' . $e->getMessage());
+
+            return redirect()->back()
+                ->withInput()
+                ->with('error', __('missions.create.error') . ': ' . $e->getMessage());
         }
-        // Création via relation (encore plus propre)
-        $mission = new Missions($validated);
-        $mission->creator()->associate($user);
-        $mission->save();
-
-        // Gestion des boutons
-        $action = $request->input('action');
-
-        if ($action === 'continue') {
-            return redirect()
-                ->route('missions.create') // ou la route que tu veux
-                ->with('success', 'Mission enregistrée, continuez...');
-        }
-
-        // bouton "Save"
-        return redirect()
-            ->route('missions.index')
-            ->with('success', 'Mission enregistrée avec succès');
-
     }
 
     /**
@@ -104,7 +116,7 @@ class MissionController extends Controller
      */
     public function update($locale, Request $request, Missions $mission)
     {
-        //
+        $user = auth()->user();
     }
 
     /**
@@ -112,6 +124,32 @@ class MissionController extends Controller
      */
     public function destroy($locale, Missions $mission)
     {
-        //
+        return redirect()->back()
+                ->withInput()
+                ->with('success', __('missions.delete.confirm'));
+    }
+
+    public function updateStatus($locale, Missions $mission, $value)
+    {
+        $mission->update([
+            'status' => $value,
+            'status_updated_by' => Auth::id(),
+        ]);
+
+        return redirect()->back()
+                ->withInput()
+                ->with('success', __('missions.index.status.success'));
+    }
+
+    public function updateFeatured($locale, Missions $mission, $value)
+    {
+        $mission->update([
+            'is_featured' => $value,
+            'featured_updated_by' => Auth::id(),
+        ]);
+
+        return redirect()->back()
+                ->withInput()
+                ->with('success', __('missions.index.featured.success'));
     }
 }

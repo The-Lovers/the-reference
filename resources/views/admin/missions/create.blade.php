@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-6 col-xs-12 mb-3">
                         <div class="form-floating">
-                            <input type="text" class="form-control" placeholder="" id="title" name="title" required>
+                            <input type="text" class="form-control" placeholder="" id="title" name="title" required value="{{ old('title') }}">
                             <label for="title">{{ __('forms.mission.title') }}</label>
                         </div>
                     </div>
