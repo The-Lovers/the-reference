@@ -83,7 +83,7 @@ class MissionController extends Controller
                 return redirect()->route('missions.create')->with('success', __('missions.create.success-next'));
             }
 
-            return redirect()->route('missions.index')->with('success', __('missions.create.success-next'));
+            return redirect()->route('missions.index')->with('success', __('missions.create.success'));
 
         } catch (\Throwable $e) {
             // Log l'erreur
@@ -116,7 +116,57 @@ class MissionController extends Controller
      */
     public function update($locale, Request $request, Missions $mission)
     {
-        $user = auth()->user();
+        $user = Auth::user();
+
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'icon' => ['required', 'string', 'max:255'],
+            'status' => ['required', 'in:0,1'],
+            'is_featured' => ['required', 'in:0,1'],
+            'action' => ['required', 'string'],
+            'cover'  => ['nullable', 'image', 'mimes:png,jpg,jpeg', 'max:2048'],
+        ]);
+
+        try {
+            // Préparer l'icône
+            $validated['icon'] = "fa-solid fa-" . $validated['icon'];
+
+            DB::transaction(function () use (&$validated, $request, $user, $mission) {
+                // Gestion du cover
+                if ($request->hasFile('cover')) {
+                    // Supprimer l'ancien cover s'il existe
+                    if ($mission->cover && file_exists(public_path($mission->cover))) {
+                        unlink(public_path($mission->cover));
+                    }
+
+                    $file = $request->file('cover');
+                    $filename = 'mission_' . time() . '.' . $file->getClientOriginalExtension();
+                    $file->move(public_path('uploads/missions'), $filename);
+                    $validated['cover'] = 'uploads/missions/' . $filename;
+                }
+
+                // Mettre à jour la mission
+                $mission->fill($validated);
+                $mission->updater()->associate($user);
+                $mission->save();
+            });
+
+            // Gestion des boutons
+            $action = $validated['action'];
+            if ($action === 'continue') {
+                return redirect()->route('missions.edit', $mission)->with('success', __('missions.update.success-next'));
+            }
+
+            return redirect()->route('missions.index')->with('success', __('missions.update.success'));
+
+        } catch (\Throwable $e) {
+            Log::error(__('missions.update.error') . ': ' . $e->getMessage());
+
+            return redirect()->back()
+                ->withInput()
+                ->with('error', __('missions.update.error') . ': ' . $e->getMessage());
+        }
     }
 
     /**
@@ -124,9 +174,24 @@ class MissionController extends Controller
      */
     public function destroy($locale, Missions $mission)
     {
-        return redirect()->back()
-                ->withInput()
-                ->with('success', __('missions.delete.confirm'));
+        try {
+            DB::transaction(function () use ($mission) {
+                // Supprimer le cover si il existe
+                if ($mission->cover && file_exists(public_path($mission->cover))) {
+                    unlink(public_path($mission->cover));
+                }
+
+                // Supprimer la mission
+                $mission->delete();
+            });
+
+            return redirect()->route('missions.index')->withInput()->with('success', __('missions.delete.success'));
+
+        } catch (\Throwable $e) {
+            Log::error(__('missions.delete.error') . ': ' . $e->getMessage());
+
+            return redirect()->back()->with('error', __('missions.delete.error') . ': ' . $e->getMessage());
+        }
     }
 
     public function updateStatus($locale, Missions $mission, $value)

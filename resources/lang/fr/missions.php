@@ -14,7 +14,7 @@
                 'title' => "À la une",
                 '0' => "Non",
                 '1' => "Oui",
-                'confirm' => "Voulez-vous vraiment changer l'état à la une de cette mission ?",
+                'confirm' => "Voulez-vous vraiment changer l\'état à la une de cette mission ?",
                 'success' => "État changé avec succès !",
             ],
             'created-by' => "Créé par",
@@ -30,5 +30,12 @@
         'delete' => [
             'success' => "Mission supprimée avec succès !",
             'confirm' => "Voulez-vous vraiment supprimer cette mission ?",
+            'error' => "Une erreur est survenue. Veuillez réessayer plus tard.",
+        ],
+        'update' => [
+            'success' => "Mission mise à jour avec succès !",
+            'success-next' => "Mission mise à jour, continuez...",
+            'error' => "Une erreur est survenue. Veuillez réessayer plus tard.",
+            'error-2' => "Veuillez corriger les erreurs ci-dessous.",
         ],
     ];

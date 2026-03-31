@@ -30,5 +30,12 @@
         'delete' => [
             'success' => "Mission deleted successfully!",
             'confirm' => "Do you really want to delete this mission ?",
+            'error' => "An error occurred. Please try again later.",
+        ],
+        'update' => [
+            'success' => "Mission updated successfully!",
+            'success-next' => "Mission updated, continue...",
+            'error' => "An error occurred. Please try again later.",
+            'error-2' => "Please correct the errors below.",
         ],
     ];

@@ -82,7 +82,7 @@
                                     <form action="{{ route('missions.destroy', $mission->id) }}" method="POST"  id="deleteForm-{{ $mission->id }}">
                                         @csrf
                                         @method('DELETE')
-                                        <button  type="button" onclick="confirmDelete({{ $mission->id }}, '{{ __('missions.index.delete.confirm') }}')" class="btn btn-sm btn-danger">
+                                        <button  type="button" onclick="confirmDelete({{ $mission->id }}, '{{ __('missions.delete.confirm') }}')" class="btn btn-sm btn-danger">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>
