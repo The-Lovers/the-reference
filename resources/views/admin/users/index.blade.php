@@ -1,9 +1,5 @@
 @extends('layouts.admin.app')
 
-@php
-    $index = 1;
-@endphp
-
 @section('css_2')
     <link rel="stylesheet" href="{{ asset('css/user/index.css') }}">
 @endsection
@@ -18,6 +14,68 @@
 @endsection
 
 @section('content_2')
+    @php
+        $columns = [
+            [
+                'label' => '#',
+                'value' => fn ($user, $loop) => $loop->iteration,
+                'show_in_accordion' => false,
+            ],
+            [
+                'label' => __('user.index.name'),
+                'field' => 'name',
+                'show_in_accordion' => false,
+            ],
+            [
+                'label' => __('user.index.surname'),
+                'field' => 'surname',
+                'show_in_accordion' => false,
+            ],
+            [
+                'label' => __('user.index.email'),
+                'field' => 'email',
+            ],
+            [
+                'label' => __('user.index.phone'),
+                'field' => 'phone',
+                'value' => fn ($user) => $user->phone ?: '-',
+            ],
+            [
+                'label' => __('user.index.gender'),
+                'value' => fn ($user) => $user->gender_label ?: '-',
+            ],
+        ];
+
+        $actions = [
+            [
+                'icon' => 'fa-solid fa-eye',
+                'tooltip' => __('buttons.show'),
+                'class' => 'btn btn-sm btn-primary',
+                'url' => fn ($user) => route('users.show', $user->id),
+            ],
+            [
+                'icon' => 'fa-solid fa-pen',
+                'tooltip' => __('buttons.edit'),
+                'class' => 'btn btn-sm btn-warning',
+                'url' => fn ($user) => route('users.edit', $user->id),
+            ],
+            [
+                'icon' => 'fa-solid fa-trash',
+                'tooltip' => __('buttons.delete'),
+                'class' => 'btn btn-sm btn-danger',
+                'onclick' => fn () => "if(typeof showPopup==='function'){showPopup('confirm', "
+                    . \Illuminate\Support\Js::from(__('user.delete.confirm'))
+                    . ", {theme:'dark', onConfirm: () => this.closest('form').submit()});}else if(confirm("
+                    . \Illuminate\Support\Js::from(__('user.delete.confirm'))
+                    . ")){this.closest('form').submit();}",
+                'form' => [
+                    'action' => fn ($user) => route('users.destroy', $user->id),
+                    'method' => 'DELETE',
+                ],
+            ],
+        ];
+    @endphp
+
     <div class="main-content">
         <div class="container">
             <h2 class="title">
@@ -28,144 +86,46 @@
                     {{ __('buttons.new') }}
                 </span>
             </a>
-            <div class="d-none d-md-block table-responsive">
-                <table class="table table-hover">
-                    <thead id="myTableHead" class="table-light">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">{{ __('user.index.name') }}</th>
-                            <th scope="col">{{ __('user.index.surname') }}</th>
-                            <th scope="col">{{ __('user.index.email') }}</th>
-                            <th scope="col">{{ __('user.index.phone') }}</th>
-                            <th scope="col">{{ __('user.index.gender') }}</th>
-                            <th scope="col" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">{{ __('user.index.action') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody id="desktopTableBody">
-                        @forelse ($users as $user)
-                            <tr>
-                                <td data-label="#">{{ $index++ }}</td>
-                                <td data-label="{{ __('user.index.name') }}">{{ $user->name }}</td>
-                                <td data-label="{{ __('user.index.surname') }}">{{ $user->surname }}</td>
-                                <td data-label="{{ __('user.index.email') }}">{{ $user->email }}</td>
-                                <td data-label="{{ __('user.index.phone') }}">{{ $user->phone }}</td>
-                                <td data-label="{{ __('user.index.gender') }}">{{ $user->gender_label }}</td>
-                                <td data-label="{{ __('user.index.action') }}" class="d-flex gap-1" id="actions">
-                                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-primary">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </a>
-                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST"  id="deleteForm-{{ $user->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button  type="button" onclick="confirmDelete({{ $user->id }})" class="btn btn-sm btn-danger">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="6">{{ __('user.index.not-found') }}</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-            <div class="d-md-none" {{-- id="userAccordion"  --}}id="mobileUsers">
-                <div class="accordion" id="userAccordion"></div>
-                @forelse($users as $user)
-                    <div class="card my-3">
-                        <div class="card-header d-flex justify-content-between align-items-center" id="heading{{ $user->id }}">
-                            <div>
-                                <strong>{{ $user->name }} {{ $user->surname }}</strong>
-                            </div>
-                            <!-- Toggle collapse -->
-                            <button class="btn btn-link p-0 ms-2 toggle-chevron" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapse{{ $user->id }}" aria-expanded="false"
-                                aria-controls="collapse{{ $user->id }}">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                        </div>
-
-                        <div id="collapse{{ $user->id }}" class="collapse" aria-labelledby="heading{{ $user->id }}" data-bs-parent="#userAccordion">
-                            <div class="card-body">
-                                <p><strong>{{ __('user.index.email') }} :</strong> {{ $user->email }}</p>
-                                <p><strong>{{ __('user.index.phone') }} :</strong> {{ $user->phone }}</p>
-                                <p><strong>{{ __('user.index.gender') }} :</strong> {{ $user->gender }}</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex align-items-center gap-2">
-                                    <!-- Actions en haut à droite -->
-                                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-primary">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </a>
-                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" id="deleteForm-{{ $user->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button  type="button" onclick="confirmDelete({{ $user->id }}, '{{ __('user.delete.confirm') }}')" class="btn btn-sm btn-danger">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @empty
-
-                @endforelse
-            </div>
+            <x-admin.listing
+                :items="$users"
+                :columns="$columns"
+                :actions="$actions"
+                :accordion-title="fn ($user) => $user->name . ' ' . $user->surname"
+                :empty-message="__('user.index.not-found')"
+                :actions-label="__('user.index.action')"
+                table-head-id="myTableHead"
+                table-body-id="desktopTableBody"
+                mobile-container-id="mobileUsers"
+                accordion-parent-id="userAccordion"
+                id="users-listing"
+            />
         </div>
     </div>
 @endsection
 
 @section('js_2')
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Sélectionner toutes les flèches
-            const toggles = document.querySelectorAll(".toggle-chevron");
-
-            toggles.forEach(btn => {
-                const icon = btn.querySelector("i"); // l'icône à faire tourner
-                const targetId = btn.getAttribute("data-bs-target");
-                const collapseEl = document.querySelector(targetId);
-
-                // Quand le collapse s'ouvre → tourner la flèche
-                collapseEl.addEventListener("show.bs.collapse", () => {
-                    icon.classList.add("fa-rotate-180");
-                });
-
-                // Quand le collapse se ferme → remettre flèche vers le bas
-                collapseEl.addEventListener("hide.bs.collapse", () => {
-                    icon.classList.remove("fa-rotate-180");
-                });
-            });
-        });
-
         const darkBtn = document.querySelector('.dark-button');
         const lightBtn = document.querySelector('.light-button');
         const thead = document.getElementById('myTableHead');
 
-        darkBtn.addEventListener('click', () => {
-            thead.classList.remove('table-light');
-            thead.classList.add('table-dark');
+        if (darkBtn && lightBtn && thead) {
+            darkBtn.addEventListener('click', () => {
+                thead.classList.remove('table-light');
+                thead.classList.add('table-dark');
 
-            darkBtn.style.display = 'none';
-            lightBtn.style.display = 'inline-block';
-        });
+                darkBtn.style.display = 'none';
+                lightBtn.style.display = 'inline-block';
+            });
 
-        lightBtn.addEventListener('click', () => {
-            thead.classList.remove('table-dark');
-            thead.classList.add('table-light');
+            lightBtn.addEventListener('click', () => {
+                thead.classList.remove('table-dark');
+                thead.classList.add('table-light');
 
-            lightBtn.style.display = 'none';
-            darkBtn.style.display = 'inline-block';
-        });
+                lightBtn.style.display = 'none';
+                darkBtn.style.display = 'inline-block';
+            });
+        }
     </script>
 
     <script>

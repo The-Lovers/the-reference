@@ -1,0 +1,224 @@
+:root{
+    --blue:#0b3c5d;
+    --orange:#f57c00;
+    --light:#f9f9f9;
+    --dark:#1c1c1c;
+    --danger: #d9534f;
+    --sencondary: #6C757D;
+    --info: #5bc0de;
+}
+.form-control, .form-select, .input-group-text{
+    border: none !important;
+    border-bottom: 1px solid var(--orange) !important;
+    border-radius: 0 !important;
+}
+.form-control:hover, .form-select:hover, .input-group-text:hover{
+    border-bottom: 1px solid var(--orange) !important;
+}
+.no-arrow {
+    background: white !important;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: none;
+    border-right: 1px solid var(--blue) !important;
+}
+.no-arrow::-ms-expand {
+    display: none; /* Edge / IE */
+}
+.btn{
+    border: none;
+    width: 32% !important;
+    font-size: 1rem;
+    border-radius: 1rem;
+}
+.myBtn{
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    column-gap: 1% !important;
+    justify-content: space-between !important;
+    padding-left: 1% !important;
+    padding-right: 1% !important;
+}
+.select2-container--default.select2-container {
+    width: 10rem !important;
+    border: none !important;
+    border-bottom: 1px solid var(--orange) !important;
+    border-radius: 0 !important;
+    background-color: white !important;
+}
+.select2-container--default .select2-selection--single {
+    background-color: white !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+.select2-container .select2-selection--single {
+    height: inherit !important;
+}
+.select2-selection__arrow {
+    display: none !important;
+}
+.editor-container{
+    width:700px;
+    margin:auto;
+    background:white;
+    border:1px solid #ccc;
+}
+
+.toolbar{
+    background:#eee;
+    padding:10px;
+    border-bottom:1px solid #ccc;
+}
+
+.toolbar button{
+    padding:6px 10px;
+    margin-right:5px;
+    border:none;
+    cursor:pointer;
+    background:white;
+    border:1px solid #ccc;
+}
+
+.toolbar button:hover{
+    background:#ddd;
+}
+
+#description{
+    min-height:200px;
+    padding:15px;
+    outline:none;
+}
+#isFeatured, #isActive{
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.check{
+    color: var(--blue);
+}
+.cross{
+    color: var(--danger);
+}
+.cover{
+    position: relative;
+    bottom: 0.8rem;
+}
+.switch-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+#iconPicker{
+    width:18.75rem;
+    border:0.0625rem solid var(--orange);
+    padding:0.625rem;
+    border-radius:0.32rem;
+}
+
+#searchIcon{
+    width:100%;
+    padding:0.5rem;
+    margin-bottom:0.625rem;
+}
+
+#icons{
+    display:grid;
+    grid-template-columns:repeat(15,1fr);
+    gap:0.625rem;
+    max-height:12.5rem;
+    overflow:auto;
+    border:0.0625rem solid var(--light);
+    padding:0.625rem;
+    border-radius:0.32rem;
+}
+
+.icon-item{
+    cursor:pointer;
+    font-size:1.25rem;
+    padding:0.5rem;
+    text-align:center;
+    border-radius:0.25rem;
+}
+
+.icon-item:hover{
+    background:var(--light);
+}
+
+#preview{
+    font-size:1.8rem;
+    margin-top:0.9rem;
+}
+
+.icon-selected {
+    background: var(--blue);
+    color: var(--orange);
+}
+.form-switch .form-check-input {
+    width: 2.5em;
+    height: 1.25em;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.form-switch .form-check-input:checked {
+    border-color: var(--blue) !important;
+    background-color: var(--blue) !important;
+}
+input[type="file"] {
+  position: relative;
+}
+
+input[type="file"]::file-selector-button {
+  color: transparent;
+}
+
+/* Faked label styles and icon */
+input[type="file"]::before {
+  position: absolute;
+  pointer-events: none;
+  top: 10px;
+  left: 16px;
+  height: 20px;
+  width: 20px;
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230964B0'%3E%3Cpath d='M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3h-2zM7 9l1.41 1.41L11 7.83V16h2V7.83l2.59 2.58L17 9l-5-5-5 5z'/%3E%3C/svg%3E");
+}
+
+input[type="file"]::after {
+  position: absolute;
+  pointer-events: none;
+  top: 0.6875rem;
+  left: 2.5rem;
+  color: #283c50;
+  content: "Upload File";
+}
+
+/* ------- From Step 1 ------- */
+
+/* file upload button */
+input[type="file"]::file-selector-button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: background-color 200ms;
+}
+
+/* file upload button hover state */
+input[type="file"]::file-selector-button:hover {
+  background-color: white;
+}
+
+/* file upload button active state */
+input[type="file"]::file-selector-button:active {
+  background-color: white;
+}
+.buttons{
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1%;
+}

@@ -1,3 +1,7 @@
+@php
+    $role = Auth::user()->roles();
+@endphp
+
 <header class="nxl-header">
     <div class="header-wrapper">
         <!--! [Start] Header Left !-->
@@ -149,8 +153,8 @@
                             <div class="d-flex align-items-center">
                                 <img src="assets/images/avatar/1.png" alt="user-image" class="img-fluid user-avtar" />
                                 <div>
-                                    <h6 class="text-dark mb-0">Alexandra Della <span class="badge bg-soft-success text-success ms-1">PRO</span></h6>
-                                    <span class="fs-12 fw-medium text-muted">alex@example.com</span>
+                                    <h6 class="text-dark mb-0">{{ Auth::user()->name }}<span class="badge bg-soft-success text-success ms-1">{{ __('role') }}</span></h6>
+                                    <span class="fs-12 fw-medium text-muted">{{ Auth::user()->email }}</span>
                                 </div>
                             </div>
                         </div>
@@ -195,3 +199,15 @@
         column-gap: 1rem;
     }
 </style>
+<script>
+    $(document).ready(function() {
+        $('#menu-mini-button').on('click', function() {
+            $('.b-brand .title').addClass('d-none');
+            $('.b-brand .nxl-mtext').addClass('d-none');
+        });
+        $('#menu-expend-button').on('click', function() {
+            $('.b-brand .title').removeClass('d-none');
+            $('.b-brand .nxl-mtext').removeClass('d-none');
+        });
+    });
+</script>

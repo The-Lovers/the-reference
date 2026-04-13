@@ -43,51 +43,19 @@
             <div class="swiper-container-wrapper">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper grid">
-
-                        <div class="swiper-slide">
-                            <div class="card image-card">
-                                <img src="{{ asset('images/content/01.jpeg') }}" alt="Étudiants africains à l'international">
-                                <span class="second">
-                                    <i class="fa-solid fa-graduation-cap icon"></i>
-                                </span>
-                                <p>Depuis près de <span class="highlight">4 ans</span>, La Référence accompagne la jeunesse africaine vers des <strong>opportunités académiques, professionnelles et internationales sûres</strong>.</p>
+                        @forelse ($missions as $mission)
+                            <div class="swiper-slide">
+                                <div class="card image-card">
+                                    <img src="{{ asset($mission->cover) }}" alt="Étudiants africains à l'international">
+                                    <span class="second">
+                                        <i class="{{ $mission->icon }} icon"></i>
+                                    </span>
+                                    <p>{!! $mission->description !!}</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="card image-card">
-                                <img src="{{ asset('images/content/02.jpeg') }}" alt="Étudiants africains à l'international">
-                                <span class="second">
-                                    <i class="fa-solid fa-plane-departure icon"></i>
-                                </span>
-                                <ul>
-                                    <li>✔ Orientation stratégique et réaliste</li>
-                                    <li>✔ Constitution de dossiers solides</li>
-                                    <li>✔ Suivi administratif et visa</li>
-                                    <li>✔ Sécurisation des démarches</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="card image-card">
-                                <img src="{{ asset('images/content/03.jpeg') }}" alt="Étudiants africains à l'international">
-                                <span class="second">
-                                    <i class="fa-solid fa-earth-africa icon"></i>
-                                </span>
-                                <p>France, Belgique, Russie, Biélorussie, Chine, Sénégal et bien d'autres destinations accessibles avec un accompagnement professionnel.</p>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="card image-card">
-                                <img src="{{ asset('images/content/01.jpeg') }}" alt="Étudiants africains à l'international">
-                                <span class="second">
-                                    <i class="fa-solid fa-computer icon"></i>
-                                </span>
-                                <p>Depuis près de <span class="highlight">4 ans</span>, La Référence accompagne la jeunesse africaine vers des <strong>opportunités académiques, professionnelles et internationales sûres</strong>.</p>
-                            </div>
-                        </div>
+                        @empty
+                            <p class="text-center"></p>
+                        @endforelse
                     </div>
                 </div>
                 <!-- Flèches -->

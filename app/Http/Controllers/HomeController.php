@@ -2,16 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\DomainsRepository;
+use App\Repositories\MissionsRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    protected $missionRepository;
+    protected $domainRepository;
+
+    public function __construct(
+        MissionsRepository $missionRepository, DomainsRepository $domainRepository
+    ) {
+        $this->missionRepository = $missionRepository;
+        $this->domainRepository = $domainRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('index');
+        $missions = $this->missionRepository->getAllWithOrder();
+        $domains = $this->domainRepository->getAllWithOrder();
+        return view('index', compact('missions', 'domains'));
     }
 
     public function error_404()

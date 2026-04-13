@@ -3,16 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\DestinationRepository;
 use Illuminate\Http\Request;
 
 class DestinationController extends Controller
 {
+    protected $destinationRepository;
+
+    public function __construct(DestinationRepository $destinationRepository)
+    {
+        $this->destinationRepository = $destinationRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.destinations.index');
+        $destinations = $this->destinationRepository->getAll();
+        return view('admin.destinations.index', compact('destinations'));
     }
 
     /**

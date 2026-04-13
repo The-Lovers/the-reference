@@ -118,20 +118,14 @@
                 <li class="nxl-item nxl-hasmenu">
                     <a href="javascript:void(0);" class="nxl-link">
                         <span class="nxl-micon"><i class="fa-solid fa-business-time"></i></span>
-                        <span class="nxl-mtext">{{ __('dashboard.sidebar.services') }}</span>
+                        <span class="nxl-mtext">{{ __('dashboard.sidebar.testimonies') }}</span>
                         <span class="nxl-arrow"><i class="fa-solid fa-chevron-right"></i></span>
                     </a>
                     <ul class="nxl-submenu">
                         <li class="nxl-item">
                             <a class="nxl-link" href="{{ route('services.index') }}">
                                 <i class="fa-solid fa-list"></i>
-                                {{ __('dashboard.sidebar.service.list') }}
-                            </a>
-                        </li>
-                        <li class="nxl-item">
-                            <a class="nxl-link" href="{{ route('services.create') }}">
-                                <i class="fa-solid fa-plus"></i>
-                                {{ __('dashboard.sidebar.service.new') }}
+                                {{ __('dashboard.sidebar.testimony.list') }}
                             </a>
                         </li>
                     </ul>

@@ -3,16 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\ServicesRepository;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
+    protected $servicesRepository;
+
+    public function __construct(ServicesRepository $servicesRepository)
+    {
+        $this->servicesRepository = $servicesRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.services.index');
+        $services = $this->servicesRepository->getAll();
+        return view('admin.services.index', compact('services'));
     }
 
     /**

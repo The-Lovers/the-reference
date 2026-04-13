@@ -3,16 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\TestimoniesRepository;
 use Illuminate\Http\Request;
 
 class TestimonyController extends Controller
 {
+    protected $testimoniesRepository;
+
+    public function __construct(TestimoniesRepository $testimoniesRepository)
+    {
+        $this->testimoniesRepository = $testimoniesRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.testimonies.index');
+        $testimonies = $this->testimoniesRepository->getAll();
+        return view('admin.testimonies.index', compact('testimonies'));
     }
 
     /**

@@ -78,6 +78,11 @@ Route::group([
                 'destroy' => __("desc.domain.destroy")
             ]
         ]);
+        Route::patch('domains/{domain}/status/{value}', [DomainController::class, 'updateStatus'])
+            ->name('domains.status');
+
+        Route::patch('domains/{domain}/featured/{value}', [DomainController::class, 'updateFeatured'])
+            ->name('domains.featured');
         // Routes pour les missions
         Route::resource('missions', MissionController::class, [
             'description' => [

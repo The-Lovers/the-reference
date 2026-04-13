@@ -14,7 +14,7 @@
                 'title' => "À la une",
                 '0' => "Non",
                 '1' => "Oui",
-                'confirm' => "Voulez-vous vraiment changer l\'état à la une de cette mission ?",
+                'confirm' => "Voulez-vous vraiment changer l'état à la une de cette mission ?",
                 'success' => "État changé avec succès !",
             ],
             'created-by' => "Créé par",

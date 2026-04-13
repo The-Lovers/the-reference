@@ -15,14 +15,10 @@
 }
 #actions{
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-}
-#actions{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 #actions .btn-danger, .card-footer .btn-danger{
     color: var(--danger) !important;
@@ -44,8 +40,13 @@
 }
 thead th {
     color: var(--dark);
-    font-size: 1rem !important;
+    font-size: 0.8rem !important;
     font-weight: bold !important;
+}
+thead th tr td{
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
 }
 h2{
     margin-bottom: 0;

@@ -15,7 +15,7 @@ class Domains extends Model
         'description',
         'status',
         'is_featured',
-        'image',
+        'cover',
         'icon',
         'created_by',
         'updated_by',
