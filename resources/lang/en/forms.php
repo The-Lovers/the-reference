@@ -34,4 +34,49 @@
             ],
             'preview' => "Icon Preview (Do not choose icons that switch from ! to ? inside a dashed circle)",
         ],
+        'service' => [
+            'title' => "Title",
+            'description' => "Description",
+            'status' => [
+                'title' => "Status",
+                'active' => "Active",
+                'inactive' => "Inactive",
+            ],
+            'featured' => [
+                'title' => "Featured",
+                'yes' => "Yes",
+                'no' => "No",
+            ],
+        ],
+        'destination' => [
+            'label' => "Label",
+            'description' => "Description",
+            'country' => "Country",
+            'country-placeholder' => "Select a country",
+            'availability' => [
+                'title' => "Availability",
+                'available' => "Available",
+                'unavailable' => "Unavailable",
+            ],
+        ],
+        'testimony' => [
+            'name' => "Name",
+            'surname' => "Surname",
+            'note' => "Rating (1-5)",
+            'status' => [
+                'title' => "Status",
+                'published' => "Published",
+                'draft' => "Draft",
+            ],
+            'message' => "Message",
+            'description' => "Description",
+            'avatar' => "Avatar",
+            'empty-avatar' => "No avatar",
+        ],
+        'profile' => [
+            'avatar' => "Avatar",
+            'status' => "Status",
+            'active' => "Active",
+            'inactive' => "Inactive",
+        ],
     ];

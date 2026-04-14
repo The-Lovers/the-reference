@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('lib/animate/animate.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('lib/css-hamburgers/hamburgers.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('auth/login/css/util.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('auth/login/css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ sec_asset('lib/animate/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ sec_asset('lib/css-hamburgers/hamburgers.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ sec_asset('auth/login/css/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ sec_asset('auth/login/css/main.css') }}">
 @endsection
 
 @section('content')
@@ -12,14 +12,14 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="{{ asset('auth/login/images/img-01.png') }}" alt="images">
+					<img src="{{ sec_asset('auth/login/images/img-01.png') }}" alt="images">
 				</div>
 
 				<form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
 					@csrf
 					<span class="login100-form-title">
                         <a href="{{ route('index') }}">
-                            <img src="{{ asset('images/logo.png') }}" alt="accueil" class="img-fluid">
+                            <img src="{{ sec_asset('images/logo.png') }}" alt="accueil" class="img-fluid">
                         </a>
 						{{ __('login.login') }}
 					</span>
@@ -71,11 +71,11 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('lib/bootstrap-5.3.8/js/popper.js') }}"></script>
+    <script src="{{ sec_asset('lib/bootstrap-5.3.8/js/popper.js') }}"></script>
     <script >
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
 	</script>
-    <script src="{{ asset('auth/login/js/main.js') }}"></script>
+    <script src="{{ sec_asset('auth/login/js/main.js') }}"></script>
 @endsection

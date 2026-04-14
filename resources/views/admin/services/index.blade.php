@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/service.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/service.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -43,19 +43,19 @@
             [
                 'icon' => 'fa-solid fa-eye',
                 'tooltip' => __('buttons.show'),
-                'class' => 'btn btn-sm btn-primary',
+                'class' => 'btn btn-sm listing-action listing-action--view',
                 'url' => fn ($service) => route('services.show', $service->id),
             ],
             [
                 'icon' => 'fa-solid fa-pen',
                 'tooltip' => __('buttons.edit'),
-                'class' => 'btn btn-sm btn-warning',
+                'class' => 'btn btn-sm listing-action listing-action--edit',
                 'url' => fn ($service) => route('services.edit', $service->id),
             ],
             [
                 'icon' => 'fa-solid fa-trash',
                 'tooltip' => __('buttons.delete'),
-                'class' => 'btn btn-sm btn-danger',
+                'class' => 'btn btn-sm listing-action listing-action--delete',
                 'onclick' => fn ($service) => "confirmDelete({$service->id}, "
                     . \Illuminate\Support\Js::from('Voulez-vous vraiment supprimer cet élément ?')
                     . ")",
@@ -73,7 +73,8 @@
             <h2 class="title">
                 {{ __('dashboard.sidebar.service.list') }}
             </h2>
-            <a class="btn btn-success" href="{{ route('services.create') }}">
+            <a class="btn success page-action-button" href="{{ route('services.create') }}">
+                <i class="fa-solid fa-plus"></i>
                 <span>
                     {{ __('buttons.new') }}
                 </span>

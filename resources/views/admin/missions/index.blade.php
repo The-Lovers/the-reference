@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/mission/index.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/mission/index.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -51,19 +51,19 @@
             [
                 'icon' => 'fa-solid fa-eye',
                 'tooltip' => __('buttons.show'),
-                'class' => 'btn btn-sm btn-primary',
+                'class' => 'btn btn-sm listing-action listing-action--view',
                 'url' => fn ($mission) => route('missions.show', $mission->id),
             ],
             [
                 'icon' => 'fa-solid fa-pen',
                 'tooltip' => __('buttons.edit'),
-                'class' => 'btn btn-sm btn-warning',
+                'class' => 'btn btn-sm listing-action listing-action--edit',
                 'url' => fn ($mission) => route('missions.edit', $mission->id),
             ],
             [
                 'icon' => fn ($mission) => 'fa-solid ' . ($mission->status ? 'fa-download' : 'fa-upload'),
                 'tooltip' => __('missions.index.status.title'),
-                'class' => fn ($mission) => 'btn btn-sm ' . ($mission->status ? 'btn-unact' : 'btn-action'),
+                'class' => fn ($mission) => 'btn btn-sm listing-action ' . ($mission->status ? 'listing-action--muted' : 'listing-action--accent'),
                 'onclick' => fn ($mission) => "confirmToggle('statusForm-{$mission->id}', "
                     . \Illuminate\Support\Js::from(__('missions.index.status.confirm'))
                     . ")",
@@ -76,7 +76,7 @@
             [
                 'icon' => fn ($mission) => 'fa-regular ' . ($mission->is_featured ? 'fa-thumbs-down' : 'fa-thumbs-up'),
                 'tooltip' => __('missions.index.featured.title'),
-                'class' => fn ($mission) => 'btn btn-sm ' . ($mission->is_featured ? 'btn-infos' : 'btn-unact'),
+                'class' => fn ($mission) => 'btn btn-sm listing-action ' . ($mission->is_featured ? 'listing-action--info' : 'listing-action--muted'),
                 'onclick' => fn ($mission) => "confirmToggle('featuredForm-{$mission->id}', "
                     . \Illuminate\Support\Js::from(__('missions.index.featured.confirm'))
                     . ")",
@@ -89,7 +89,7 @@
             [
                 'icon' => 'fa-solid fa-trash',
                 'tooltip' => __('buttons.delete'),
-                'class' => 'btn btn-sm btn-danger',
+                'class' => 'btn btn-sm listing-action listing-action--delete',
                 'onclick' => fn ($mission) => "confirmDelete({$mission->id}, "
                     . \Illuminate\Support\Js::from(__('missions.delete.confirm'))
                     . ")",
@@ -107,7 +107,8 @@
             <h2 class="title">
                 {{ __('dashboard.sidebar.mission.list') }}
             </h2>
-            <a class="btn btn-success" href="{{ route('missions.create') }}">
+            <a class="btn success page-action-button" href="{{ route('missions.create') }}">
+                <i class="fa-solid fa-plus"></i>
                 <span>
                     {{ __('buttons.new') }}
                 </span>

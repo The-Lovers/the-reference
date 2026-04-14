@@ -5,7 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DestinationController;
 use App\Http\Controllers\Admin\DomainController;
+use App\Http\Controllers\Admin\ChatController;
 use App\Http\Controllers\Admin\MissionController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\TestimonyController;
 use App\Http\Controllers\Admin\UserController;
@@ -56,6 +58,13 @@ Route::group([
 
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.read-all');
+        Route::post('/notifications/{notification}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
+        Route::prefix('chat')->name('chat.')->group(function () {
+            Route::get('/panel', [ChatController::class, 'index'])->name('panel');
+            Route::get('/conversations/{user}', [ChatController::class, 'show'])->name('show');
+            Route::post('/conversations/{user}', [ChatController::class, 'store'])->name('store');
+        });
         Route::resource('users', UserController::class, [
             'description' => [
                 'index' => __("desc.user.index"),
@@ -130,4 +139,3 @@ Route::group([
         ]);
     });
 });
-

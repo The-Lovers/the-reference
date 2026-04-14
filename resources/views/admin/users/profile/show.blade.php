@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/user/show.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/user/show.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-md-4 text-center mb-4">
                 <img
-                    src="{{ $user->avatar ? asset($user->avatar) : asset('images/logo.png') }}"
+                    src="{{ $user->avatar_url }}"
                     alt="{{ $user->name }}"
                     class="img-fluid rounded-circle border"
                     style="width: 180px; height: 180px; object-fit: cover;"
@@ -60,18 +60,20 @@
                         <h6>{{ $user->gender_label }}</h6>
                     </div>
                     <div class="col-md-6">
-                        <h5>Status</h5>
-                        <h6>{{ $user->status ? 'Actif' : 'Inactif' }}</h6>
+                        <h5>{{ __('forms.profile.status') }}</h5>
+                        <h6>{{ $user->status ? __('forms.profile.active') : __('forms.profile.inactive') }}</h6>
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 d-flex gap-2 justify-content-center flex-wrap">
-                <a href="{{ route('dashboard') }}" class="btn secondary">
-                    {{ __('dashboard.header.back') }}
-                </a>
-                <a href="{{ route('profile.edit', $user) }}" class="btn third">
-                    {{ __('buttons.edit') }}
-                </a>
+            <div class="col-md-12">
+                <div class="buttons">
+                    <a href="{{ route('dashboard') }}" class="btn secondary">
+                        {{ __('dashboard.header.back') }}
+                    </a>
+                    <a href="{{ route('profile.edit', $user) }}" class="btn third">
+                        {{ __('buttons.edit') }}
+                    </a>
+                </div>
             </div>
         </div>
     </div>

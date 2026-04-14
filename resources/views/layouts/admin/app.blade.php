@@ -2,18 +2,19 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/vendors.min.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/daterangepicker.min.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/sidebar/lib/css/theme.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ sec_asset('admin/sidebar/lib/css/vendors.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ sec_asset('admin/sidebar/lib/css/daterangepicker.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ sec_asset('admin/sidebar/lib/css/theme.min.css') }}"/>
+    <link rel="stylesheet" href="{{ sec_asset('admin/styles.css') }}">
     @yield('css_2')
-    <script src="{{ asset('admin/sidebar/lib/html5_shiv_3.7.3/dist/html5shiv.min.js') }}"></script>
-    <script src="{{ asset('admin/sidebar/lib/respond_1.4.2/dist/respond.min.js') }}"></script>
+    <script src="{{ sec_asset('admin/sidebar/lib/html5_shiv_3.7.3/dist/html5shiv.min.js') }}"></script>
+    <script src="{{ sec_asset('admin/sidebar/lib/respond_1.4.2/dist/respond.min.js') }}"></script>
 @endsection
 
 @section('content')
     @include('layouts.admin.sidebar')
     @include('layouts.admin.header')
+    @include('layouts.admin.chat-widget')
     <main class="nxl-container">
         <div class="nxl-content">
             <div class="page-header">
@@ -51,16 +52,16 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('admin/sidebar/lib/js/vendors.min.js') }}"></script>
-    <script src="{{ asset('admin/sidebar/lib/js/vendors.min.js') }}"></script>
-    <script src="{{ asset('admin/sidebar/lib/js/daterangepicker.min.js') }}"></script>
-    <script src="{{ asset('admin/sidebar/lib/js/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('admin/sidebar/lib/js/circle-progress.min.js') }}"></script>
-    <script src="{{ asset('admin/sidebar/lib/js/common-init.min.js') }}"></script>
-    <script src="{{ asset('admin/sidebar/lib/js/dashboard-init.min.js') }}"></script>
-    <script src="{{ asset('admin/sidebar/lib/js/theme-customizer-init.min.js') }}"></script>
-    <script src="{{ asset('admin/sidebar/lib/js/nxlNavigation.min.js') }}"></script>
-    <script src="{{ asset('lib/ckeditor-full-4.7.3/package/ckeditor.js') }}"></script>
+    <script src="{{ sec_asset('admin/sidebar/lib/js/vendors.min.js') }}"></script>
+    <script src="{{ sec_asset('admin/sidebar/lib/js/vendors.min.js') }}"></script>
+    <script src="{{ sec_asset('admin/sidebar/lib/js/daterangepicker.min.js') }}"></script>
+    <script src="{{ sec_asset('admin/sidebar/lib/js/apexcharts.min.js') }}"></script>
+    <script src="{{ sec_asset('admin/sidebar/lib/js/circle-progress.min.js') }}"></script>
+    <script src="{{ sec_asset('admin/sidebar/lib/js/common-init.min.js') }}"></script>
+    <script src="{{ sec_asset('admin/sidebar/lib/js/dashboard-init.min.js') }}"></script>
+    <script src="{{ sec_asset('admin/sidebar/lib/js/theme-customizer-init.min.js') }}"></script>
+    <script src="{{ sec_asset('admin/sidebar/lib/js/nxlNavigation.min.js') }}"></script>
+    <script src="{{ sec_asset('lib/ckeditor-full-4.7.3/package/ckeditor.js') }}"></script>
     @yield('js_2')
     <script>
         const today = new Date();

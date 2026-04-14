@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Testimonies;
 use App\Repositories\TestimoniesRepository;
+use App\Services\AdminActivityNotifier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -70,18 +71,20 @@ class TestimonyController extends Controller
                 'avatar' => $validated['avatar'] ?? null,
             ]);
 
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'created', 'temoignage', $testimony);
+
             if ($validated['action'] === 'continue') {
                 return redirect()->route('testimonies.edit', $testimony)
-                    ->with('success', 'Témoignage créé avec succès.');
+                    ->with('success', __('infos.testimony.creation-success'));
             }
 
             return redirect()->route('testimonies.index')
-                ->with('success', 'Témoignage créé avec succès.');
+                ->with('success', __('infos.testimony.creation-success'));
         } catch (\Throwable $e) {
-            Log::error('Erreur création témoignage: ' . $e->getMessage());
+            Log::error(__('infos.testimony.creation-error-log') . $e->getMessage());
             return redirect()->back()
                 ->withInput()
-                ->with('error', 'Erreur de création du témoignage.');
+                ->with('error', __('infos.testimony.creation-error'));
         }
     }
 
@@ -140,18 +143,20 @@ class TestimonyController extends Controller
                 'avatar' => $validated['avatar'] ?? $testimony->avatar,
             ]);
 
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'updated', 'temoignage', $testimony);
+
             if ($validated['action'] === 'continue') {
                 return redirect()->route('testimonies.edit', $testimony)
-                    ->with('success', 'Témoignage modifié avec succès.');
+                    ->with('success', __('infos.testimony.edition-success'));
             }
 
             return redirect()->route('testimonies.index')
-                ->with('success', 'Témoignage modifié avec succès.');
+                ->with('success', __('infos.testimony.edition-success'));
         } catch (\Throwable $e) {
-            Log::error('Erreur modification témoignage: ' . $e->getMessage());
+            Log::error(__('infos.testimony.edition-error-log') . $e->getMessage());
             return redirect()->back()
                 ->withInput()
-                ->with('error', 'Erreur de modification du témoignage.');
+                ->with('error', __('infos.testimony.edition-error'));
         }
     }
 
@@ -161,16 +166,17 @@ class TestimonyController extends Controller
     public function destroy($locale, Testimonies $testimony)
     {
         try {
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'deleted', 'temoignage', $testimony);
             if ($testimony->avatar && file_exists(public_path($testimony->avatar))) {
                 unlink(public_path($testimony->avatar));
             }
             $testimony->delete();
             return redirect()->route('testimonies.index')
-                ->with('success', 'Témoignage supprimé avec succès.');
+                ->with('success', __('infos.testimony.deletion-success'));
         } catch (\Throwable $e) {
-            Log::error('Erreur suppression témoignage: ' . $e->getMessage());
+            Log::error(__('infos.testimony.deletion-error-log') . $e->getMessage());
             return redirect()->back()
-                ->with('error', 'Erreur de suppression du témoignage.');
+                ->with('error', __('infos.testimony.deletion-error'));
         }
     }
 }

@@ -12,7 +12,7 @@
     <div class="modal">
         <span onclick="closeBox()">&times;</span>
 
-        <h3>Demande d'information</h3>
+        <h3>{{ __('index.contain.request-title') }}</h3>
 
         @if(session('success'))
             <p class="success">{{ session('success') }}</p>
@@ -26,14 +26,14 @@
             <input type="email" name="email" placeholder="Adresse email">
 
             <select name="demande">
-                <option>Études à l'étranger</option>
-                <option>Bourses internationales</option>
-                <option>Visa / Voyage</option>
-                <option>Services administratifs</option>
-                <option>Autre demande</option>
+                <option>{{ __('index.contain.requests.study-abroad') }}</option>
+                <option>{{ __('index.contain.requests.scholarships') }}</option>
+                <option>{{ __('index.contain.requests.visa-travel') }}</option>
+                <option>{{ __('index.contain.requests.admin-services') }}</option>
+                <option>{{ __('index.contain.requests.other') }}</option>
             </select>
 
-            <button type="submit">Envoyer la demande</button>
+            <button type="submit">{{ __('index.contain.request-submit') }}</button>
         </form>
     </div>
 </div>
@@ -84,7 +84,7 @@
                                     @if ($mission->is_featured)
                                         <span class="featured-badge">{{ __('index.contain.featured') }}</span>
                                     @endif
-                                    <img src="{{ asset($mission->cover) }}" alt="Étudiants africains à l'international">
+                                    <img src="{{ sec_asset($mission->cover) }}" alt="Étudiants africains à l'international">
                                     <span class="second">
                                         <i class="{{ $mission->icon }} icon"></i>
                                     </span>
@@ -114,7 +114,7 @@
                                     @if ($domain->is_featured)
                                         <span class="featured-badge">{{ __('index.contain.featured') }}</span>
                                     @endif
-                                    <img src="{{ asset($domain->cover) }}" alt="{{ $domain->title }}">
+                                    <img src="{{ sec_asset($domain->cover) }}" alt="{{ $domain->title }}">
                                     <span class="second">
                                         <i class="{{ $domain->icon }} icon"></i>
                                         <strong>{{ $domain->title }}</strong>
@@ -143,7 +143,7 @@
                             <div class="swiper-slide">
                                 <div class="card testimony-card">
                                     <img
-                                        src="{{ $testimony->avatar ? asset($testimony->avatar) : asset('images/content/pp01.jpeg') }}"
+                                        src="{{ $testimony->avatar ? sec_asset($testimony->avatar) : sec_asset('images/content/pp01.jpeg') }}"
                                         alt="{{ trim($testimony->name . ' ' . $testimony->surname) }}"
                                     >
                                     <span class="testimony-stars">
@@ -168,15 +168,15 @@
         @endif
 
         <div id="contact" class="container">
-            <h2>Contact & Localisation</h2>
+            <h2>{{ __('index.contain.contact') }}</h2>
             <div class="gride">
                 <div class="card">
-                    📞 <strong>Téléphone / WhatsApp</strong><br>653 476 952<br><br>
-                    📍 <strong>Adresse</strong><br>Efoulan – Sous-préfecture
+                    📞 <strong>{{ __('index.contain.contact-card.phone') }}</strong><br>653 476 952<br><br>
+                    📍 <strong>{{ __('index.contain.contact-card.address') }}</strong><br>{{ __('index.contain.contact-card.address-value') }}
                 </div>
                 <div class="card">
-                    <h3>🔥 Offres promotionnelles</h3>
-                    <p>Étude de dossier voyage à tarif réduit<br>Création de sites web événementiels<br>Vidéos promotionnelles</p>
+                    <h3>🔥 {{ __('index.contain.promotions.title') }}</h3>
+                    <p>{{ __('index.contain.promotions.line-1') }}<br>{{ __('index.contain.promotions.line-2') }}<br>{{ __('index.contain.promotions.line-3') }}</p>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/destination.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/destination.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -20,24 +20,24 @@
 
             <div class="row">
                 <div class="col-md-12 mb-3">
-                    <h5>Label</h5>
+                    <h5>{{ __('forms.destination.label') }}</h5>
                     <h6>{{ $destination->label }}</h6>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <h5>Country</h5>
+                    <h5>{{ __('forms.destination.country') }}</h5>
                     <h6>{{ data_get($destination, 'pays.label_fr') ?? data_get($destination, 'pays.label_en') ?? '-' }}</h6>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <h5>Availability</h5>
-                    <h6>{{ $destination->is_available ? 'Available' : 'Unavailable' }}</h6>
+                    <h5>{{ __('forms.destination.availability.title') }}</h5>
+                    <h6>{{ $destination->is_available ? __('forms.destination.availability.available') : __('forms.destination.availability.unavailable') }}</h6>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <h5>Description</h5>
+                    <h5>{{ __('forms.destination.description') }}</h5>
                     <div>{!! $destination->description ?: '-' !!}</div>
                 </div>
             </div>
 
-            <div class="d-flex gap-2 mt-3">
+            <div class="buttons">
                 <a href="{{ route('destinations.index') }}" class="btn secondary">{{ __('dashboard.header.back') }}</a>
                 <a href="{{ route('destinations.edit', $destination->id) }}" class="btn third">{{ __('buttons.edit') }}</a>
             </div>
