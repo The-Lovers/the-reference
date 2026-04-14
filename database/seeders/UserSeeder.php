@@ -80,6 +80,7 @@ class UserSeeder extends Seeder
                     'surname' => $u['surname'],
                     'username' => $u['username'],
                     'phone' => $u['phone'],
+                    'code' => $u['code'],
                     'gender' => $u['gender'],
                     'password' => Hash::make($u['password']),
                 ]
