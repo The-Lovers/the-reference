@@ -76,13 +76,13 @@
                         <select id="phone_code" name="code" class="w-full input-group-text no-arrow">
                             @foreach($phoneCodes as $phoneCode)
                                 <option value="{{ $phoneCode['phone_code'] }}"
-                                    {{ $phoneCode['phone_code'] === $selectedCode ? 'selected' : '' }}>
+                                    {{ old('code', $selectedCode) === $phoneCode['phone_code'] ? 'selected' : '' }}>
                                     {{ $phoneCode['code'] }} {{ $phoneCode['phone_code'] }}
                                 </option>
                             @endforeach
                         </select>
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="floatingInputGroup1" name="phone" value="{{ $phoneNumber }}">
+                            <input type="text" class="form-control" id="floatingInputGroup1" name="phone" value="{{ old('phone', $phoneNumber) }}">
                             <label for="floatingInputGroup1">{{ __('dashboard.register.phone.title') }}</label>
                         </div>
                     </div>

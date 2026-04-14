@@ -70,6 +70,8 @@ return [
         'phone' => [
             'title' => "Phone number",
             'placeholder' => "Enter phone number",
+            'code' => "Country code",
+            'full' => "Full phone number",
         ],
         'role' => [
             'title' => "User role",
