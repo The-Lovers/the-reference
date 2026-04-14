@@ -16,13 +16,69 @@
 @section('content_2')
     <div class="main-content">
         <div class="container">
-            <h2 class="title">
-                {{ __('dashboard.sidebar.service.create') }}
-            </h2>
+            <h2 class="title">{{ __('dashboard.sidebar.service.create') }}</h2>
+
+            <form action="{{ route('services.store') }}" method="POST">
+                @csrf
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required>
+                            <label for="title">Title</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="form-floating">
+                            <select class="form-select" id="is_active" name="is_active" required>
+                                <option value="1" {{ old('is_active', '1') == '1' ? 'selected' : '' }}>Active</option>
+                                <option value="0" {{ old('is_active') == '0' ? 'selected' : '' }}>Inactive</option>
+                            </select>
+                            <label for="is_active">Status</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="form-floating">
+                            <select class="form-select" id="is_featured" name="is_featured" required>
+                                <option value="0" {{ old('is_featured', '0') == '0' ? 'selected' : '' }}>No</option>
+                                <option value="1" {{ old('is_featured') == '1' ? 'selected' : '' }}>Yes</option>
+                            </select>
+                            <label for="is_featured">Featured</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="6">{{ old('description') }}</textarea>
+                    </div>
+
+                    <div class="col-md-12 my-4">
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="{{ route('services.index') }}" class="btn secondary">{{ __('buttons.cancel') }}</a>
+                            <button class="btn success" name="action" value="save">{{ __('buttons.save') }}</button>
+                            <button class="btn third" name="action" value="continue">{{ __('buttons.save-continue') }}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 @endsection
 
 @section('js_2')
-
+    <script>
+        CKEDITOR.replace('description', {
+            toolbar: [
+                { name: 'clipboard', items: ['Undo','Redo'] },
+                { name: 'styles', items: ['Format','Font','FontSize'] },
+                { name: 'basicstyles', items: ['Bold','Italic','Underline','Strike'] },
+                { name: 'colors', items: ['TextColor','BGColor'] },
+                { name: 'paragraph', items: ['NumberedList','BulletedList','Outdent','Indent','Blockquote'] },
+                { name: 'align', items: ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'] },
+                { name: 'insert', items: ['Image','Table','HorizontalRule','Link'] },
+                { name: 'tools', items: ['Maximize'] }
+            ]
+        });
+    </script>
 @endsection

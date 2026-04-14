@@ -23,6 +23,8 @@ return [
         'en' => "English",
         'profile' => "Profile Details",
         'setting' => "Account Settings",
+        'telescope' => "Go to Telescope",
+        'log-viewer' => "Go to Log Viewer",
         'logout' => "Logout",
     ],
     'register' => [

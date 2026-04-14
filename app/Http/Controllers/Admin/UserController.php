@@ -15,7 +15,8 @@ use App\Mail\UserCreate;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -238,15 +239,82 @@ class UserController extends Controller
         return $phoneCodes;
     }
 
-    public function show_profile($locale, User $user){
-        // return view('admin.users.profile', compact('user'));
+    public function show_profile($locale, User $user)
+    {
+        $this->ensureProfileOwner($user);
+
+        return view('admin.users.profile.show', compact('user'));
     }
 
-    public function edit_profile($locale, User $user){
-        // return view('admin.users.profile', compact('user'));
+    public function edit_profile($locale, User $user)
+    {
+        $this->ensureProfileOwner($user);
+
+        $phoneCodes = $this->loadPhoneCodes();
+        $phone = $user->phone ?? '';
+        $firstSpace = strpos($phone, ' ');
+        $selectedCode = $firstSpace !== false ? substr($phone, 0, $firstSpace) : '';
+        $phoneNumber = $firstSpace !== false ? substr($phone, $firstSpace + 1) : $phone;
+
+        return view('admin.users.profile.edit', compact('user', 'phoneCodes', 'selectedCode', 'phoneNumber'));
     }
 
-    public function update_profile($locale, Request $request, User $user){
-        // return view('admin.users.profile', compact('user'));
+    public function update_profile($locale, Request $request, User $user)
+    {
+        $this->ensureProfileOwner($user);
+
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users,username,' . $user->id],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $user->id],
+            'gender' => ['required', 'in:M,F'],
+            'phone' => ['required', 'string'],
+            'code' => ['required', 'string'],
+            'avatar' => ['nullable', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2048'],
+        ]);
+
+        try {
+            $data = [
+                'name' => $validated['name'],
+                'surname' => $validated['surname'],
+                'username' => $validated['username'],
+                'email' => $validated['email'],
+                'gender' => $validated['gender'],
+                'phone' => $validated['code'] . ' ' . $validated['phone'],
+            ];
+
+            if ($request->hasFile('avatar')) {
+                $directory = public_path('uploads/users');
+                if (!File::exists($directory)) {
+                    File::makeDirectory($directory, 0755, true);
+                }
+
+                if ($user->avatar && file_exists(public_path($user->avatar))) {
+                    unlink(public_path($user->avatar));
+                }
+
+                $file = $request->file('avatar');
+                $filename = 'user_' . $user->id . '_' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move($directory, $filename);
+                $data['avatar'] = 'uploads/users/' . $filename;
+            }
+
+            $user->update($data);
+
+            return redirect()->route('profile.show', $user)
+                ->with('success', __('infos.user.edition-success'));
+        } catch (\Throwable $e) {
+            Log::error(__('infos.user.edition-error-log') . $e->getMessage());
+
+            return redirect()->back()
+                ->withInput()
+                ->with('error', __('infos.user.edition-error'));
+        }
+    }
+
+    private function ensureProfileOwner(User $user): void
+    {
+        abort_unless(Auth::id() === $user->id, 403);
     }
 }

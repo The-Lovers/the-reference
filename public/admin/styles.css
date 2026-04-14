@@ -73,3 +73,13 @@ a.btn-success:hover{
     color: var(--dark) !important;
     border: 1px solid var(--dark) !important;
 }
+.third{
+    background-color: var(--light) !important;
+    color: var(--orange) !important;
+    border: 1px solid var(--orange) !important;
+}
+.third:hover{
+    background-color: var(--orange) !important;
+    color: var(--light) !important;
+    border: none !important;
+}

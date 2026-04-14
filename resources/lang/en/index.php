@@ -11,11 +11,13 @@ return [
         'dashboard' => "Dashboard",
     ],
     'contain' => [
+        'services-destinations' => "Our services & destinations",
         'missions' => "Our mission & vision",
         'domains' => "Our areas of expertise",
         'testimonies' => "Testimonials & reviews from our students",
         'contact' => "Contact & Localisation",
         'btn' => "Ask for information",
+        'featured' => "Featured",
     ],
     'footer' => [
         'rights' => "All rights reserved.",

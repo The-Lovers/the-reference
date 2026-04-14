@@ -60,6 +60,8 @@ return [
         'en' => "Anglais",
         'profile' => "Détails du Profil",
         'setting' => "Paramètres du compte",
+        'telescope' => "Accéder à Telescope",
+        'log-viewer' => "Accéder à Log Viewer",
         'logout' => "Déconnexion",
     ],
     'register' => [

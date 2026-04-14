@@ -20,4 +20,15 @@ class MissionsRepository extends ResourceRepository
     {
         return $this->model->find($id);
     }
+
+    public function getAllWithOrder()
+    {
+        return $this->model
+            ->with(['creator', 'updater', 'statusUpdatedBy', 'featuredUpdatedBy'])
+            ->where('status', 1)
+            ->orderByDesc('is_featured')
+            // ->orderByDesc('created_at')
+            // ->orderByDesc('updated_at')
+            ->get();
+    }
 }

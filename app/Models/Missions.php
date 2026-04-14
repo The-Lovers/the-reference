@@ -13,10 +13,9 @@ class Missions extends Model
     protected $fillable = [
         'title',
         'description',
-        'list',
         'status',
         'is_featured',
-        'image',
+        'cover',
         'icon',
         'created_by',
         'updated_by',

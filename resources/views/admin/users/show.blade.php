@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <a href="{{ route('users.index') }}" class="btn btn-secondary">
+                <a href="{{ route('users.index') }}" class="btn secondary">
                     {{ __('dashboard.header.back') }}
                 </a>
             </div>
