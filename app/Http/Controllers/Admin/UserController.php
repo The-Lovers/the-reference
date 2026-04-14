@@ -16,7 +16,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use App\Services\AdminActivityNotifier;
 
 class UserController extends Controller
 {
@@ -43,6 +44,8 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('viewAny', User::class);
+
         $fields = ['name', 'surname', 'email', 'phone'];
         $users = $this->userRepository->getAllWithSearch(
             $request->search,
@@ -50,7 +53,18 @@ class UserController extends Controller
             10
         );
         // $users = $this->userRepository->getAll();
+        $users->getCollection()->load('roles');
+
         if ($request->ajax()) {
+            $users->getCollection()->transform(function (User $listedUser) {
+                $listedUser->can_edit = Auth::user()->can('update', $listedUser);
+                $listedUser->can_delete = Auth::user()->can('delete', $listedUser);
+                $listedUser->show_url = route('users.show', $listedUser);
+                $listedUser->edit_url = route('users.edit', $listedUser);
+
+                return $listedUser;
+            });
+
             return response()->json($users);
         }
         return view('admin.users.index', compact('users'));
@@ -61,7 +75,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = $this->roleRepository->getAll();
+        $this->authorize('create', User::class);
+
+        $roles = $this->availableRolesFor(Auth::user());
         $phoneCodes = $this->loadPhoneCodes();
 
         return view('admin.users.create', compact('roles', 'phoneCodes'));
@@ -72,6 +88,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', User::class);
+
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
@@ -84,6 +102,8 @@ class UserController extends Controller
         ]);
 
         try {
+            $this->ensureRoleAssignable((int) $validated['role']);
+
             // Combiner code et téléphone
             $validated['phone'] = $validated['code'] . ' ' . $validated['phone'];
             $password = Str::random(8);
@@ -103,6 +123,8 @@ class UserController extends Controller
                 Mail::to($user->email)->send(new UserCreate($user, $password));
             });
 
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'created', 'utilisateur', $user);
+
             return redirect()->route('users.index')
                 ->with('success', __('infos.user.creation-success'));
         } catch (\Throwable $e) {
@@ -118,6 +140,8 @@ class UserController extends Controller
      */
     public function show($locale, User $user)
     {
+        $this->authorize('view', $user);
+
         return view('admin.users.show', compact('user'));
     }
 
@@ -126,7 +150,9 @@ class UserController extends Controller
      */
     public function edit($locale, User $user)
     {
-        $roles = $this->roleRepository->getAll();
+        $this->authorize('update', $user);
+
+        $roles = $this->availableRolesFor(Auth::user());
         $phoneCodes = $this->loadPhoneCodes();
         $phone = $user->phone;
         $firstSpace = strpos($phone, ' ');
@@ -141,6 +167,8 @@ class UserController extends Controller
      */
     public function update($locale, Request $request, User $user)
     {
+        $this->authorize('update', $user);
+
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
@@ -153,10 +181,14 @@ class UserController extends Controller
         ]);
 
         try {
+            $this->ensureRoleAssignable((int) $validated['role']);
+
             $validated['phone'] = $validated['code'] . ' ' . $validated['phone'];
             $user->update($validated);
 
             $user->roles()->sync([$validated['role']]);
+
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'updated', 'utilisateur', $user);
 
             return redirect()->route('users.index')
                 ->with('success', __('infos.user.edition-success'));
@@ -173,7 +205,11 @@ class UserController extends Controller
      */
     public function destroy($locale, User $user)
     {
+        $this->authorize('delete', $user);
+
         try {
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'deleted', 'utilisateur', $user);
+
             $user->roles()->detach();
             $user->delete();
             return redirect()->route('users.index')
@@ -239,6 +275,29 @@ class UserController extends Controller
         return $phoneCodes;
     }
 
+    private function availableRolesFor(User $actor)
+    {
+        $roles = $this->roleRepository->getAll();
+
+        if ($actor->hasRole('super-admin')) {
+            return $roles;
+        }
+
+        return $roles->reject(fn ($role) => $role->name === 'super-admin')->values();
+    }
+
+    private function ensureRoleAssignable(int $roleId): void
+    {
+        $actor = Auth::user();
+        $role = $this->roleRepository->getById($roleId);
+
+        abort_unless($role, 404);
+
+        if (!$actor->hasRole('super-admin') && $role->name === 'super-admin') {
+            abort(403);
+        }
+    }
+
     public function show_profile($locale, User $user)
     {
         $this->ensureProfileOwner($user);
@@ -285,22 +344,18 @@ class UserController extends Controller
             ];
 
             if ($request->hasFile('avatar')) {
-                $directory = public_path('uploads/users');
-                if (!File::exists($directory)) {
-                    File::makeDirectory($directory, 0755, true);
+                if ($user->avatar) {
+                    Storage::disk('public')->delete($user->avatar);
                 }
 
-                if ($user->avatar && file_exists(public_path($user->avatar))) {
-                    unlink(public_path($user->avatar));
-                }
-
-                $file = $request->file('avatar');
-                $filename = 'user_' . $user->id . '_' . time() . '.' . $file->getClientOriginalExtension();
-                $file->move($directory, $filename);
-                $data['avatar'] = 'uploads/users/' . $filename;
+                $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
             }
 
             $user->update($data);
+
+            app(AdminActivityNotifier::class)->notify($user, 'profile_updated', 'profil', $user, [
+                'self_only' => true,
+            ]);
 
             return redirect()->route('profile.show', $user)
                 ->with('success', __('infos.user.edition-success'));

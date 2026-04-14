@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/domain/create.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/domain/create.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -40,7 +40,7 @@
                         <label for="cover" class="form-label">{{ __('forms.domain.cover') }}</label>
                         <input type="file" class="form-control" id="cover" name="cover">
                         @if ($domain->cover)
-                            <img src="{{ asset($domain->cover) }}" alt="{{ $domain->title }}" class="img-fluid mt-2" style="max-height: 120px;">
+                            <img src="{{ sec_asset($domain->cover) }}" alt="{{ $domain->title }}" class="img-fluid mt-2" style="max-height: 120px;">
                         @endif
                     </div>
 
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="col-md-12 col-xs-12 my-4">
-                        <div class="d-flex gap-2 flex-wrap">
+                        <div class="buttons">
                             <a href="{{ route('domains.index') }}" class="btn secondary">{{ __('buttons.cancel') }}</a>
                             <button class="btn success" name="action" value="save">{{ __('buttons.confirm') }}</button>
                             <button class="btn third" name="action" value="continue">{{ __('buttons.save-continue') }}</button>

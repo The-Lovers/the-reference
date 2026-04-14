@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/service.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/service.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -25,37 +25,37 @@
                     <div class="col-md-6 mb-3">
                         <div class="form-floating">
                             <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $service->title) }}" required>
-                            <label for="title">Title</label>
+                            <label for="title">{{ __('forms.service.title') }}</label>
                         </div>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <div class="form-floating">
                             <select class="form-select" id="is_active" name="is_active" required>
-                                <option value="1" {{ old('is_active', (int) $service->is_active) == 1 ? 'selected' : '' }}>Active</option>
-                                <option value="0" {{ old('is_active', (int) $service->is_active) == 0 ? 'selected' : '' }}>Inactive</option>
+                                <option value="1" {{ old('is_active', (int) $service->is_active) == 1 ? 'selected' : '' }}>{{ __('forms.service.status.active') }}</option>
+                                <option value="0" {{ old('is_active', (int) $service->is_active) == 0 ? 'selected' : '' }}>{{ __('forms.service.status.inactive') }}</option>
                             </select>
-                            <label for="is_active">Status</label>
+                            <label for="is_active">{{ __('forms.service.status.title') }}</label>
                         </div>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <div class="form-floating">
                             <select class="form-select" id="is_featured" name="is_featured" required>
-                                <option value="0" {{ old('is_featured', (int) $service->is_featured) == 0 ? 'selected' : '' }}>No</option>
-                                <option value="1" {{ old('is_featured', (int) $service->is_featured) == 1 ? 'selected' : '' }}>Yes</option>
+                                <option value="0" {{ old('is_featured', (int) $service->is_featured) == 0 ? 'selected' : '' }}>{{ __('forms.service.featured.no') }}</option>
+                                <option value="1" {{ old('is_featured', (int) $service->is_featured) == 1 ? 'selected' : '' }}>{{ __('forms.service.featured.yes') }}</option>
                             </select>
-                            <label for="is_featured">Featured</label>
+                            <label for="is_featured">{{ __('forms.service.featured.title') }}</label>
                         </div>
                     </div>
 
                     <div class="col-md-12 mb-3">
-                        <label for="description" class="form-label">Description</label>
+                        <label for="description" class="form-label">{{ __('forms.service.description') }}</label>
                         <textarea class="form-control" id="description" name="description" rows="6">{{ old('description', $service->description) }}</textarea>
                     </div>
 
                     <div class="col-md-12 my-4">
-                        <div class="d-flex gap-2 flex-wrap">
+                        <div class="buttons">
                             <a href="{{ route('services.index') }}" class="btn secondary">{{ __('buttons.cancel') }}</a>
                             <button class="btn success" name="action" value="save">{{ __('buttons.confirm') }}</button>
                             <button class="btn third" name="action" value="continue">{{ __('buttons.save-continue') }}</button>

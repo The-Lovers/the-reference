@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\Destination;
 use App\Repositories\DestinationRepository;
+use App\Services\AdminActivityNotifier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class DestinationController extends Controller
 {
@@ -57,18 +59,20 @@ class DestinationController extends Controller
                 'is_available' => (bool) $validated['is_available'],
             ]);
 
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'created', 'destination', $destination);
+
             if ($validated['action'] === 'continue') {
                 return redirect()->route('destinations.edit', $destination)
-                    ->with('success', 'Destination créée avec succès.');
+                    ->with('success', __('infos.destination.creation-success'));
             }
 
             return redirect()->route('destinations.index')
-                ->with('success', 'Destination créée avec succès.');
+                ->with('success', __('infos.destination.creation-success'));
         } catch (\Throwable $e) {
-            Log::error('Erreur création destination: ' . $e->getMessage());
+            Log::error(__('infos.destination.creation-error-log') . $e->getMessage());
             return redirect()->back()
                 ->withInput()
-                ->with('error', 'Erreur de création de la destination.');
+                ->with('error', __('infos.destination.creation-error'));
         }
     }
 
@@ -111,18 +115,20 @@ class DestinationController extends Controller
                 'is_available' => (bool) $validated['is_available'],
             ]);
 
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'updated', 'destination', $destination);
+
             if ($validated['action'] === 'continue') {
                 return redirect()->route('destinations.edit', $destination)
-                    ->with('success', 'Destination modifiée avec succès.');
+                    ->with('success', __('infos.destination.edition-success'));
             }
 
             return redirect()->route('destinations.index')
-                ->with('success', 'Destination modifiée avec succès.');
+                ->with('success', __('infos.destination.edition-success'));
         } catch (\Throwable $e) {
-            Log::error('Erreur modification destination: ' . $e->getMessage());
+            Log::error(__('infos.destination.edition-error-log') . $e->getMessage());
             return redirect()->back()
                 ->withInput()
-                ->with('error', 'Erreur de modification de la destination.');
+                ->with('error', __('infos.destination.edition-error'));
         }
     }
 
@@ -132,13 +138,14 @@ class DestinationController extends Controller
     public function destroy($locale, Destination $destination)
     {
         try {
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'deleted', 'destination', $destination);
             $destination->delete();
             return redirect()->route('destinations.index')
-                ->with('success', 'Destination supprimée avec succès.');
+                ->with('success', __('infos.destination.deletion-success'));
         } catch (\Throwable $e) {
-            Log::error('Erreur suppression destination: ' . $e->getMessage());
+            Log::error(__('infos.destination.deletion-error-log') . $e->getMessage());
             return redirect()->back()
-                ->with('error', 'Erreur de suppression de la destination.');
+                ->with('error', __('infos.destination.deletion-error'));
         }
     }
 }

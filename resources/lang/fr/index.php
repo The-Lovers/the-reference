@@ -18,6 +18,26 @@ return [
         'contact' => "Contact & Localisation",
         'btn' => "Demande d'information",
         'featured' => "A la une",
+        'request-title' => "Demande d'information",
+        'request-submit' => "Envoyer la demande",
+        'requests' => [
+            'study-abroad' => "Études à l'étranger",
+            'scholarships' => "Bourses internationales",
+            'visa-travel' => "Visa / Voyage",
+            'admin-services' => "Services administratifs",
+            'other' => "Autre demande",
+        ],
+        'contact-card' => [
+            'phone' => "Téléphone / WhatsApp",
+            'address' => "Adresse",
+            'address-value' => "Efoulan – Sous-préfecture",
+        ],
+        'promotions' => [
+            'title' => "Offres promotionnelles",
+            'line-1' => "Étude de dossier voyage à tarif réduit",
+            'line-2' => "Création de sites web événementiels",
+            'line-3' => "Vidéos promotionnelles",
+        ],
     ],
     'footer' => [
         'rights' => "Tous droits réservés.",

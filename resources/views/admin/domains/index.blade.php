@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/domain/index.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/domain/index.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -51,19 +51,19 @@
             [
                 'icon' => 'fa-solid fa-eye',
                 'tooltip' => __('buttons.show'),
-                'class' => 'btn btn-sm btn-primary',
+                'class' => 'btn btn-sm listing-action listing-action--view',
                 'url' => fn ($domain) => route('domains.show', $domain->id),
             ],
             [
                 'icon' => 'fa-solid fa-pen',
                 'tooltip' => __('buttons.edit'),
-                'class' => 'btn btn-sm btn-warning',
+                'class' => 'btn btn-sm listing-action listing-action--edit',
                 'url' => fn ($domain) => route('domains.edit', $domain->id),
             ],
             [
                 'icon' => fn ($domain) => 'fa-solid ' . ($domain->status ? 'fa-download' : 'fa-upload'),
                 'tooltip' => __('domains.index.status.title'),
-                'class' => fn ($domain) => 'btn btn-sm ' . ($domain->status ? 'btn-unact' : 'btn-action'),
+                'class' => fn ($domain) => 'btn btn-sm listing-action ' . ($domain->status ? 'listing-action--muted' : 'listing-action--accent'),
                 'onclick' => fn ($domain) => "confirmToggle('statusForm-{$domain->id}', "
                     . \Illuminate\Support\Js::from(__('domains.index.status.confirm'))
                     . ")",
@@ -76,7 +76,7 @@
             [
                 'icon' => fn ($domain) => 'fa-regular ' . ($domain->is_featured ? 'fa-thumbs-down' : 'fa-thumbs-up'),
                 'tooltip' => __('domains.index.featured.title'),
-                'class' => fn ($domain) => 'btn btn-sm ' . ($domain->is_featured ? 'btn-infos' : 'btn-unact'),
+                'class' => fn ($domain) => 'btn btn-sm listing-action ' . ($domain->is_featured ? 'listing-action--info' : 'listing-action--muted'),
                 'onclick' => fn ($domain) => "confirmToggle('featuredForm-{$domain->id}', "
                     . \Illuminate\Support\Js::from(__('domains.index.featured.confirm'))
                     . ")",
@@ -89,7 +89,7 @@
             [
                 'icon' => 'fa-solid fa-trash',
                 'tooltip' => __('buttons.delete'),
-                'class' => 'btn btn-sm btn-danger',
+                'class' => 'btn btn-sm listing-action listing-action--delete',
                 'onclick' => fn ($domain) => "confirmDelete({$domain->id}, "
                     . \Illuminate\Support\Js::from(__('domains.delete.confirm'))
                     . ")",
@@ -107,7 +107,8 @@
             <h2 class="title">
                 {{ __('dashboard.sidebar.domain.list') }}
             </h2>
-            <a class="btn btn-success" href="{{ route('domains.create') }}">
+            <a class="btn success page-action-button" href="{{ route('domains.create') }}">
+                <i class="fa-solid fa-plus"></i>
                 <span>
                     {{ __('buttons.new') }}
                 </span>

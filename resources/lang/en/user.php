@@ -15,4 +15,9 @@ return [
     'delete' => [
         'confirm' => "Do you really want to delete this User ?",
     ],
+    'roles' => [
+        'super-admin' => "Super admin",
+        'admin' => "Admin",
+        'user' => "User",
+    ],
 ];

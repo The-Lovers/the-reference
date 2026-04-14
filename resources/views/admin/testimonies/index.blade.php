@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/testimony.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/testimony.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -43,19 +43,19 @@
             [
                 'icon' => 'fa-solid fa-eye',
                 'tooltip' => __('buttons.show'),
-                'class' => 'btn btn-sm btn-primary',
+                'class' => 'btn btn-sm listing-action listing-action--view',
                 'url' => fn ($testimony) => route('testimonies.show', $testimony->id),
             ],
             [
                 'icon' => 'fa-solid fa-pen',
                 'tooltip' => __('buttons.edit'),
-                'class' => 'btn btn-sm btn-warning',
+                'class' => 'btn btn-sm listing-action listing-action--edit',
                 'url' => fn ($testimony) => route('testimonies.edit', $testimony->id),
             ],
             [
                 'icon' => 'fa-solid fa-trash',
                 'tooltip' => __('buttons.delete'),
-                'class' => 'btn btn-sm btn-danger',
+                'class' => 'btn btn-sm listing-action listing-action--delete',
                 'onclick' => fn ($testimony) => "confirmDelete({$testimony->id}, "
                     . \Illuminate\Support\Js::from('Voulez-vous vraiment supprimer cet élément ?')
                     . ")",
@@ -73,7 +73,8 @@
             <h2 class="title">
                 {{ __('dashboard.sidebar.testimony.list') }}
             </h2>
-            <a class="btn btn-success" href="{{ route('testimonies.create') }}">
+            <a class="btn success page-action-button" href="{{ route('testimonies.create') }}">
+                <i class="fa-solid fa-plus"></i>
                 <span>
                     {{ __('buttons.new') }}
                 </span>

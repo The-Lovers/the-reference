@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/domain/create.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/domain/create.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-4 mb-3">
                     @if ($domain->cover)
-                        <img src="{{ asset($domain->cover) }}" alt="{{ $domain->title }}" class="img-fluid rounded">
+                        <img src="{{ sec_asset($domain->cover) }}" alt="{{ $domain->title }}" class="img-fluid rounded">
                     @endif
                 </div>
                 <div class="col-md-8">
@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="d-flex gap-2 mt-3">
+            <div class="buttons">
                 <a href="{{ route('domains.index') }}" class="btn secondary">{{ __('dashboard.header.back') }}</a>
                 <a href="{{ route('domains.edit', $domain->id) }}" class="btn third">{{ __('buttons.edit') }}</a>
             </div>

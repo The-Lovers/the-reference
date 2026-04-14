@@ -3,10 +3,10 @@
         <div class="m-header">
             <a href="{{ route('index') }}" class="b-brand">
                 <span class="title">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo logo-lg log"/>
+                    <img src="{{ sec_asset('images/logo.png') }}" alt="Logo" class="logo logo-lg log"/>
                     {{ __('index.title') }}
                 </span>
-                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo logo-sm" />
+                <img src="{{ sec_asset('images/logo.png') }}" alt="Logo" class="logo logo-sm" />
             </a>
         </div>
         <div class="navbar-content">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Domains;
 use App\Repositories\DomainsRepository;
+use App\Services\AdminActivityNotifier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -64,7 +65,8 @@ class DomainController extends Controller
                 $validated['icon'] = "fa-solid fa-" . $validated['icon'];
             }
 
-            DB::transaction(function () use (&$validated, $request, $user) {
+            $domain = null;
+            DB::transaction(function () use (&$validated, $request, $user, &$domain) {
                 if ($request->hasFile('cover')) {
                     $file = $request->file('cover');
                     $filename = 'domain_' . time() . '.' . $file->getClientOriginalExtension();
@@ -76,6 +78,8 @@ class DomainController extends Controller
                 $domain->creator()->associate($user);
                 $domain->save();
             });
+
+            app(AdminActivityNotifier::class)->notify($user, 'created', 'domaine', $domain);
 
             $action = $validated['action'];
             if ($action === 'continue') {
@@ -157,6 +161,8 @@ class DomainController extends Controller
                 $domain->save();
             });
 
+            app(AdminActivityNotifier::class)->notify($user, 'updated', 'domaine', $domain);
+
             $action = $validated['action'];
             if ($action === 'continue') {
                 return redirect()->route('domains.edit', $domain)->with('success', __('domains.update.success-next'));
@@ -179,6 +185,7 @@ class DomainController extends Controller
     public function destroy($locale, Domains $domain)
     {
         try {
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'deleted', 'domaine', $domain);
             DB::transaction(function () use ($domain) {
                 if ($domain->cover && file_exists(public_path($domain->cover))) {
                     unlink(public_path($domain->cover));
@@ -202,6 +209,13 @@ class DomainController extends Controller
             'status_updated_by' => Auth::id(),
         ]);
 
+        app(AdminActivityNotifier::class)->notify(
+            Auth::user(),
+            (int) $value === 1 ? 'published' : 'unpublished',
+            'domaine',
+            $domain
+        );
+
         return redirect()->back()
                 ->withInput()
                 ->with('success', __('domains.index.status.success'));
@@ -213,6 +227,13 @@ class DomainController extends Controller
             'is_featured' => $value,
             'featured_updated_by' => Auth::id(),
         ]);
+
+        app(AdminActivityNotifier::class)->notify(
+            Auth::user(),
+            (int) $value === 1 ? 'featured' : 'unfeatured',
+            'domaine',
+            $domain
+        );
 
         return redirect()->back()
                 ->withInput()

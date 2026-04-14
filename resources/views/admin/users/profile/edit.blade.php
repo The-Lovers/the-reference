@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/user/edit.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/user/edit.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -28,7 +28,7 @@
                     <div class="mb-4 text-center">
                         <img
                             id="avatarPreview"
-                            src="{{ $user->avatar ? asset($user->avatar) : asset('images/logo.png') }}"
+                            src="{{ $user->avatar_url }}"
                             alt="{{ $user->name }}"
                             class="img-fluid rounded-circle border"
                             style="width: 140px; height: 140px; object-fit: cover;"
@@ -80,7 +80,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="mb-3">
-                        <label for="avatar" class="form-label">Avatar</label>
+                        <label for="avatar" class="form-label">{{ __('forms.profile.avatar') }}</label>
                         <input type="file" class="form-control" id="avatar" name="avatar" accept="image/png,image/jpeg,image/webp">
                     </div>
                 </div>
@@ -101,9 +101,9 @@
                     </div>
                 </div>
                 <div class="col-md-12 my-5">
-                    <div class="row myBtn">
-                        <a type="button" class="btn col-md-4 secondary" href="{{ route('profile.show', $user) }}">{{ __('buttons.cancel') }}</a>
-                        <button type="submit" class="btn col-md-4 success" id="validate">{{ __('buttons.confirm') }}</button>
+                    <div class="buttons">
+                        <a type="button" class="btn secondary" href="{{ route('profile.show', $user) }}">{{ __('buttons.cancel') }}</a>
+                        <button type="submit" class="btn success" id="validate">{{ __('buttons.confirm') }}</button>
                     </div>
                 </div>
             </div>

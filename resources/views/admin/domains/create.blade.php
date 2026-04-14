@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/domain/create.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/domain/create.css') }}">
 @endsection
 
 @section('breadcrumb')

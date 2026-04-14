@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/service.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/service.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -20,24 +20,24 @@
 
             <div class="row">
                 <div class="col-md-12 mb-3">
-                    <h5>Title</h5>
+                    <h5>{{ __('forms.service.title') }}</h5>
                     <h6>{{ $service->title }}</h6>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <h5>Status</h5>
-                    <h6>{{ $service->is_active ? 'Active' : 'Inactive' }}</h6>
+                    <h5>{{ __('forms.service.status.title') }}</h5>
+                    <h6>{{ $service->is_active ? __('forms.service.status.active') : __('forms.service.status.inactive') }}</h6>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <h5>Featured</h5>
-                    <h6>{{ $service->is_featured ? 'Yes' : 'No' }}</h6>
+                    <h5>{{ __('forms.service.featured.title') }}</h5>
+                    <h6>{{ $service->is_featured ? __('forms.service.featured.yes') : __('forms.service.featured.no') }}</h6>
                 </div>
                 <div class="col-md-12 mb-3">
-                    <h5>Description</h5>
+                    <h5>{{ __('forms.service.description') }}</h5>
                     <div>{!! $service->description ?: '-' !!}</div>
                 </div>
             </div>
 
-            <div class="d-flex gap-2 mt-3">
+            <div class="buttons">
                 <a href="{{ route('services.index') }}" class="btn secondary">{{ __('dashboard.header.back') }}</a>
                 <a href="{{ route('services.edit', $service->id) }}" class="btn third">{{ __('buttons.edit') }}</a>
             </div>

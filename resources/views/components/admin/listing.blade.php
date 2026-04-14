@@ -87,6 +87,7 @@
                             <div class="d-flex flex-wrap justify-content-center align-items-center gap-1">
                                 @foreach ($actions as $action)
                                     @php
+                                        $isVisible = $resolveActionValue($action['visible'] ?? true, $item, $itemLoop);
                                         $tooltip = $resolveActionValue($action['tooltip'] ?? '', $item, $itemLoop);
                                         $icon = $resolveActionValue($action['icon'] ?? '', $item, $itemLoop);
                                         $classes = trim((string) $resolveActionValue($action['class'] ?? 'btn btn-sm btn-primary', $item, $itemLoop));
@@ -100,6 +101,8 @@
                                         }
                                         $form = $action['form'] ?? null;
                                     @endphp
+
+                                    @continue(!$isVisible)
 
                                     @if ($form)
                                         @php
@@ -212,6 +215,7 @@
                             <div class="d-flex align-items-center gap-2 flex-wrap">
                                 @foreach ($actions as $action)
                                     @php
+                                        $isVisible = $resolveActionValue($action['visible'] ?? true, $item, $itemLoop);
                                         $tooltip = $resolveActionValue($action['tooltip'] ?? '', $item, $itemLoop);
                                         $icon = $resolveActionValue($action['icon'] ?? '', $item, $itemLoop);
                                         $classes = trim((string) $resolveActionValue($action['class'] ?? 'btn btn-sm btn-primary', $item, $itemLoop));
@@ -221,6 +225,8 @@
                                         $attributes = $action['attributes'] ?? [];
                                         $form = $action['form'] ?? null;
                                     @endphp
+
+                                    @continue(!$isVisible)
 
                                     @if ($form)
                                         @php
@@ -289,24 +295,77 @@
     <style>
         .reusable-listing__actions .btn,
         .reusable-listing .card-footer .btn {
-            background: none !important;
-            border: none !important;
-            font-size: 1rem !important;
+            font-size: .95rem !important;
         }
 
+        .reusable-listing__actions .d-flex,
+        .reusable-listing .card-footer .d-flex {
+            gap: .45rem !important;
+        }
+
+        .listing-action {
+            min-width: 42px;
+            height: 42px;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px !important;
+            border: 1px solid transparent !important;
+            background: #f5f7fb !important;
+            box-shadow: 0 8px 18px rgba(11, 60, 93, 0.08);
+            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease;
+        }
+
+        .listing-action:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 22px rgba(11, 60, 93, 0.12);
+        }
+
+        .listing-action--view,
         .reusable-listing__actions .btn-primary,
         .reusable-listing .card-footer .btn-primary {
             color: #0b3c5d !important;
+            background: rgba(11, 60, 93, 0.08) !important;
+            border-color: rgba(11, 60, 93, 0.12) !important;
         }
 
+        .listing-action--edit,
         .reusable-listing__actions .btn-warning,
         .reusable-listing .card-footer .btn-warning {
             color: #f57c00 !important;
+            background: rgba(245, 124, 0, 0.10) !important;
+            border-color: rgba(245, 124, 0, 0.18) !important;
         }
 
+        .listing-action--delete,
         .reusable-listing__actions .btn-danger,
         .reusable-listing .card-footer .btn-danger {
             color: #d9534f !important;
+            background: rgba(217, 83, 79, 0.10) !important;
+            border-color: rgba(217, 83, 79, 0.18) !important;
+        }
+
+        .listing-action--accent {
+            color: #135f92 !important;
+            background: rgba(19, 95, 146, 0.10) !important;
+            border-color: rgba(19, 95, 146, 0.18) !important;
+        }
+
+        .listing-action--info {
+            color: #2a8f6a !important;
+            background: rgba(42, 143, 106, 0.10) !important;
+            border-color: rgba(42, 143, 106, 0.18) !important;
+        }
+
+        .listing-action--muted {
+            color: #6c757d !important;
+            background: rgba(108, 117, 125, 0.10) !important;
+            border-color: rgba(108, 117, 125, 0.18) !important;
+        }
+
+        .reusable-listing__actions form,
+        .reusable-listing .card-footer form {
+            margin: 0;
         }
 
         .reusable-listing__toggle {

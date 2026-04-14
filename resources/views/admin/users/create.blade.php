@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/user/create.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/user/create.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -98,10 +98,10 @@
                         </div>
                     </div> --}}
                     <div class="col-md-12 my-5">
-                        <div class="row myBtn">
-                            <a type="button" class="btn col-md-4 secondary" href="{{ route('users.index') }}">{{ __('buttons.cancel') }}</a>
-                            <button type="reset" class="btn col-md-4 danger">{{ __('buttons.reset') }}</button>
-                            <button type="submit" class="btn col-md-4 success" id="validate">{{ __('buttons.save') }}</button>
+                        <div class="buttons">
+                            <a type="button" class="btn secondary" href="{{ route('users.index') }}">{{ __('buttons.cancel') }}</a>
+                            <button type="reset" class="btn danger">{{ __('buttons.reset') }}</button>
+                            <button type="submit" class="btn success" id="validate">{{ __('buttons.save') }}</button>
                         </div>
                     </div>
                 </div>
@@ -110,8 +110,8 @@
     </div>
 @endsection
 @section('js_2')
-    <script src="{{ asset('lib/jquery/jquery-3.2.1.min.js') }}"></script>
-    <script src="{{ asset('lib/select2/select2.min.js') }}"></script>
+    <script src="{{ sec_asset('lib/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ sec_asset('lib/select2/select2.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             function formatPhoneCode(option) {

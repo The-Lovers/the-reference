@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/user/show.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/user/show.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -55,9 +55,11 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <a href="{{ route('users.index') }}" class="btn secondary">
-                    {{ __('dashboard.header.back') }}
-                </a>
+                <div class="buttons">
+                    <a href="{{ route('users.index') }}" class="btn secondary">
+                        {{ __('dashboard.header.back') }}
+                    </a>
+                </div>
             </div>
         </div>
     </div>

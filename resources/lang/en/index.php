@@ -18,6 +18,26 @@ return [
         'contact' => "Contact & Localisation",
         'btn' => "Ask for information",
         'featured' => "Featured",
+        'request-title' => "Information request",
+        'request-submit' => "Send request",
+        'requests' => [
+            'study-abroad' => "Study abroad",
+            'scholarships' => "International scholarships",
+            'visa-travel' => "Visa / Travel",
+            'admin-services' => "Administrative services",
+            'other' => "Other request",
+        ],
+        'contact-card' => [
+            'phone' => "Phone / WhatsApp",
+            'address' => "Address",
+            'address-value' => "Efoulan – Sub-prefecture",
+        ],
+        'promotions' => [
+            'title' => "Promotional offers",
+            'line-1' => "Travel application review at a reduced rate",
+            'line-2' => "Event website creation",
+            'line-3' => "Promotional videos",
+        ],
     ],
     'footer' => [
         'rights' => "All rights reserved.",

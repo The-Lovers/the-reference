@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Missions;
 use App\Repositories\MissionsRepository;
+use App\Services\AdminActivityNotifier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -65,7 +66,8 @@ class MissionController extends Controller
                 $validated['icon'] = "fa-solid fa-" . $validated['icon'];
             }
 
-            DB::transaction(function () use (&$validated, $request, $user) {
+            $mission = null;
+            DB::transaction(function () use (&$validated, $request, $user, &$mission) {
                 // Upload image
                 if ($request->hasFile('cover')) {
                     $file = $request->file('cover');
@@ -78,6 +80,8 @@ class MissionController extends Controller
                 $mission->creator()->associate($user);
                 $mission->save();
             });
+
+            app(AdminActivityNotifier::class)->notify($user, 'created', 'mission', $mission);
 
             // Gestion des boutons
             $action = $validated['action'];
@@ -166,6 +170,8 @@ class MissionController extends Controller
                 $mission->save();
             });
 
+            app(AdminActivityNotifier::class)->notify($user, 'updated', 'mission', $mission);
+
             // Gestion des boutons
             $action = $validated['action'];
             if ($action === 'continue') {
@@ -189,6 +195,7 @@ class MissionController extends Controller
     public function destroy($locale, Missions $mission)
     {
         try {
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'deleted', 'mission', $mission);
             DB::transaction(function () use ($mission) {
                 // Supprimer le cover si il existe
                 if ($mission->cover && file_exists(public_path($mission->cover))) {
@@ -215,6 +222,13 @@ class MissionController extends Controller
             'status_updated_by' => Auth::id(),
         ]);
 
+        app(AdminActivityNotifier::class)->notify(
+            Auth::user(),
+            (int) $value === 1 ? 'published' : 'unpublished',
+            'mission',
+            $mission
+        );
+
         return redirect()->back()
                 ->withInput()
                 ->with('success', __('missions.index.status.success'));
@@ -226,6 +240,13 @@ class MissionController extends Controller
             'is_featured' => $value,
             'featured_updated_by' => Auth::id(),
         ]);
+
+        app(AdminActivityNotifier::class)->notify(
+            Auth::user(),
+            (int) $value === 1 ? 'featured' : 'unfeatured',
+            'mission',
+            $mission
+        );
 
         return redirect()->back()
                 ->withInput()

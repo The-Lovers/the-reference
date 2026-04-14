@@ -1,12 +1,14 @@
 @php
-    $role = Auth::user()->roles();
+    $currentUser = Auth::user();
+    $notifications = $currentUser->notifications()->latest()->limit(10)->get();
+    $unreadNotificationsCount = $currentUser->unreadNotifications()->count();
+    $chatConversations = $currentUser->chatConversationSummaries(8);
+    $chatUnreadCount = $currentUser->chatUnreadCount();
 @endphp
 
 <header class="nxl-header">
     <div class="header-wrapper">
-        <!--! [Start] Header Left !-->
         <div class="header-left d-flex align-items-center gap-4">
-            <!--! [Start] nxl-head-mobile-toggler !-->
             <a href="javascript:void(0);" class="nxl-head-mobile-toggler" id="mobile-collapse">
                 <div class="hamburger hamburger--arrowturn">
                     <div class="hamburger-box">
@@ -14,8 +16,6 @@
                     </div>
                 </div>
             </a>
-            <!--! [Start] nxl-head-mobile-toggler !-->
-            <!--! [Start] nxl-navigation-toggle !-->
             <div class="nxl-navigation-toggle">
                 <a href="javascript:void(0);" id="menu-mini-button">
                     <i class="fa-solid fa-align-left"></i>
@@ -24,10 +24,7 @@
                     <i class="fa-solid fa-align-right"></i>
                 </a>
             </div>
-            <!--! [End] nxl-navigation-toggle !-->
         </div>
-        <!--! [End] Header Left !-->
-        <!--! [Start] Header Right !-->
         <div class="header-right ms-auto">
             <div class="d-flex align-items-center">
                 <div class="dropdown nxl-h-item nxl-header-search">
@@ -50,11 +47,11 @@
                     <a href="javascript:void(0);" class="nxl-head-link me-0 nxl-language-link" data-bs-toggle="dropdown" data-bs-auto-close="outside">
                         @if(app()->getLocale() === 'fr')
                             <a class="dropdown-item d-flex align-items-center" href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'fr'])) }}">
-                                <img src="{{ asset('images/flags/fr.svg') }}" class="me-1" alt="Fr">
+                                <img src="{{ sec_asset('images/flags/fr.svg') }}" class="me-1" alt="Fr">
                             </a>
                         @else
                             <a class="dropdown-item d-flex align-items-center" href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}">
-                                <img src="{{ asset('images/flags/us.svg') }}" class="me-1" alt="En">
+                                <img src="{{ sec_asset('images/flags/us.svg') }}" class="me-1" alt="En">
                             </a>
                         @endif
                         @php
@@ -66,13 +63,13 @@
                             <div class="row px-4 pt-3">
                                 <div class="col-sm-4 col-6 language_select @if(app()->getLocale() === 'fr') {{ $active }} @endif">
                                     <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('images/fr.png') }}" alt="" class="img-fluid" /></div>
+                                        <div class="avatar-image avatar-sm"><img src="{{ sec_asset('images/fr.png') }}" alt="" class="img-fluid" /></div>
                                         <span>{{ __('dashboard.header.fr') }}</span>
                                     </a>
                                 </div>
                                 <div class="col-sm-4 col-6 language_select @if(app()->getLocale() === 'en') {{ $active }} @endif">
                                     <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('images/us.png') }}" alt="" class="img-fluid" /></div>
+                                        <div class="avatar-image avatar-sm"><img src="{{ sec_asset('images/us.png') }}" alt="" class="img-fluid" /></div>
                                         <span>{{ __('dashboard.header.en') }}</span>
                                     </a>
                                 </div>
@@ -89,92 +86,160 @@
                     </a>
                 </div>
                 <div class="dropdown nxl-h-item">
-                    <a href="javascript:void(0);" class="nxl-head-link me-0" data-bs-toggle="dropdown" role="button" data-bs-auto-close="outside">
-                        <i class="fa-regular fa-clock"></i>
-                        <span class="badge bg-success nxl-h-badge">2</span>
+                    <a class="nxl-head-link me-3" data-bs-toggle="dropdown" href="#" role="button" data-bs-auto-close="outside">
+                        <i class="fa-regular fa-bell"></i>
+                        @if($unreadNotificationsCount > 0)
+                            <span class="badge bg-danger nxl-h-badge">{{ $unreadNotificationsCount }}</span>
+                        @endif
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-timesheets-menu">
-                        <div class="d-flex justify-content-between align-items-center timesheets-head">
-                            <h6 class="fw-bold text-dark mb-0">Timesheets</h6>
-                            <a href="javascript:void(0);" class="fs-11 text-success text-end ms-auto" data-bs-toggle="tooltip" title="Upcomming Timers">
-                                <i class="fa-regular fa-clock"></i>
-                                <span>3 Upcomming</span>
-                            </a>
+                    <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-notifications-menu">
+                        <div class="d-flex justify-content-between align-items-center notifications-head">
+                            <h6 class="fw-bold text-dark mb-0">{{ __('dashboard.header.notifications.title') }}</h6>
+                            <button
+                                type="button"
+                                class="fs-11 text-success text-end ms-auto notification-read-all"
+                                style="border: none; background: transparent;"
+                                data-url="{{ route('notifications.read-all') }}"
+                            >
+                                <i class="fa-solid fa-check"></i>
+                                <span>{{ __('dashboard.header.notifications.read-all') }}</span>
+                            </button>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center flex-column timesheets-body">
-                            <i class="fa-solid fa-clock fs-1 mb-4"></i>
-                            <p class="text-muted">No started timers found yes!</p>
-                            <a href="javascript:void(0);" class="btn btn-sm btn-primary">Started Timer</a>
-                        </div>
-                        <div class="text-center timesheets-footer">
-                            <a href="javascript:void(0);" class="fs-13 fw-semibold text-dark">Alls Timesheets</a>
+                        @forelse($notifications as $notification)
+                            @php
+                                $data = $notification->data;
+                            @endphp
+                            <div class="notifications-item {{ is_null($notification->read_at) ? 'notification-unread' : '' }}">
+                                <div class="notifications-desc w-100">
+                                    <a
+                                        href="javascript:void(0);"
+                                        class="font-body text-truncate-2-line notification-open"
+                                        data-url="{{ route('notifications.read', $notification->id) }}"
+                                        data-title="{{ $data['title'] ?? __('dashboard.header.notifications.item') }}"
+                                        data-message="{{ $data['message'] ?? '' }}"
+                                    >
+                                        <span class="fw-semibold text-dark">{{ $data['title'] ?? __('dashboard.header.notifications.item') }}</span>
+                                        {{ $data['subject_label'] ?? '' }}
+                                    </a>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="notifications-date text-muted border-bottom border-bottom-dashed">
+                                            {{ $notification->created_at?->diffForHumans() }}
+                                        </div>
+                                        @if(is_null($notification->read_at))
+                                            <span class="d-block wd-8 ht-8 rounded-circle bg-primary"></span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @empty
+                            <div class="notifications-item">
+                                <div class="notifications-desc w-100">
+                                    <span class="font-body text-muted">{{ __('dashboard.header.notifications.empty') }}</span>
+                                </div>
+                            </div>
+                        @endforelse
+                        <div class="text-center notifications-footer">
+                            <span class="fs-13 fw-semibold text-dark">{{ __('dashboard.header.notifications.latest') }}</span>
                         </div>
                     </div>
                 </div>
                 <div class="dropdown nxl-h-item">
                     <a class="nxl-head-link me-3" data-bs-toggle="dropdown" href="#" role="button" data-bs-auto-close="outside">
-                        <i class="fa-regular fa-bell"></i>
-                        <span class="badge bg-danger nxl-h-badge">3</span>
+                        <i class="fa-regular fa-envelope"></i>
+                        <span
+                            id="chatHeaderBadge"
+                            class="badge bg-danger nxl-h-badge {{ $chatUnreadCount > 0 ? '' : 'd-none' }}"
+                        >{{ $chatUnreadCount }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-notifications-menu">
                         <div class="d-flex justify-content-between align-items-center notifications-head">
-                            <h6 class="fw-bold text-dark mb-0">Notifications</h6>
-                            <a href="javascript:void(0);" class="fs-11 text-success text-end ms-auto" data-bs-toggle="tooltip" title="Make as Read">
-                                <i class="fa-solid fa-check"></i>
-                                <span>Make as Read</span>
-                            </a>
+                            <h6 class="fw-bold text-dark mb-0">{{ __('dashboard.header.messages.title') }}</h6>
+                            <button
+                                type="button"
+                                class="fs-11 text-success text-end ms-auto chat-open-panel-trigger"
+                                style="border: none; background: transparent;"
+                            >
+                                <i class="fa-regular fa-comments"></i>
+                                <span>{{ __('dashboard.header.messages.open-chat') }}</span>
+                            </button>
                         </div>
-                        <div class="notifications-item">
-                            <img src="assets/images/avatar/2.png" alt="" class="rounded me-3 border" />
-                            <div class="notifications-desc">
-                                <a href="javascript:void(0);" class="font-body text-truncate-2-line"> <span class="fw-semibold text-dark">Malanie Hanvey</span> We should talk about that at lunch!</a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="notifications-date text-muted border-bottom border-bottom-dashed">2 minutes ago</div>
-                                    <div class="d-flex align-items-center float-end gap-2">
-                                        <a href="javascript:void(0);" class="d-block wd-8 ht-8 rounded-circle bg-gray-300" data-bs-toggle="tooltip" title="Make as Read"></a>
-                                        <a href="javascript:void(0);" class="text-danger" data-bs-toggle="tooltip" title="Remove">
-                                            <i class="fa-solid fa-x fs-12"></i>
-                                        </a>
+                        <div id="chatDropdownList">
+                            @forelse($chatConversations as $conversation)
+                                <button
+                                    type="button"
+                                    class="notifications-item w-100 text-start chat-dropdown-item {{ $conversation['unread_count'] > 0 ? 'notification-unread' : '' }}"
+                                    data-chat-user-id="{{ $conversation['user']['id'] }}"
+                                >
+                                    <div class="notifications-desc w-100">
+                                        <span class="fw-semibold text-dark">{{ $conversation['user']['name'] }}</span>
+                                        <div class="font-body text-muted text-truncate">{{ $conversation['last_message'] }}</div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="notifications-date text-muted border-bottom border-bottom-dashed">
+                                                {{ $conversation['last_message_at'] }}
+                                            </div>
+                                            @if($conversation['unread_count'] > 0)
+                                                <span class="internal-chat-inline-badge">{{ $conversation['unread_count'] }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </button>
+                            @empty
+                                <div class="notifications-item">
+                                    <div class="notifications-desc w-100">
+                                        <span class="font-body text-muted">{{ __('dashboard.header.messages.empty') }}</span>
                                     </div>
                                 </div>
-                            </div>
+                            @endforelse
                         </div>
                         <div class="text-center notifications-footer">
-                            <a href="javascript:void(0);" class="fs-13 fw-semibold text-dark">Alls Notifications</a>
+                            <span class="fs-13 fw-semibold text-dark">{{ __('dashboard.header.messages.latest') }}</span>
                         </div>
                     </div>
                 </div>
                 <div class="dropdown nxl-h-item">
                     <a href="javascript:void(0);" data-bs-toggle="dropdown" role="button" data-bs-auto-close="outside">
-                        <img src="assets/images/avatar/1.png" alt="user-image" class="img-fluid user-avtar me-0" />
+                        <img
+                            src="{{ $currentUser->avatar_url }}"
+                            alt="{{ $currentUser->name }}"
+                            class="img-fluid user-avtar me-0"
+                        />
                     </a>
                     <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-user-dropdown">
                         <div class="dropdown-header">
                             <div class="d-flex align-items-center">
-                                <img src="assets/images/avatar/1.png" alt="user-image" class="img-fluid user-avtar" />
+                                <img
+                                    src="{{ $currentUser->avatar_url }}"
+                                    alt="{{ $currentUser->name }}"
+                                    class="img-fluid user-avtar"
+                                />
                                 <div>
-                                    <h6 class="text-dark mb-0">{{ Auth::user()->name }}<span class="badge bg-soft-success text-success ms-1">{{ __('role') }}</span></h6>
-                                    <span class="fs-12 fw-medium text-muted">{{ Auth::user()->email }}</span>
+                                    <h6 class="text-dark mb-0">
+                                        {{ $currentUser->name }}
+                                        <span class="badge bg-soft-success text-success ms-1">{{ $currentUser->primary_role_label }}</span>
+                                    </h6>
+                                    <span class="fs-12 fw-medium text-muted">{{ $currentUser->email }}</span>
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ route('profile.show', Auth::user()) }}" class="dropdown-item prof">
+                        <a href="{{ route('profile.show', $currentUser) }}" class="dropdown-item prof">
                             <i class="fa-solid fa-user"></i>
                             <span>{{ __('dashboard.header.profile') }}</span>
                         </a>
-                        <a href="{{ route('profile.edit', Auth::user()) }}" class="dropdown-item prof">
+                        <a href="{{ route('profile.edit', $currentUser) }}" class="dropdown-item prof">
                             <i class="fa-solid fa-gear"></i>
                             <span>{{ __('dashboard.header.setting') }}</span>
                         </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="{{ url('/telescope') }}" class="dropdown-item prof">
-                            <i class="fa-solid fa-bug"></i>
-                            <span>{{ __('dashboard.header.telescope') }}</span>
-                        </a>
-                        <a href="{{ route('log-viewer::logs.list') }}" class="dropdown-item prof">
-                            <i class="fa-solid fa-bug-slash"></i>
-                            <span>{{ __('dashboard.header.log-viewer') }}</span>
-                        </a>
+                        @if($currentUser->hasRole('super-admin'))
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ url('/telescope') }}" class="dropdown-item prof">
+                                <i class="fa-solid fa-bug"></i>
+                                <span>{{ __('dashboard.header.telescope') }}</span>
+                            </a>
+                            <a href="{{ route('log-viewer::logs.list') }}" class="dropdown-item prof">
+                                <i class="fa-solid fa-bug-slash"></i>
+                                <span>{{ __('dashboard.header.log-viewer') }}</span>
+                            </a>
+                        @endif
                         <div class="dropdown-divider"></div>
                         <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                             @csrf
@@ -187,7 +252,6 @@
                 </div>
             </div>
         </div>
-        <!--! [End] Header Right !-->
     </div>
 </header>
 <style>
@@ -198,16 +262,69 @@
         justify-content: flex-start;
         column-gap: 1rem;
     }
+    .notification-unread{
+        background: rgba(11,60,93,.05);
+    }
 </style>
 <script>
-    $(document).ready(function() {
-        $('#menu-mini-button').on('click', function() {
-            $('.b-brand .title').addClass('d-none');
-            $('.b-brand .nxl-mtext').addClass('d-none');
+    document.addEventListener('DOMContentLoaded', function () {
+        const miniButton = document.getElementById('menu-mini-button');
+        const expendButton = document.getElementById('menu-expend-button');
+
+        miniButton?.addEventListener('click', function () {
+            document.querySelectorAll('.b-brand .title, .b-brand .nxl-mtext').forEach((element) => {
+                element.classList.add('d-none');
+            });
         });
-        $('#menu-expend-button').on('click', function() {
-            $('.b-brand .title').removeClass('d-none');
-            $('.b-brand .nxl-mtext').removeClass('d-none');
+
+        expendButton?.addEventListener('click', function () {
+            document.querySelectorAll('.b-brand .title, .b-brand .nxl-mtext').forEach((element) => {
+                element.classList.remove('d-none');
+            });
+        });
+
+        document.querySelectorAll('.notification-open').forEach((button) => {
+            button.addEventListener('click', async function () {
+                const title = this.dataset.title;
+                const message = this.dataset.message;
+                const url = this.dataset.url;
+
+                showPopup('info', `<strong>${title}</strong><br>${message}`, {
+                    theme: 'dark',
+                    timeout: 7000
+                });
+
+                if (url) {
+                    await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json',
+                        },
+                    });
+                    window.location.reload();
+                }
+            });
+        });
+
+        document.querySelector('.notification-read-all')?.addEventListener('click', async function () {
+            const url = this.dataset.url;
+
+            await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Accept': 'application/json',
+                },
+            });
+
+            window.location.reload();
+        });
+
+        document.querySelectorAll('.chat-dropdown-item').forEach((button) => {
+            button.addEventListener('click', function () {
+                window.InternalChat?.openConversation(this.dataset.chatUserId);
+            });
         });
     });
 </script>

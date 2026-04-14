@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('css_2')
-    <link rel="stylesheet" href="{{ asset('css/user/index.css') }}">
+    <link rel="stylesheet" href="{{ sec_asset('css/user/index.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -50,19 +50,21 @@
             [
                 'icon' => 'fa-solid fa-eye',
                 'tooltip' => __('buttons.show'),
-                'class' => 'btn btn-sm btn-primary',
+                'class' => 'btn btn-sm listing-action listing-action--view',
                 'url' => fn ($user) => route('users.show', $user->id),
             ],
             [
                 'icon' => 'fa-solid fa-pen',
                 'tooltip' => __('buttons.edit'),
-                'class' => 'btn btn-sm btn-warning',
+                'class' => 'btn btn-sm listing-action listing-action--edit',
+                'visible' => fn ($user) => auth()->user()->can('update', $user),
                 'url' => fn ($user) => route('users.edit', $user->id),
             ],
             [
                 'icon' => 'fa-solid fa-trash',
                 'tooltip' => __('buttons.delete'),
-                'class' => 'btn btn-sm btn-danger',
+                'class' => 'btn btn-sm listing-action listing-action--delete',
+                'visible' => fn ($user) => auth()->user()->can('delete', $user),
                 'onclick' => fn () => "if(typeof showPopup==='function'){showPopup('confirm', "
                     . \Illuminate\Support\Js::from(__('user.delete.confirm'))
                     . ", {theme:'dark', onConfirm: () => this.closest('form').submit()});}else if(confirm("
@@ -81,7 +83,8 @@
             <h2 class="title">
                 {{ __('dashboard.sidebar.user.list') }}
             </h2>
-            <a class="btn btn-success" href="{{ route('users.create') }}">
+            <a class="btn success page-action-button" href="{{ route('users.create') }}">
+                <i class="fa-solid fa-plus"></i>
                 <span>
                     {{ __('buttons.new') }}
                 </span>
@@ -180,13 +183,14 @@
                                     <td>${user.email}</td>
                                     <td>${user.phone ?? ''}</td>
                                     <td>${user.gender_label ?? ''}</td>
-                                    <td class="d-flex gap-1">
-                                        <a href="/users/${user.id}" class="btn btn-sm btn-primary">
+                                    <td>
+                                        <div class="listing-inline-actions">
+                                        <a href="${user.show_url}" class="btn btn-sm listing-action listing-action--view">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
-                                        <a href="/users/${user.id}/edit" class="btn btn-sm btn-warning">
-                                            <i class="fa-solid fa-pen"></i>
-                                        </a>
+                                        ${user.can_edit ? `<a href="${user.edit_url}" class="btn btn-sm listing-action listing-action--edit"><i class="fa-solid fa-pen"></i></a>` : ''}
+                                        ${user.can_delete ? `<form action="/{{ app()->getLocale() }}/users/${user.id}" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}"><input type="hidden" name="_method" value="DELETE"><button type="submit" class="btn btn-sm listing-action listing-action--delete"><i class="fa-solid fa-trash"></i></button></form>` : ''}
+                                        </div>
                                     </td>
                                 </tr>
                             `;
@@ -208,13 +212,12 @@
                                             <p><strong>Phone :</strong> ${user.phone ?? ''}</p>
                                             <p><strong>Gender :</strong> ${user.gender_label ?? ''}</p>
                                         </div>
-                                        <div class="card-footer d-flex gap-2">
-                                            <a href="/users/${user.id}" class="btn btn-sm btn-primary">
+                                        <div class="card-footer listing-inline-actions">
+                                            <a href="${user.show_url}" class="btn btn-sm listing-action listing-action--view">
                                                 <i class="fa-solid fa-eye"></i>
                                             </a>
-                                            <a href="/users/${user.id}/edit" class="btn btn-sm btn-warning">
-                                                <i class="fa-solid fa-pen"></i>
-                                            </a>
+                                            ${user.can_edit ? `<a href="${user.edit_url}" class="btn btn-sm listing-action listing-action--edit"><i class="fa-solid fa-pen"></i></a>` : ''}
+                                            ${user.can_delete ? `<form action="/{{ app()->getLocale() }}/users/${user.id}" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}"><input type="hidden" name="_method" value="DELETE"><button type="submit" class="btn btn-sm listing-action listing-action--delete"><i class="fa-solid fa-trash"></i></button></form>` : ''}
                                         </div>
                                     </div>
                                 </div>
@@ -230,4 +233,13 @@
             }, 400); // debounce
         });
     </script>
+    <style>
+        .listing-inline-actions{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .45rem;
+            flex-wrap: wrap;
+        }
+    </style>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Services;
 use App\Repositories\ServicesRepository;
+use App\Services\AdminActivityNotifier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -57,18 +58,20 @@ class ServiceController extends Controller
                 'created_by' => Auth::id(),
             ]);
 
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'created', 'service', $service);
+
             if ($validated['action'] === 'continue') {
                 return redirect()->route('services.edit', $service)
-                    ->with('success', 'Service créé avec succès.');
+                    ->with('success', __('infos.service.creation-success'));
             }
 
             return redirect()->route('services.index')
-                ->with('success', 'Service créé avec succès.');
+                ->with('success', __('infos.service.creation-success'));
         } catch (\Throwable $e) {
-            Log::error('Erreur création service: ' . $e->getMessage());
+            Log::error(__('infos.service.creation-error-log') . $e->getMessage());
             return redirect()->back()
                 ->withInput()
-                ->with('error', 'Erreur de création du service.');
+                ->with('error', __('infos.service.creation-error'));
         }
     }
 
@@ -110,18 +113,20 @@ class ServiceController extends Controller
                 'updated_by' => Auth::id(),
             ]);
 
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'updated', 'service', $service);
+
             if ($validated['action'] === 'continue') {
                 return redirect()->route('services.edit', $service)
-                    ->with('success', 'Service modifié avec succès.');
+                    ->with('success', __('infos.service.edition-success'));
             }
 
             return redirect()->route('services.index')
-                ->with('success', 'Service modifié avec succès.');
+                ->with('success', __('infos.service.edition-success'));
         } catch (\Throwable $e) {
-            Log::error('Erreur modification service: ' . $e->getMessage());
+            Log::error(__('infos.service.edition-error-log') . $e->getMessage());
             return redirect()->back()
                 ->withInput()
-                ->with('error', 'Erreur de modification du service.');
+                ->with('error', __('infos.service.edition-error'));
         }
     }
 
@@ -131,13 +136,14 @@ class ServiceController extends Controller
     public function destroy($locale, Services $service)
     {
         try {
+            app(AdminActivityNotifier::class)->notify(Auth::user(), 'deleted', 'service', $service);
             $service->delete();
             return redirect()->route('services.index')
-                ->with('success', 'Service supprimé avec succès.');
+                ->with('success', __('infos.service.deletion-success'));
         } catch (\Throwable $e) {
-            Log::error('Erreur suppression service: ' . $e->getMessage());
+            Log::error(__('infos.service.deletion-error-log') . $e->getMessage());
             return redirect()->back()
-                ->with('error', 'Erreur de suppression du service.');
+                ->with('error', __('infos.service.deletion-error'));
         }
     }
 }

@@ -36,9 +36,9 @@
        data-bs-toggle="dropdown">
 
         @if(app()->getLocale() === 'fr')
-            <img src="{{ asset('images/fr.png') }}" width="20" class="me-2">
+            <img src="{{ sec_asset('images/fr.png') }}" width="20" class="me-2">
         @else
-            <img src="{{ asset('images/us.png') }}" width="20" class="me-2">
+            <img src="{{ sec_asset('images/us.png') }}" width="20" class="me-2">
         @endif
     </a>
 
