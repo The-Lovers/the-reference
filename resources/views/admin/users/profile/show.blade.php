@@ -52,8 +52,16 @@
                         <h6>{{ optional($user->roles->first())->name ?? '-' }}</h6>
                     </div>
                     <div class="col-md-6">
+                        <h5>{{ __('dashboard.register.phone.code') }}</h5>
+                        <h6>{{ $user->code ?: '-' }}</h6>
+                    </div>
+                    <div class="col-md-6">
                         <h5>{{ __('dashboard.register.phone.title') }}</h5>
-                        <h6>{{ $user->phone }}</h6>
+                        <h6>{{ $user->phone ?: '-' }}</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>{{ __('dashboard.register.phone.full') }}</h5>
+                        <h6>{{ $user->full_phone ?: '-' }}</h6>
                     </div>
                     <div class="col-md-6">
                         <h5>{{ __('dashboard.register.gender.title') }}</h5>

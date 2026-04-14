@@ -28,6 +28,7 @@ class User extends Authenticatable
         'email',
         'password',
         'avatar',
+        'code',
         'phone',
         'gender',
     ];
@@ -118,6 +119,11 @@ class User extends Authenticatable
     public function getFullNameAttribute(): string
     {
         return trim($this->name . ' ' . $this->surname);
+    }
+
+    public function getFullPhoneAttribute(): string
+    {
+        return trim(collect([$this->code, $this->phone])->filter()->implode(' '));
     }
 
     public function getPrimaryRoleLabelAttribute(): string

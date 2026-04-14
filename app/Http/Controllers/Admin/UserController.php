@@ -46,7 +46,7 @@ class UserController extends Controller
     {
         $this->authorize('viewAny', User::class);
 
-        $fields = ['name', 'surname', 'email', 'phone'];
+        $fields = ['name', 'surname', 'email', 'phone', 'code'];
         $users = $this->userRepository->getAllWithSearch(
             $request->search,
             $fields,
@@ -61,6 +61,7 @@ class UserController extends Controller
                 $listedUser->can_delete = Auth::user()->can('delete', $listedUser);
                 $listedUser->show_url = route('users.show', $listedUser);
                 $listedUser->edit_url = route('users.edit', $listedUser);
+                $listedUser->full_phone = $listedUser->full_phone;
 
                 return $listedUser;
             });
@@ -104,8 +105,6 @@ class UserController extends Controller
         try {
             $this->ensureRoleAssignable((int) $validated['role']);
 
-            // Combiner code et téléphone
-            $validated['phone'] = $validated['code'] . ' ' . $validated['phone'];
             $password = Str::random(8);
 
             DB::transaction(function () use ($validated, $password, &$user) {
@@ -115,6 +114,7 @@ class UserController extends Controller
                     'username' => $validated['username'],
                     'email' => $validated['email'],
                     'gender' => $validated['gender'],
+                    'code' => $validated['code'],
                     'phone' => $validated['phone'],
                     'password' => Hash::make($password),
                 ]);
@@ -154,10 +154,7 @@ class UserController extends Controller
 
         $roles = $this->availableRolesFor(Auth::user());
         $phoneCodes = $this->loadPhoneCodes();
-        $phone = $user->phone;
-        $firstSpace = strpos($phone, ' ');
-        $selectedCode = substr($phone, 0, $firstSpace);
-        $phoneNumber  = substr($phone, $firstSpace + 1);
+        ['selectedCode' => $selectedCode, 'phoneNumber' => $phoneNumber] = $this->extractPhoneData($user);
 
         return view('admin.users.edit', compact('user', 'roles', 'phoneCodes', 'selectedCode', 'phoneNumber'));
     }
@@ -183,8 +180,15 @@ class UserController extends Controller
         try {
             $this->ensureRoleAssignable((int) $validated['role']);
 
-            $validated['phone'] = $validated['code'] . ' ' . $validated['phone'];
-            $user->update($validated);
+            $user->update([
+                'name' => $validated['name'],
+                'surname' => $validated['surname'],
+                'username' => $validated['username'],
+                'email' => $validated['email'],
+                'gender' => $validated['gender'],
+                'code' => $validated['code'],
+                'phone' => $validated['phone'],
+            ]);
 
             $user->roles()->sync([$validated['role']]);
 
@@ -310,10 +314,7 @@ class UserController extends Controller
         $this->ensureProfileOwner($user);
 
         $phoneCodes = $this->loadPhoneCodes();
-        $phone = $user->phone ?? '';
-        $firstSpace = strpos($phone, ' ');
-        $selectedCode = $firstSpace !== false ? substr($phone, 0, $firstSpace) : '';
-        $phoneNumber = $firstSpace !== false ? substr($phone, $firstSpace + 1) : $phone;
+        ['selectedCode' => $selectedCode, 'phoneNumber' => $phoneNumber] = $this->extractPhoneData($user);
 
         return view('admin.users.profile.edit', compact('user', 'phoneCodes', 'selectedCode', 'phoneNumber'));
     }
@@ -340,7 +341,8 @@ class UserController extends Controller
                 'username' => $validated['username'],
                 'email' => $validated['email'],
                 'gender' => $validated['gender'],
-                'phone' => $validated['code'] . ' ' . $validated['phone'],
+                'code' => $validated['code'],
+                'phone' => $validated['phone'],
             ];
 
             if ($request->hasFile('avatar')) {
@@ -371,5 +373,30 @@ class UserController extends Controller
     private function ensureProfileOwner(User $user): void
     {
         abort_unless(Auth::id() === $user->id, 403);
+    }
+
+    private function extractPhoneData(User $user): array
+    {
+        if (!empty($user->code)) {
+            return [
+                'selectedCode' => $user->code,
+                'phoneNumber' => $user->phone ?? '',
+            ];
+        }
+
+        $phone = $user->phone ?? '';
+        $firstSpace = strpos($phone, ' ');
+
+        if ($firstSpace === false) {
+            return [
+                'selectedCode' => '',
+                'phoneNumber' => $phone,
+            ];
+        }
+
+        return [
+            'selectedCode' => substr($phone, 0, $firstSpace),
+            'phoneNumber' => substr($phone, $firstSpace + 1),
+        ];
     }
 }

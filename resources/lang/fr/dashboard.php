@@ -107,6 +107,8 @@ return [
         'phone' => [
             'title' => "Numéro de téléphone",
             'placeholder' => "Code",
+            'code' => "Indicatif pays",
+            'full' => "Téléphone complet",
         ],
         'role' => [
             'title' => "Role",

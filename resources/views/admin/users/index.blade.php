@@ -38,7 +38,7 @@
             [
                 'label' => __('user.index.phone'),
                 'field' => 'phone',
-                'value' => fn ($user) => $user->phone ?: '-',
+                'value' => fn ($user) => $user->full_phone ?: '-',
             ],
             [
                 'label' => __('user.index.gender'),
@@ -181,7 +181,7 @@
                                     <td>${user.name}</td>
                                     <td>${user.surname}</td>
                                     <td>${user.email}</td>
-                                    <td>${user.phone ?? ''}</td>
+                                    <td>${user.full_phone ?? ''}</td>
                                     <td>${user.gender_label ?? ''}</td>
                                     <td>
                                         <div class="listing-inline-actions">
@@ -209,7 +209,7 @@
                                     <div id="collapse${user.id}" class="collapse">
                                         <div class="card-body">
                                             <p><strong>Email :</strong> ${user.email}</p>
-                                            <p><strong>Phone :</strong> ${user.phone ?? ''}</p>
+                                            <p><strong>Phone :</strong> ${user.full_phone ?? ''}</p>
                                             <p><strong>Gender :</strong> ${user.gender_label ?? ''}</p>
                                         </div>
                                         <div class="card-footer listing-inline-actions">

@@ -24,34 +24,34 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" name="name" required>
+                            <input type="text" class="form-control" id="floatingInput" name="name" value="{{ old('name') }}" required>
                             <label for="floatingInput">{{ __('dashboard.register.name') }}</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" name="surname" required>
+                            <input type="text" class="form-control" id="floatingInput" name="surname" value="{{ old('surname') }}" required>
                             <label for="floatingInput">{{ __('dashboard.register.surname') }}</label>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" name="username" required>
+                            <input type="text" class="form-control" id="floatingInput" name="username" value="{{ old('username') }}" required>
                             <label for="floatingInput">{{ __('dashboard.register.username') }}</label>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" name="email" required>
+                            <input type="email" class="form-control" id="floatingInput" name="email" value="{{ old('email') }}" required>
                             <label for="floatingInput">{{ __('dashboard.register.email') }}</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
                             <select class="form-select" id="floatingSelect" aria-label="{{ __('dashboard.register.gender.title') }}" name="gender" required>
-                                <option value="" selected>{{ __('dashboard.register.gender.placeholder') }}</option>
-                                <option value="M">{{ __('dashboard.register.gender.m') }}</option>
-                                <option value="F">{{ __('dashboard.register.gender.f') }}</option>
+                                <option value="" {{ old('gender') ? '' : 'selected' }}>{{ __('dashboard.register.gender.placeholder') }}</option>
+                                <option value="M" {{ old('gender') === 'M' ? 'selected' : '' }}>{{ __('dashboard.register.gender.m') }}</option>
+                                <option value="F" {{ old('gender') === 'F' ? 'selected' : '' }}>{{ __('dashboard.register.gender.f') }}</option>
                             </select>
                             <label for="floatingSelect">{{ __('dashboard.register.gender.title') }}</label>
                         </div>
@@ -59,9 +59,9 @@
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
                             <select class="form-select" id="floatingSelect" aria-label="{{ __('dashboard.register.gender.title') }}" name="role" required>
-                                <option value="" selected>{{ __('dashboard.register.role.placeholder') }}</option>
+                                <option value="" {{ old('role') ? '' : 'selected' }}>{{ __('dashboard.register.role.placeholder') }}</option>
                                 @foreach($roles as $role)
-                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    <option value="{{ $role->id }}" {{ (string) old('role') === (string) $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
                                 @endforeach
                             </select>
                             <label for="floatingSelect">{{ __('dashboard.register.role.title') }}</label>
@@ -72,6 +72,7 @@
                             <select id="phone_code" name="code" class="w-full input-group-text no-arrow">
                                 @foreach($phoneCodes as $phoneCode)
                                     <option value="{{ $phoneCode['phone_code'] }}"
+                                            {{ old('code') === $phoneCode['phone_code'] ? 'selected' : '' }}
                                             data-code="{{ $phoneCode['code'] }}"
                                             data-phone="{{ $phoneCode['phone_code'] }}"
                                             data-label="{{ ($phoneCode['label_fr'] ?? $phoneCode['label_en'] ?? '') }} {{ $phoneCode['code'] }} {{ $phoneCode['phone_code'] }}">
@@ -80,7 +81,7 @@
                                 @endforeach
                             </select>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInputGroup1" name="phone" required>
+                                <input type="text" class="form-control" id="floatingInputGroup1" name="phone" value="{{ old('phone') }}" required>
                                 <label for="floatingInputGroup1">{{ __('dashboard.register.phone.title') }}</label>
                             </div>
                         </div>
@@ -150,4 +151,3 @@
         });
     </script>
 @endsection
-
