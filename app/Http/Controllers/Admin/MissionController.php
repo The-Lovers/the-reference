@@ -61,7 +61,9 @@ class MissionController extends Controller
 
         try {
             // Préparer l'icône
-            $validated['icon'] = "fa-solid fa-" . $validated['icon'];
+            if (!str_starts_with($validated['icon'], 'fa-')) {
+                $validated['icon'] = "fa-solid fa-" . $validated['icon'];
+            }
 
             DB::transaction(function () use (&$validated, $request, $user) {
                 // Upload image
@@ -100,7 +102,7 @@ class MissionController extends Controller
      */
     public function show($locale, Missions $mission)
     {
-        return view('admin.missions.show');
+        return view('admin.missions.show', compact('mission'));
     }
 
     /**
@@ -108,7 +110,17 @@ class MissionController extends Controller
      */
     public function edit($locale, Missions $mission)
     {
-        return view('admin.missions.edit');
+        $lines = file(storage_path('app/icons.txt'), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $icons = array_map(function($line) {
+            return trim($line, " \t\n\r\",");
+        }, $lines);
+        shuffle($icons);
+        $icons = array_slice($icons, 0, 45);
+        if (!in_array($mission->icon, $icons, true)) {
+            array_unshift($icons, $mission->icon);
+        }
+
+        return view('admin.missions.edit', compact('mission', 'icons'));
     }
 
     /**
@@ -130,7 +142,9 @@ class MissionController extends Controller
 
         try {
             // Préparer l'icône
-            $validated['icon'] = "fa-solid fa-" . $validated['icon'];
+            if (!str_starts_with($validated['icon'], 'fa-')) {
+                $validated['icon'] = "fa-solid fa-" . $validated['icon'];
+            }
 
             DB::transaction(function () use (&$validated, $request, $user, $mission) {
                 // Gestion du cover

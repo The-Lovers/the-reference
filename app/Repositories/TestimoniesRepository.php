@@ -20,4 +20,12 @@ class TestimoniesRepository extends ResourceRepository
     {
         return $this->model->find($id);
     }
+
+    public function getAllWithOrder()
+    {
+        return $this->model
+            ->where('status', 1)
+            ->orderByDesc('created_at')
+            ->get();
+    }
 }

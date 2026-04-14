@@ -20,4 +20,13 @@ class ServicesRepository extends ResourceRepository
     {
         return $this->model->find($id);
     }
+
+    public function getAllWithOrder()
+    {
+        return $this->model
+            ->where('is_active', 1)
+            ->orderByDesc('is_featured')
+            ->orderBy('title')
+            ->get();
+    }
 }

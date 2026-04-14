@@ -65,9 +65,9 @@ Route::group([
                 'destroy' => __("desc.user.destroy")
             ]
         ]);
-        Route::get('/profile/{id}/edit', [UserController::class, 'edit_profile'])->name('profile.edit');
-        Route::patch('/profile/{id}/update', [UserController::class, 'update_profile'])->name('profile.update');
-        Route::get('/profile/{id}/show', [UserController::class, 'show_profile'])->name('profile.show');
+        Route::get('/profile/{user}/edit', [UserController::class, 'edit_profile'])->name('profile.edit');
+        Route::patch('/profile/{user}/update', [UserController::class, 'update_profile'])->name('profile.update');
+        Route::get('/profile/{user}/show', [UserController::class, 'show_profile'])->name('profile.show');
         // Routes pour les domaines
         Route::resource('domains', DomainController::class, [
             'description' => [
@@ -130,5 +130,4 @@ Route::group([
         ]);
     });
 });
-
 

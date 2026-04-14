@@ -60,7 +60,9 @@ class DomainController extends Controller
         ]);
 
         try {
-            $validated['icon'] = "fa-solid fa-" . $validated['icon'];
+            if (!str_starts_with($validated['icon'], 'fa-')) {
+                $validated['icon'] = "fa-solid fa-" . $validated['icon'];
+            }
 
             DB::transaction(function () use (&$validated, $request, $user) {
                 if ($request->hasFile('cover')) {
@@ -104,7 +106,17 @@ class DomainController extends Controller
      */
     public function edit($locale, Domains $domain)
     {
-        return view('admin.domains.edit', compact('domain'));
+        $lines = file(storage_path('app/icons.txt'), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $icons = array_map(function($line) {
+            return trim($line, " \t\n\r\",");
+        }, $lines);
+        shuffle($icons);
+        $icons = array_slice($icons, 0, 45);
+        if (!in_array($domain->icon, $icons, true)) {
+            array_unshift($icons, $domain->icon);
+        }
+
+        return view('admin.domains.edit', compact('domain', 'icons'));
     }
 
     /**
@@ -125,7 +137,9 @@ class DomainController extends Controller
         ]);
 
         try {
-            $validated['icon'] = "fa-solid fa-" . $validated['icon'];
+            if (!str_starts_with($validated['icon'], 'fa-')) {
+                $validated['icon'] = "fa-solid fa-" . $validated['icon'];
+            }
 
             DB::transaction(function () use (&$validated, $request, $user, $domain) {
                 if ($request->hasFile('cover')) {

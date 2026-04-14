@@ -158,11 +158,11 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="javascript:void(0);" class="dropdown-item prof">
+                        <a href="{{ route('profile.show', Auth::user()) }}" class="dropdown-item prof">
                             <i class="fa-solid fa-user"></i>
                             <span>{{ __('dashboard.header.profile') }}</span>
                         </a>
-                        <a href="javascript:void(0);" class="dropdown-item prof">
+                        <a href="{{ route('profile.edit', Auth::user()) }}" class="dropdown-item prof">
                             <i class="fa-solid fa-gear"></i>
                             <span>{{ __('dashboard.header.setting') }}</span>
                         </a>

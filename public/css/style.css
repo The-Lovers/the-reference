@@ -161,6 +161,7 @@ h2{
     box-shadow:0 18px 45px rgba(0,0,0,.09);
     transition:.45s;
     height: auto;
+    position: relative;
 }
 .card:hover{
     transform:translateY(-12px);
@@ -213,7 +214,10 @@ h2{
 }
 
 /* Swiper */
-.mySwiper {
+.mySwiper,
+.mySwiperMissions,
+.mySwiperDomains,
+.mySwiperTestimonies {
     width: 100%;
     overflow: hidden; /* 🔒 verrouillage */
 }
@@ -258,11 +262,50 @@ h2{
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:35px;
 }
+#services-destinations,
 #domains, #missions{
     margin-bottom: 10%;
 }
-#mission .card{
+#services-destinations .card{
+    height: auto !important;
+    min-height: 20rem;
+}
+.service-destination-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.service-destination-meta{
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 1rem !important;
+}
+#missions .card,
+#domains .card,
+#avis .card{
     height: 35rem !important;
+}
+.featured-badge{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .55rem .95rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #f57c00, #ffb347);
+    color: #fff;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    box-shadow: 0 10px 25px rgba(245, 124, 0, .35);
+}
+.featured-badge::before{
+    content: "\f005";
+    font: var(--fa-font-solid);
 }
 .second{
     display: flex;
@@ -314,7 +357,48 @@ h2{
 #avis .card p{
     margin-top:10px;
 }
+.testimony-card{
+    text-align: left;
+}
+.testimony-stars{
+    display: block;
+    margin-bottom: .8rem;
+}
+.testimony-card em{
+    display: inline-block;
+    margin-top: .35rem;
+    margin-bottom: .6rem;
+    color: rgba(255,255,255,.8);
+}
 
 #missions p, #missions ul{
     margin-bottom: 0 !important;
+}
+#domains p, #domains ul,
+#avis p, #avis ul{
+    margin-bottom: 0 !important;
+}
+@media (max-width: 1023px) {
+    #missions .card,
+    #domains .card,
+    #avis .card{
+        height: auto !important;
+        min-height: 32rem;
+    }
+
+    #services-destinations .card{
+        min-height: auto;
+    }
+}
+@media (max-width: 767px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+        display: none !important;
+    }
+
+    #missions .card,
+    #domains .card,
+    #avis .card{
+        min-height: auto;
+    }
 }

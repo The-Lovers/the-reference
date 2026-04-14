@@ -20,4 +20,13 @@ class DestinationRepository extends ResourceRepository
     {
         return $this->model->find($id);
     }
+
+    public function getAllWithOrder()
+    {
+        return $this->model
+            ->with('pays')
+            ->where('is_available', 1)
+            ->orderBy('label')
+            ->get();
+    }
 }

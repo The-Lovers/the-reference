@@ -3,19 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\DomainsRepository;
+use App\Repositories\DestinationRepository;
 use App\Repositories\MissionsRepository;
+use App\Repositories\ServicesRepository;
+use App\Repositories\TestimoniesRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     protected $missionRepository;
     protected $domainRepository;
+    protected $testimonyRepository;
+    protected $serviceRepository;
+    protected $destinationRepository;
 
     public function __construct(
-        MissionsRepository $missionRepository, DomainsRepository $domainRepository
+        MissionsRepository $missionRepository,
+        DomainsRepository $domainRepository,
+        TestimoniesRepository $testimonyRepository,
+        ServicesRepository $serviceRepository,
+        DestinationRepository $destinationRepository
     ) {
         $this->missionRepository = $missionRepository;
         $this->domainRepository = $domainRepository;
+        $this->testimonyRepository = $testimonyRepository;
+        $this->serviceRepository = $serviceRepository;
+        $this->destinationRepository = $destinationRepository;
     }
 
     /**
@@ -23,9 +36,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $services = $this->serviceRepository->getAllWithOrder();
+        $destinations = $this->destinationRepository->getAllWithOrder();
         $missions = $this->missionRepository->getAllWithOrder();
         $domains = $this->domainRepository->getAllWithOrder();
-        return view('index', compact('missions', 'domains'));
+        $testimonies = $this->testimonyRepository->getAllWithOrder();
+        return view('index', compact('services', 'destinations', 'missions', 'domains', 'testimonies'));
     }
 
     public function error_404()

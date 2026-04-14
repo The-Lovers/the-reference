@@ -11,11 +11,13 @@ return [
         'dashboard' => "Tableau de bord",
     ],
     'contain' => [
+        'services-destinations' => "Nos services & destinations",
         'missions' => "Notre mission & notre vision",
         'domains' => "Nos domaines d'expertise",
         'testimonies' => "Témoignages & avis de nos étudiants",
         'contact' => "Contact & Localisation",
         'btn' => "Demande d'information",
+        'featured' => "A la une",
     ],
     'footer' => [
         'rights' => "Tous droits réservés.",
