@@ -16,6 +16,16 @@ class ServicesRepository extends ResourceRepository
         return $this->model->all();
     }
 
+    public function search(?string $term = null)
+    {
+        return $this->getAllWithSearch(
+            $term,
+            ['title', 'description'],
+            [],
+            fn ($query) => $query->orderByDesc('is_featured')->orderBy('title')
+        );
+    }
+
     public function getById(int $id): ?Services
     {
         return $this->model->find($id);

@@ -22,9 +22,16 @@ class ServiceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $services = $this->servicesRepository->getAll();
+        $services = $this->servicesRepository->search($request->search);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('admin.services.partials.listing', compact('services'))->render(),
+            ]);
+        }
+
         return view('admin.services.index', compact('services'));
     }
 

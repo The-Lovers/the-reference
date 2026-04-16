@@ -47,27 +47,14 @@ class UserController extends Controller
         $this->authorize('viewAny', User::class);
 
         $fields = ['name', 'surname', 'email', 'phone', 'code'];
-        $users = $this->userRepository->getAllWithSearch(
-            $request->search,
-            $fields,
-            10
-        );
-        // $users = $this->userRepository->getAll();
-        $users->getCollection()->load('roles');
+        $users = $this->userRepository->getAllWithSearch($request->search, $fields, ['roles']);
 
         if ($request->ajax()) {
-            $users->getCollection()->transform(function (User $listedUser) {
-                $listedUser->can_edit = Auth::user()->can('update', $listedUser);
-                $listedUser->can_delete = Auth::user()->can('delete', $listedUser);
-                $listedUser->show_url = route('users.show', $listedUser);
-                $listedUser->edit_url = route('users.edit', $listedUser);
-                $listedUser->full_phone = $listedUser->full_phone;
-
-                return $listedUser;
-            });
-
-            return response()->json($users);
+            return response()->json([
+                'html' => view('admin.users.partials.listing', compact('users'))->render(),
+            ]);
         }
+
         return view('admin.users.index', compact('users'));
     }
 

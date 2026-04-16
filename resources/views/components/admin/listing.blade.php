@@ -382,9 +382,10 @@
     </style>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.reusable-listing .collapse').forEach(function (collapseEl) {
-                const trigger = document.querySelector('[data-bs-target="#' + collapseEl.id + '"]');
+        window.initializeReusableListings = function (scope = document) {
+            scope.querySelectorAll('.reusable-listing .collapse').forEach(function (collapseEl) {
+                const trigger = scope.querySelector('[data-bs-target="#' + collapseEl.id + '"]')
+                    || document.querySelector('[data-bs-target="#' + collapseEl.id + '"]');
                 const icon = trigger ? trigger.querySelector('i') : null;
 
                 if (!icon || collapseEl.dataset.listingBound === 'true') {
@@ -401,6 +402,10 @@
                     icon.classList.remove('fa-rotate-180');
                 });
             });
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            window.initializeReusableListings(document);
         });
     </script>
 @endonce

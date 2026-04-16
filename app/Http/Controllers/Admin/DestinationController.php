@@ -23,9 +23,16 @@ class DestinationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $destinations = $this->destinationRepository->getAll();
+        $destinations = $this->destinationRepository->search($request->search);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('admin.destinations.partials.listing', compact('destinations'))->render(),
+            ]);
+        }
+
         return view('admin.destinations.index', compact('destinations'));
     }
 

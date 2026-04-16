@@ -5,6 +5,7 @@ namespace App\Repositories;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
 
 abstract class ResourceRepository
 {
@@ -58,5 +59,54 @@ abstract class ResourceRepository
     public function delete(int $id): bool
     {
         return (bool) $this->findOrFail($id)->delete();
+    }
+
+    public function getAllWithSearch(
+        ?string $term = null,
+        array $fields = [],
+        array $with = [],
+        ?callable $queryCallback = null,
+    ): Collection {
+        $query = $this->model->newQuery()->with($with);
+
+        $this->applySearch($query, $term, $fields);
+
+        if ($queryCallback) {
+            $queryCallback($query);
+        }
+
+        return $query->get();
+    }
+
+    protected function applySearch(Builder $query, ?string $term, array $fields): void
+    {
+        $term = trim((string) $term);
+
+        if ($term === '' || empty($fields)) {
+            return;
+        }
+
+        $query->where(function (Builder $builder) use ($fields, $term) {
+            foreach ($fields as $field) {
+                if (is_string($field)) {
+                    $builder->orWhere($field, 'LIKE', "%{$term}%");
+                    continue;
+                }
+
+                if (!is_array($field)) {
+                    continue;
+                }
+
+                foreach ($field as $relation => $relationFields) {
+                    $relationFields = (array) $relationFields;
+
+                    $builder->orWhereHas($relation, function (Builder $relationQuery) use ($relationFields, $term) {
+                        foreach ($relationFields as $relationField) {
+                            $relationQuery->orWhere($relationField, 'LIKE', "%{$term}%");
+                        }
+                    });
+                }
+            }
+        });
     }
 }

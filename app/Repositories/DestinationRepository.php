@@ -16,6 +16,21 @@ class DestinationRepository extends ResourceRepository
         return $this->model->all();
     }
 
+    public function search(?string $term = null)
+    {
+        return $this->getAllWithSearch(
+            $term,
+            [
+                'label',
+                'description',
+                'price',
+                ['pays' => ['label_fr', 'label_en']],
+            ],
+            ['pays'],
+            fn ($query) => $query->orderBy('label')
+        );
+    }
+
     public function getById(int $id): ?Destination
     {
         return $this->model->find($id);

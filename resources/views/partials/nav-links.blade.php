@@ -19,7 +19,7 @@
 @endguest
 
 <li class="nav-item">
-    <a class="nav-link text-white" href="#">
+    <a class="nav-link text-white" href="{{ route('index', ['locale' => app()->getLocale()]) }}#contact">
         {{ __('index.nav.contact') }}
     </a>
 </li>
