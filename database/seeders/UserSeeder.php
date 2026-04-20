@@ -32,6 +32,7 @@ class UserSeeder extends Seeder
                 'email' => 'djiogaphermann@yahoo.fr',
                 'password' => 'password123',
                 'phone' => '+237651251425',
+                'code' => '+237',
                 'gender' => 'M',
                 'role' => $superAdminRole
             ],
@@ -41,9 +42,10 @@ class UserSeeder extends Seeder
                 'username' => 'Dj Naf',
                 'email' => 'jiodaadolphe@gmail.com',
                 'password' => 'password123',
-                'phone' => '+237653476952',
+                'phone' => '653476952',
+                'code' => '+237',
                 'gender' => 'M',
-                'role' => $superAdminRole
+                'role' => $adminRole
             ],
             [
                 'name' => 'SEGAIN',
@@ -51,7 +53,8 @@ class UserSeeder extends Seeder
                 'username' => 'Skaf',
                 'email' => 'kanyoualex@gmail.com',
                 'password' => 'password123',
-                'phone' => '+237681181820',
+                'phone' => '681181820',
+                'code' => '+237',
                 'gender' => 'M',
                 'role' => $adminRole
             ],
@@ -61,7 +64,8 @@ class UserSeeder extends Seeder
                 'username' => 'Brigueur',
                 'email' => 'sonfackricardo03@gmail.com',
                 'password' => 'password123',
-                'phone' => '+79808468897',
+                'phone' => '9808468897',
+                'code' => '+7',
                 'gender' => 'M',
                 'role' => $adminRole
             ],
@@ -76,6 +80,7 @@ class UserSeeder extends Seeder
                     'surname' => $u['surname'],
                     'username' => $u['username'],
                     'phone' => $u['phone'],
+                    'code' => $u['code'],
                     'gender' => $u['gender'],
                     'password' => Hash::make($u['password']),
                 ]

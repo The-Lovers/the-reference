@@ -20,6 +20,11 @@
 
             <div class="row">
                 <div class="col-md-12 mb-3">
+                    @if ($service->cover)
+                        <img src="{{ sec_asset($service->cover) }}" alt="{{ $service->title }}" class="img-fluid rounded">
+                    @endif
+                </div>
+                <div class="col-md-12 mb-3">
                     <h5>{{ __('forms.service.title') }}</h5>
                     <h6>{{ $service->title }}</h6>
                 </div>

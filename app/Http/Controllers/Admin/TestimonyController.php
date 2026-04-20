@@ -22,9 +22,16 @@ class TestimonyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $testimonies = $this->testimoniesRepository->getAll();
+        $testimonies = $this->testimoniesRepository->search($request->search);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('admin.testimonies.partials.listing', compact('testimonies'))->render(),
+            ]);
+        }
+
         return view('admin.testimonies.index', compact('testimonies'));
     }
 

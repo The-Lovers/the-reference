@@ -54,9 +54,12 @@ Route::group([
 ], function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/not-found', [HomeController::class, 'error_404'])->name('access_denied');
-    Route::post('/contact', [HomeController::class, 'contact'])->name('contact');
+    Route::get('/contact', [HomeController::class, 'contactForm'])->name('public.contact.create');
+    Route::post('/contact', [HomeController::class, 'contact'])->name('public.contact.store');
+    Route::get('/temoignages/partager', [HomeController::class, 'testimonyForm'])->name('public.testimonies.create');
+    Route::post('/temoignages/partager', [HomeController::class, 'storePublicTestimony'])->name('public.testimonies.store');
 
-    Route::middleware('auth')->group(function () {
+    Route::middleware(['auth', 'force.password.change'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::post('/notifications/read-all', [NotificationController::class, 'markAllAsRead'])->name('notifications.read-all');
         Route::post('/notifications/{notification}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');

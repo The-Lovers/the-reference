@@ -31,6 +31,8 @@ class User extends Authenticatable
         'code',
         'phone',
         'gender',
+        'force_password_change',
+        'password_changed_at',
     ];
 
     /**
@@ -51,6 +53,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'force_password_change' => 'boolean',
+        'password_changed_at' => 'datetime',
     ];
 
     public function roles() {

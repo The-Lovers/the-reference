@@ -5,6 +5,7 @@ namespace App\Http;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use App\Http\Middleware\SetLocale;
 use App\Http\Middleware\HandleEmailOrUsernameLogin;
+use App\Http\Middleware\ForcePasswordChange;
 
 class Kernel extends HttpKernel
 {
@@ -68,6 +69,7 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'force.password.change' => ForcePasswordChange::class,
     ];
 
     protected $routeMiddleware = [

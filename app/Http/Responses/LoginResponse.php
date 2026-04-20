@@ -18,6 +18,13 @@ class LoginResponse implements LoginResponseContract
 
         $locale = session('locale', app()->getLocale());
 
+        if ($request->user()?->force_password_change) {
+            return redirect()->route('profile.edit', [
+                'locale' => $locale,
+                'user' => $request->user(),
+            ])->with('warning', __('forms.profile.force_password_change'));
+        }
+
         return redirect()->intended(route('dashboard', ['locale' => $locale]));
     }
 }

@@ -18,7 +18,7 @@
         <div class="container">
             <h2 class="title">{{ __('dashboard.sidebar.destination.edit') }}</h2>
 
-            <form action="{{ route('destinations.update', $destination->id) }}" method="POST">
+            <form action="{{ route('destinations.update', $destination->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="row">
@@ -43,6 +43,14 @@
                             </select>
                             <label for="country_id">{{ __('forms.destination.country') }}</label>
                         </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="cover" class="form-label">{{ __('forms.destination.cover') }}</label>
+                        <input type="file" class="form-control" id="cover" name="cover">
+                        @if ($destination->cover)
+                            <img src="{{ sec_asset($destination->cover) }}" alt="{{ $destination->label }}" class="img-fluid mt-2" style="max-height: 120px;">
+                        @endif
                     </div>
 
                     <div class="col-md-6 mb-3">

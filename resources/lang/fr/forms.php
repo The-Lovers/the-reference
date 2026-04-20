@@ -37,6 +37,7 @@
         'service' => [
             'title' => "Titre",
             'description' => "Description",
+            'cover' => "Couverture (l'image doit être au format PNG, JPG, JPEG ou WEBP et ne pas dépasser 2 Mo)",
             'status' => [
                 'title' => "Statut",
                 'active' => "Actif",
@@ -51,6 +52,7 @@
         'destination' => [
             'label' => "Libellé",
             'description' => "Description",
+            'cover' => "Couverture (l'image doit être au format PNG, JPG, JPEG ou WEBP et ne pas dépasser 2 Mo)",
             'country' => "Pays",
             'country-placeholder' => "Sélectionner un pays",
             'availability' => [
@@ -78,5 +80,13 @@
             'status' => "Statut",
             'active' => "Actif",
             'inactive' => "Inactif",
+            'current_password' => "Mot de passe actuel",
+            'new_password' => "Nouveau mot de passe",
+            'new_password_confirmation' => "Confirmer le nouveau mot de passe",
+            'password_section' => "Sécurité du compte",
+            'password_hint' => "Laissez vide si vous ne souhaitez pas modifier votre mot de passe.",
+            'password_required' => "Vous devez définir un nouveau mot de passe avant de continuer.",
+            'current_password_invalid' => "Le mot de passe actuel est incorrect.",
+            'force_password_change' => "Pour votre première connexion, vous devez modifier votre mot de passe.",
         ],
     ];

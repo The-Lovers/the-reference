@@ -23,9 +23,16 @@ class MissionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $missions = $this->missionRepository->getAll();
+        $missions = $this->missionRepository->search($request->search);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('admin.missions.partials.listing', compact('missions'))->render(),
+            ]);
+        }
+
         return view('admin.missions.index', compact('missions'));
     }
 

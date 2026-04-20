@@ -49,9 +49,9 @@
         <p><strong>{{ __('index.slogan') }}</strong><br>
             {{ __('index.description') }}
         </p>
-        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <a href="{{ route('public.contact.create', ['locale' => app()->getLocale()]) }}" class="btn">
             {{ __('index.contain.btn') }}
-        </button>
+        </a>
     </div>
 </header>
 <style>

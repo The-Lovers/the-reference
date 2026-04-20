@@ -16,6 +16,16 @@ class TestimoniesRepository extends ResourceRepository
         return $this->model->all();
     }
 
+    public function search(?string $term = null)
+    {
+        return $this->getAllWithSearch(
+            $term,
+            ['name', 'surname', 'message', 'description', 'note'],
+            [],
+            fn ($query) => $query->orderByDesc('created_at')
+        );
+    }
+
     public function getById(int $id): ?Testimonies
     {
         return $this->model->find($id);

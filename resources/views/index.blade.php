@@ -7,36 +7,6 @@
 @endsection
 
 @section('content')
-
-<div id="lightbox" style="display:none">
-    <div class="modal">
-        <span onclick="closeBox()">&times;</span>
-
-        <h3>{{ __('index.contain.request-title') }}</h3>
-
-        @if(session('success'))
-            <p class="success">{{ session('success') }}</p>
-        @endif
-
-        <form method="POST" action="{{ route('contact') }}">
-            @csrf
-
-            <input type="text" name="nom" placeholder="Nom complet" required>
-            <input type="tel" name="telephone" placeholder="Téléphone / WhatsApp" required>
-            <input type="email" name="email" placeholder="Adresse email">
-
-            <select name="demande">
-                <option>{{ __('index.contain.requests.study-abroad') }}</option>
-                <option>{{ __('index.contain.requests.scholarships') }}</option>
-                <option>{{ __('index.contain.requests.visa-travel') }}</option>
-                <option>{{ __('index.contain.requests.admin-services') }}</option>
-                <option>{{ __('index.contain.requests.other') }}</option>
-            </select>
-
-            <button type="submit">{{ __('index.contain.request-submit') }}</button>
-        </form>
-    </div>
-</div>
     <section class="container-fluid" >
         @if ($services->isNotEmpty() || $destinations->isNotEmpty())
             <div id="services-destinations" class="container">
@@ -47,15 +17,27 @@
                             @if ($service->is_featured)
                                 <span class="featured-badge">{{ __('index.contain.featured') }}</span>
                             @endif
+                            @if ($service->cover)
+                                <img src="{{ sec_asset($service->cover) }}" alt="{{ $service->title }}">
+                            @endif
                             <span class="second">
                                 <i class="fa-solid fa-briefcase icon"></i>
                                 <strong>{{ $service->title }}</strong>
                             </span>
                             <p>{!! $service->description !!}</p>
+                            <a
+                                class="contact-trigger-btn"
+                                href="{{ route('public.contact.create', ['locale' => app()->getLocale(), 'contactable_alias' => 'service', 'contactable_id' => $service->id, 'subject' => $service->title]) }}"
+                            >
+                                {{ __('index.contain.form.contact_us') }}
+                            </a>
                         </div>
                     @endforeach
                     @foreach ($destinations as $destination)
                         <div class="card image-card service-destination-card">
+                            @if ($destination->cover)
+                                <img src="{{ sec_asset($destination->cover) }}" alt="{{ $destination->label }}">
+                            @endif
                             <span class="second">
                                 <i class="fa-solid fa-location-dot icon"></i>
                                 <strong>{{ $destination->label }}</strong>
@@ -66,6 +48,12 @@
                                 </p>
                             @endif
                             <p>{!! $destination->description !!}</p>
+                            <a
+                                class="contact-trigger-btn"
+                                href="{{ route('public.contact.create', ['locale' => app()->getLocale(), 'contactable_alias' => 'destination', 'contactable_id' => $destination->id, 'subject' => $destination->label]) }}"
+                            >
+                                {{ __('index.contain.form.contact_us') }}
+                            </a>
                         </div>
                     @endforeach
                 </div>
@@ -89,6 +77,12 @@
                                         <i class="{{ $mission->icon }} icon"></i>
                                     </span>
                                     <p>{!! $mission->description !!}</p>
+                            <a
+                                class="contact-trigger-btn"
+                                href="{{ route('public.contact.create', ['locale' => app()->getLocale(), 'contactable_alias' => 'mission', 'contactable_id' => $mission->id, 'subject' => $mission->title]) }}"
+                            >
+                                {{ __('index.contain.form.contact_us') }}
+                            </a>
                                 </div>
                             </div>
                         @empty
@@ -120,6 +114,12 @@
                                         <strong>{{ $domain->title }}</strong>
                                     </span>
                                     <p>{!! $domain->description !!}</p>
+                                    <a
+                                        class="contact-trigger-btn"
+                                        href="{{ route('public.contact.create', ['locale' => app()->getLocale(), 'contactable_alias' => 'domain', 'contactable_id' => $domain->id, 'subject' => $domain->title]) }}"
+                                    >
+                                        {{ __('index.contain.form.contact_us') }}
+                                    </a>
                                 </div>
                             </div>
                         @empty
@@ -164,6 +164,11 @@
                 <div class="swiper-button-next testimonies-next"></div>
                 <div class="swiper-button-prev testimonies-prev"></div>
             </div>
+            <div class="text-center mt-4">
+                <a href="{{ route('public.testimonies.create', ['locale' => app()->getLocale()]) }}" class="btn btn-dark rounded-pill px-4">
+                    {{ __('index.contain.testimony-page') }}
+                </a>
+            </div>
         </div>
         @endif
 
@@ -174,9 +179,17 @@
                     📞 <strong>{{ __('index.contain.contact-card.phone') }}</strong><br>653 476 952<br><br>
                     📍 <strong>{{ __('index.contain.contact-card.address') }}</strong><br>{{ __('index.contain.contact-card.address-value') }}
                 </div>
-                <div class="card">
-                    <h3>🔥 {{ __('index.contain.promotions.title') }}</h3>
-                    <p>{{ __('index.contain.promotions.line-1') }}<br>{{ __('index.contain.promotions.line-2') }}<br>{{ __('index.contain.promotions.line-3') }}</p>
+                <div class="card contact-form-card">
+                    <h3>{{ __('index.contain.request-title') }}</h3>
+                    <p class="contact-form-intro">{{ __('index.contain.form.subtitle') }}</p>
+                    <div class="d-flex flex-column gap-3">
+                        <a href="{{ route('public.contact.create', ['locale' => app()->getLocale()]) }}" class="btn btn-dark rounded-pill">
+                            {{ __('index.contain.contact-page') }}
+                        </a>
+                        <a href="{{ route('public.testimonies.create', ['locale' => app()->getLocale()]) }}" class="btn btn-outline-dark rounded-pill">
+                            {{ __('index.contain.testimony-page') }}
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -245,5 +258,36 @@
                 prevEl: '#avis .testimonies-prev',
             }
         });
+
     </script>
+
+    <style>
+        .contact-trigger-btn {
+            position: fixed;
+            bottom: 0;
+            margin-left: -35px;
+            width: 100%;
+            height: 15%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 0 0 20px 20px;
+            padding: 0.85rem 1rem;
+            background: rgba(245, 124, 0, 0.35);
+            backdrop-filter: blur(18px) saturate(160%) brightness(1.1);
+            -webkit-backdrop-filter: blur(18px) saturate(160%) brightness(1.1);
+            color: #fff;
+            font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .contact-trigger-btn:hover {
+            background: #0b3c5d;
+            color: #f57c00;
+        }
+        .contact-form-card { width: 100%; }
+        .contact-form-intro { margin-bottom: 1rem; }
+    </style>
 @endsection

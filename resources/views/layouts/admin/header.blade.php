@@ -326,5 +326,112 @@
                 window.InternalChat?.openConversation(this.dataset.chatUserId);
             });
         });
+
+        const searchInput = document.getElementById('searchInput');
+        const searchCloseButton = document.querySelector('.nxl-search-dropdown .btn-close');
+        const searchScope = document.querySelector('[data-search-scope="listing"]');
+        let searchTimeout = null;
+        let searchController = null;
+
+        const syncSearchInputState = function () {
+            if (!searchInput) {
+                return;
+            }
+
+            const currentUrl = new URL(window.location.href);
+            searchInput.value = currentUrl.searchParams.get('search') ?? '';
+            searchInput.disabled = !searchScope;
+        };
+
+        const applyListingSearch = async function (term) {
+            if (!searchScope) {
+                return;
+            }
+
+            const searchUrl = searchScope.dataset.searchUrl;
+            const currentTarget = searchScope.querySelector('[data-search-target="true"]');
+            const previousThead = currentTarget?.querySelector('thead');
+            const wasDarkTable = previousThead?.classList.contains('table-dark');
+
+            if (!searchUrl || !currentTarget) {
+                return;
+            }
+
+            if (searchController) {
+                searchController.abort();
+            }
+
+            searchController = new AbortController();
+
+            const url = new URL(searchUrl, window.location.origin);
+            if (term.trim() !== '') {
+                url.searchParams.set('search', term.trim());
+            }
+
+            try {
+                window.showPageLoader?.();
+
+                const response = await fetch(url.toString(), {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json',
+                    },
+                    signal: searchController.signal,
+                });
+
+                if (!response.ok) {
+                    throw new Error('Search request failed');
+                }
+
+                const data = await response.json();
+                searchScope.innerHTML = data.html;
+
+                const newTarget = searchScope.querySelector('[data-search-target="true"]');
+                const newThead = newTarget?.querySelector('thead');
+
+                if (wasDarkTable && newThead) {
+                    newThead.classList.remove('table-light');
+                    newThead.classList.add('table-dark');
+                }
+
+                window.initializeReusableListings?.(searchScope);
+
+                const browserUrl = new URL(window.location.href);
+                if (term.trim() !== '') {
+                    browserUrl.searchParams.set('search', term.trim());
+                } else {
+                    browserUrl.searchParams.delete('search');
+                }
+                window.history.replaceState({}, '', browserUrl);
+            } catch (error) {
+                if (error.name !== 'AbortError') {
+                    console.error(error);
+                }
+            } finally {
+                window.hidePageLoader?.();
+            }
+        };
+
+        syncSearchInputState();
+
+        searchInput?.addEventListener('input', function () {
+            clearTimeout(searchTimeout);
+
+            const term = this.value;
+
+            searchTimeout = setTimeout(() => {
+                applyListingSearch(term);
+            }, 300);
+        });
+
+        searchCloseButton?.addEventListener('click', function () {
+            if (!searchInput) {
+                return;
+            }
+
+            searchInput.value = '';
+            clearTimeout(searchTimeout);
+            applyListingSearch('');
+        });
     });
 </script>

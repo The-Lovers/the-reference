@@ -23,9 +23,16 @@ class DomainController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $domains = $this->domainRepository->getAll();
+        $domains = $this->domainRepository->search($request->search);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('admin.domains.partials.listing', compact('domains'))->render(),
+            ]);
+        }
+
         return view('admin.domains.index', compact('domains'));
     }
 
