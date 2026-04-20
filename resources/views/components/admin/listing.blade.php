@@ -363,6 +363,50 @@
             border-color: rgba(108, 117, 125, 0.18) !important;
         }
 
+        .listing-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: .35rem .7rem;
+            border-radius: 999px;
+            font-size: .8rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .listing-badge--success {
+            color: #166534;
+            background: rgba(34, 197, 94, .16);
+        }
+
+        .listing-badge--danger {
+            color: #b91c1c;
+            background: rgba(239, 68, 68, .16);
+        }
+
+        .listing-badge--warning {
+            color: #b45309;
+            background: rgba(245, 158, 11, .18);
+        }
+
+        .listing-badge--info {
+            color: #0f766e;
+            background: rgba(45, 212, 191, .18);
+        }
+
+        .listing-badge--muted {
+            color: #475569;
+            background: rgba(148, 163, 184, .18);
+        }
+
+        .listing-cover-thumb {
+            width: 56px;
+            height: 56px;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 8px 18px rgba(11, 60, 93, 0.12);
+        }
+
         .reusable-listing__actions form,
         .reusable-listing .card-footer form {
             margin: 0;

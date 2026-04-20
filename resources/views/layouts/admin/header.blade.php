@@ -369,6 +369,8 @@
             }
 
             try {
+                window.showPageLoader?.();
+
                 const response = await fetch(url.toString(), {
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest',
@@ -405,6 +407,8 @@
                 if (error.name !== 'AbortError') {
                     console.error(error);
                 }
+            } finally {
+                window.hidePageLoader?.();
             }
         };
 

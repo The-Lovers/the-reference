@@ -16,11 +16,14 @@ return [
         'domains' => "Our areas of expertise",
         'testimonies' => "Testimonials & reviews from our students",
         'contact' => "Contact & Localisation",
+        'contact-page' => "Contact page",
+        'testimony-page' => "Share a testimonial",
         'btn' => "Ask for information",
         'featured' => "Featured",
         'request-title' => "Information request",
         'request-submit' => "Send request",
         'form' => [
+            'title' => "Let's talk about your project",
             'subtitle' => "Tell us what you need and we will get back to you quickly.",
             'full_name' => "Full name",
             'phone' => "Phone / WhatsApp",
@@ -36,6 +39,13 @@ return [
             'error' => "An error occurred while sending your request.",
             'notification_title' => "New contact request",
             'notification_message' => ':name sent a request about ":subject".',
+        ],
+        'testimony-form' => [
+            'title' => "Share your testimonial",
+            'subtitle' => "Your feedback helps inspire future visitors.",
+            'success' => "Thank you, your testimonial has been sent and will be reviewed before publication.",
+            'error' => "An error occurred while sending your testimonial.",
+            'submit' => "Send my testimonial",
         ],
         'requests' => [
             'study-abroad' => "Study abroad",

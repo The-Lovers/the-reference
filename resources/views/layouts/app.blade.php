@@ -18,6 +18,12 @@
     @yield('css')
 </head>
 <body>
+    <div id="globalPageLoader" class="global-page-loader is-visible" aria-live="polite" aria-busy="true">
+        <div class="global-page-loader__box">
+            <span class="global-page-loader__spinner"></span>
+            <span class="global-page-loader__text">Chargement...</span>
+        </div>
+    </div>
     <main>
         @yield('header')
         <x-popUp.popup />
@@ -67,6 +73,14 @@
                     document.getElementById(formId).submit();
                 }
             }
+
+            window.showPageLoader = function () {
+                document.getElementById('globalPageLoader')?.classList.add('is-visible');
+            };
+
+            window.hidePageLoader = function () {
+                document.getElementById('globalPageLoader')?.classList.remove('is-visible');
+            };
         </script>
 
     </main>
@@ -80,7 +94,78 @@
     <script>
         function openBox(){ document.getElementById('lightbox').style.display='flex'; }
         function closeBox(){ document.getElementById('lightbox').style.display='none'; }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(() => window.hidePageLoader?.(), 350);
+
+            document.querySelectorAll('a[href]').forEach((link) => {
+                link.addEventListener('click', function () {
+                    const href = this.getAttribute('href');
+
+                    if (!href || href.startsWith('#') || this.target === '_blank' || this.hasAttribute('download')) {
+                        return;
+                    }
+
+                    if (href.startsWith('javascript:') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+                        return;
+                    }
+
+                    window.showPageLoader?.();
+                });
+            });
+
+            document.querySelectorAll('form').forEach((form) => {
+                form.addEventListener('submit', function () {
+                    window.showPageLoader?.();
+                });
+            });
+        });
     </script>
+    <style>
+        .global-page-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, .82);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .25s ease, visibility .25s ease;
+        }
+        .global-page-loader.is-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .global-page-loader__box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .9rem;
+            padding: 1.5rem 1.8rem;
+            border-radius: 24px;
+            background: linear-gradient(145deg, #ffffff, #f5f7fb);
+            box-shadow: 0 20px 50px rgba(11, 60, 93, .16);
+        }
+        .global-page-loader__spinner {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 4px solid rgba(11, 60, 93, .14);
+            border-top-color: #0b3c5d;
+            animation: globalPageLoaderSpin .8s linear infinite;
+        }
+        .global-page-loader__text {
+            font-weight: 700;
+            color: #0b3c5d;
+            letter-spacing: .02em;
+        }
+        @keyframes globalPageLoaderSpin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
     @yield('js')
 </body>
 </html>

@@ -16,11 +16,14 @@ return [
         'domains' => "Nos domaines d'expertise",
         'testimonies' => "Témoignages & avis de nos étudiants",
         'contact' => "Contact & Localisation",
+        'contact-page' => "Page de contact",
+        'testimony-page' => "Partager un témoignage",
         'btn' => "Demande d'information",
         'featured' => "A la une",
         'request-title' => "Demande d'information",
         'request-submit' => "Envoyer la demande",
         'form' => [
+            'title' => "Parlons de votre projet",
             'subtitle' => "Décrivez votre besoin et nous vous recontacterons rapidement.",
             'full_name' => "Nom complet",
             'phone' => "Téléphone / WhatsApp",
@@ -36,6 +39,13 @@ return [
             'error' => "Une erreur est survenue lors de l'envoi de votre demande.",
             'notification_title' => "Nouvelle demande de contact",
             'notification_message' => ':name a envoyé une demande à propos de ":subject".',
+        ],
+        'testimony-form' => [
+            'title' => "Partagez votre témoignage",
+            'subtitle' => "Votre retour d'expérience nous aide à inspirer les prochains visiteurs.",
+            'success' => "Merci, votre témoignage a bien été envoyé et sera examiné avant publication.",
+            'error' => "Une erreur est survenue lors de l'envoi de votre témoignage.",
+            'submit' => "Envoyer mon témoignage",
         ],
         'requests' => [
             'study-abroad' => "Études à l'étranger",

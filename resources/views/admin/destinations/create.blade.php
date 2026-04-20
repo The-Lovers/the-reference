@@ -18,7 +18,7 @@
         <div class="container">
             <h2 class="title">{{ __('dashboard.sidebar.destination.create') }}</h2>
 
-            <form action="{{ route('destinations.store') }}" method="POST">
+            <form action="{{ route('destinations.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -40,6 +40,11 @@
                             </select>
                             <label for="country_id">{{ __('forms.destination.country') }}</label>
                         </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="cover" class="form-label">{{ __('forms.destination.cover') }}</label>
+                        <input type="file" class="form-control" id="cover" name="cover" required>
                     </div>
 
                     <div class="col-md-6 mb-3">

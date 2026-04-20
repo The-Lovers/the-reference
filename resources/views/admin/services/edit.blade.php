@@ -18,7 +18,7 @@
         <div class="container">
             <h2 class="title">{{ __('dashboard.sidebar.service.edit') }}</h2>
 
-            <form action="{{ route('services.update', $service->id) }}" method="POST">
+            <form action="{{ route('services.update', $service->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="row">
@@ -37,6 +37,14 @@
                             </select>
                             <label for="is_active">{{ __('forms.service.status.title') }}</label>
                         </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="cover" class="form-label">{{ __('forms.service.cover') }}</label>
+                        <input type="file" class="form-control" id="cover" name="cover">
+                        @if ($service->cover)
+                            <img src="{{ sec_asset($service->cover) }}" alt="{{ $service->title }}" class="img-fluid mt-2" style="max-height: 120px;">
+                        @endif
                     </div>
 
                     <div class="col-md-6 mb-3">

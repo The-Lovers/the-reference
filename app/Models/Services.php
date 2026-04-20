@@ -14,6 +14,7 @@ class Services extends Model
     protected $fillable = [
         'title',
         'description',
+        'cover',
         'is_active',
         'is_featured',
         'created_by',

@@ -13,6 +13,7 @@ class Destination extends Model
      protected $fillable = [
         'label',
         'description',
+        'cover',
         'country_id',
         'image_url',
         'price',

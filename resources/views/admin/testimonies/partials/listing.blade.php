@@ -19,7 +19,9 @@
         ],
         [
             'label' => 'Status',
-            'value' => fn ($testimony) => $testimony->status ? 'Published' : 'Draft',
+            'value' => fn ($testimony) => $testimony->status
+                ? '<span class="listing-badge listing-badge--success">Published</span>'
+                : '<span class="listing-badge listing-badge--warning">Draft</span>',
         ],
     ];
 

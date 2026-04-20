@@ -6,6 +6,13 @@
             'show_in_accordion' => false,
         ],
         [
+            'label' => 'Cover',
+            'value' => fn ($service) => $service->cover
+                ? '<img src="' . e(sec_asset($service->cover)) . '" alt="' . e($service->title) . '" class="listing-cover-thumb">'
+                : '-',
+            'show_in_accordion' => false,
+        ],
+        [
             'label' => 'Title',
             'field' => 'title',
         ],
@@ -15,11 +22,15 @@
         ],
         [
             'label' => 'Active',
-            'value' => fn ($service) => $service->is_active ? 'Yes' : 'No',
+            'value' => fn ($service) => $service->is_active
+                ? '<span class="listing-badge listing-badge--success">Yes</span>'
+                : '<span class="listing-badge listing-badge--danger">No</span>',
         ],
         [
             'label' => 'Featured',
-            'value' => fn ($service) => $service->is_featured ? 'Yes' : 'No',
+            'value' => fn ($service) => $service->is_featured
+                ? '<span class="listing-badge listing-badge--info">Yes</span>'
+                : '<span class="listing-badge listing-badge--muted">No</span>',
         ],
     ];
 

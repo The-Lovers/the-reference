@@ -8,6 +8,7 @@ use App\Models\Destination;
 use App\Models\Domains;
 use App\Models\Missions;
 use App\Models\Services;
+use App\Models\Testimonies;
 use App\Models\User;
 use App\Notifications\ContactRequestNotification;
 use App\Repositories\DomainsRepository;
@@ -52,6 +53,19 @@ class HomeController extends Controller
         $domains = $this->domainRepository->getAllWithOrder();
         $testimonies = $this->testimonyRepository->getAllWithOrder();
         return view('index', compact('services', 'destinations', 'missions', 'domains', 'testimonies'));
+    }
+
+    public function contactForm(Request $request)
+    {
+        $context = $this->resolveContactContext(
+            $request->string('contactable_alias')->toString() ?: null,
+            $request->integer('contactable_id') ?: null
+        );
+
+        return view('public.contact', [
+            'contactContext' => $context,
+            'prefilledSubject' => $request->string('subject')->toString() ?: ($context['label'] ?? ''),
+        ]);
     }
 
     public function contact(Request $request)
@@ -123,7 +137,7 @@ class HomeController extends Controller
             }
 
             return redirect()
-                ->to(route('index', ['locale' => app()->getLocale()]) . '#contact-form')
+                ->route('public.contact.create', ['locale' => app()->getLocale()])
                 ->with('success', __('index.contain.form.success'));
         } catch (\Throwable $e) {
             Log::error('Contact request submission failed: ' . $e->getMessage(), [
@@ -134,6 +148,55 @@ class HomeController extends Controller
                 ->back()
                 ->withInput()
                 ->with('error', __('index.contain.form.error'));
+        }
+    }
+
+    public function testimonyForm()
+    {
+        return view('public.testimony');
+    }
+
+    public function storePublicTestimony(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'note' => ['nullable', 'integer', 'between:1,5'],
+            'message' => ['required', 'string', 'max:4000'],
+            'description' => ['nullable', 'string', 'max:1000'],
+            'avatar' => ['nullable', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2048'],
+        ]);
+
+        try {
+            if ($request->hasFile('avatar')) {
+                $file = $request->file('avatar');
+                $filename = 'testimony_' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('uploads/testimonies'), $filename);
+                $validated['avatar'] = 'uploads/testimonies/' . $filename;
+            }
+
+            Testimonies::create([
+                'name' => $validated['name'],
+                'surname' => $validated['surname'],
+                'note' => $validated['note'] ?? null,
+                'message' => $validated['message'],
+                'description' => $validated['description'] ?? null,
+                'status' => false,
+                'avatar' => $validated['avatar'] ?? null,
+            ]);
+
+            return redirect()
+                ->route('public.testimonies.create', ['locale' => app()->getLocale()])
+                ->with('success', __('index.contain.testimony-form.success'));
+        } catch (\Throwable $e) {
+            Log::error('Public testimony submission failed: ' . $e->getMessage(), [
+                'exception' => $e,
+            ]);
+
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', __('index.contain.testimony-form.error'));
         }
     }
 

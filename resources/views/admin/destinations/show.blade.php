@@ -20,6 +20,11 @@
 
             <div class="row">
                 <div class="col-md-12 mb-3">
+                    @if ($destination->cover)
+                        <img src="{{ sec_asset($destination->cover) }}" alt="{{ $destination->label }}" class="img-fluid rounded">
+                    @endif
+                </div>
+                <div class="col-md-12 mb-3">
                     <h5>{{ __('forms.destination.label') }}</h5>
                     <h6>{{ $destination->label }}</h6>
                 </div>

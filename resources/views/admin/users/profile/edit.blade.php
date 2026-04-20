@@ -24,6 +24,13 @@
             @csrf
             @method('PATCH')
             <div class="row">
+                @if ($user->force_password_change)
+                    <div class="col-md-12">
+                        <div class="alert alert-warning">
+                            {{ __('forms.profile.force_password_change') }}
+                        </div>
+                    </div>
+                @endif
                 <div class="col-md-12">
                     <div class="mb-4 text-center">
                         <img
@@ -100,9 +107,44 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12 mt-4">
+                    <h4>{{ __('forms.profile.password_section') }}</h4>
+                    <p class="text-muted">{{ __('forms.profile.password_hint') }}</p>
+                </div>
+                @unless ($user->force_password_change)
+                    <div class="col-md-12">
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="current_password" name="current_password">
+                            <label for="current_password">{{ __('forms.profile.current_password') }}</label>
+                        </div>
+                        @error('current_password')
+                            <small class="text-danger d-block mb-3">{{ $message }}</small>
+                        @enderror
+                    </div>
+                @endunless
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password" name="password" {{ $user->force_password_change ? 'required' : '' }}>
+                        <label for="password">{{ __('forms.profile.new_password') }}</label>
+                    </div>
+                    @error('password')
+                        <small class="text-danger d-block mb-3">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" {{ $user->force_password_change ? 'required' : '' }}>
+                        <label for="password_confirmation">{{ __('forms.profile.new_password_confirmation') }}</label>
+                    </div>
+                    @error('password_confirmation')
+                        <small class="text-danger d-block mb-3">{{ $message }}</small>
+                    @enderror
+                </div>
                 <div class="col-md-12 my-5">
                     <div class="buttons">
-                        <a type="button" class="btn secondary" href="{{ route('profile.show', $user) }}">{{ __('buttons.cancel') }}</a>
+                        @unless ($user->force_password_change)
+                            <a type="button" class="btn secondary" href="{{ route('profile.show', $user) }}">{{ __('buttons.cancel') }}</a>
+                        @endunless
                         <button type="submit" class="btn success" id="validate">{{ __('buttons.confirm') }}</button>
                     </div>
                 </div>

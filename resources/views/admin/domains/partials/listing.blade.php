@@ -16,12 +16,16 @@
         ],
         [
             'label' => __('domains.index.status.title'),
-            'value' => fn ($domain) => $domain->status ? __('domains.index.status.1') : __('domains.index.status.0'),
+            'value' => fn ($domain) => $domain->status
+                ? '<span class="listing-badge listing-badge--success">' . e(__('domains.index.status.1')) . '</span>'
+                : '<span class="listing-badge listing-badge--danger">' . e(__('domains.index.status.0')) . '</span>',
             'td_class' => 'action',
         ],
         [
             'label' => __('domains.index.featured.title'),
-            'value' => fn ($domain) => $domain->is_featured ? __('domains.index.featured.1') : __('domains.index.featured.0'),
+            'value' => fn ($domain) => $domain->is_featured
+                ? '<span class="listing-badge listing-badge--info">' . e(__('domains.index.featured.1')) . '</span>'
+                : '<span class="listing-badge listing-badge--muted">' . e(__('domains.index.featured.0')) . '</span>',
             'td_class' => 'action',
         ],
         [

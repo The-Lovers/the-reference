@@ -6,6 +6,13 @@
             'show_in_accordion' => false,
         ],
         [
+            'label' => 'Cover',
+            'value' => fn ($destination) => $destination->cover
+                ? '<img src="' . e(sec_asset($destination->cover)) . '" alt="' . e($destination->label) . '" class="listing-cover-thumb">'
+                : '-',
+            'show_in_accordion' => false,
+        ],
+        [
             'label' => 'Label',
             'field' => 'label',
         ],
@@ -25,7 +32,9 @@
         ],
         [
             'label' => 'Available',
-            'value' => fn ($destination) => $destination->is_available ? 'Yes' : 'No',
+            'value' => fn ($destination) => $destination->is_available
+                ? '<span class="listing-badge listing-badge--success">Yes</span>'
+                : '<span class="listing-badge listing-badge--danger">No</span>',
         ],
     ];
 

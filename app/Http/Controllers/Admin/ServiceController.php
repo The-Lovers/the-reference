@@ -51,15 +51,24 @@ class ServiceController extends Controller
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
+            'cover' => ['required', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2048'],
             'is_active' => ['required', 'in:0,1'],
             'is_featured' => ['required', 'in:0,1'],
             'action' => ['required', 'string'],
         ]);
 
         try {
+            if ($request->hasFile('cover')) {
+                $file = $request->file('cover');
+                $filename = 'service_' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('uploads/services'), $filename);
+                $validated['cover'] = 'uploads/services/' . $filename;
+            }
+
             $service = Services::create([
                 'title' => $validated['title'],
                 'description' => $validated['description'] ?? null,
+                'cover' => $validated['cover'] ?? null,
                 'is_active' => (bool) $validated['is_active'],
                 'is_featured' => (bool) $validated['is_featured'],
                 'created_by' => Auth::id(),
@@ -106,15 +115,28 @@ class ServiceController extends Controller
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
+            'cover' => ['nullable', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2048'],
             'is_active' => ['required', 'in:0,1'],
             'is_featured' => ['required', 'in:0,1'],
             'action' => ['required', 'string'],
         ]);
 
         try {
+            if ($request->hasFile('cover')) {
+                if ($service->cover && file_exists(public_path($service->cover))) {
+                    unlink(public_path($service->cover));
+                }
+
+                $file = $request->file('cover');
+                $filename = 'service_' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('uploads/services'), $filename);
+                $validated['cover'] = 'uploads/services/' . $filename;
+            }
+
             $service->update([
                 'title' => $validated['title'],
                 'description' => $validated['description'] ?? null,
+                'cover' => $validated['cover'] ?? $service->cover,
                 'is_active' => (bool) $validated['is_active'],
                 'is_featured' => (bool) $validated['is_featured'],
                 'updated_by' => Auth::id(),
@@ -144,6 +166,9 @@ class ServiceController extends Controller
     {
         try {
             app(AdminActivityNotifier::class)->notify(Auth::user(), 'deleted', 'service', $service);
+            if ($service->cover && file_exists(public_path($service->cover))) {
+                unlink(public_path($service->cover));
+            }
             $service->delete();
             return redirect()->route('services.index')
                 ->with('success', __('infos.service.deletion-success'));

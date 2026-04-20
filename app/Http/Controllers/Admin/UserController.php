@@ -104,6 +104,7 @@ class UserController extends Controller
                     'code' => $validated['code'],
                     'phone' => $validated['phone'],
                     'password' => Hash::make($password),
+                    'force_password_change' => true,
                 ]);
 
                 $user->roles()->attach($validated['role']);
@@ -319,6 +320,8 @@ class UserController extends Controller
             'phone' => ['required', 'string'],
             'code' => ['required', 'string'],
             'avatar' => ['nullable', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2048'],
+            'current_password' => ['nullable', 'string'],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
         ]);
 
         try {
@@ -338,6 +341,27 @@ class UserController extends Controller
                 }
 
                 $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
+            }
+
+            $mustChangePassword = $user->force_password_change;
+            $newPassword = trim((string) $request->input('password'));
+
+            if ($mustChangePassword && $newPassword === '') {
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors(['password' => __('forms.profile.password_required')]);
+            }
+
+            if (!$mustChangePassword && $newPassword !== '' && !Hash::check((string) $request->input('current_password'), (string) $user->password)) {
+                return redirect()->back()
+                    ->withInput()
+                    ->withErrors(['current_password' => __('forms.profile.current_password_invalid')]);
+            }
+
+            if ($newPassword !== '') {
+                $data['password'] = Hash::make($newPassword);
+                $data['force_password_change'] = false;
+                $data['password_changed_at'] = now();
             }
 
             $user->update($data);

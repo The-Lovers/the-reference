@@ -49,7 +49,7 @@
         <p><strong>{{ __('index.slogan') }}</strong><br>
             {{ __('index.description') }}
         </p>
-        <a href="#contact-form" class="btn">
+        <a href="{{ route('public.contact.create', ['locale' => app()->getLocale()]) }}" class="btn">
             {{ __('index.contain.btn') }}
         </a>
     </div>

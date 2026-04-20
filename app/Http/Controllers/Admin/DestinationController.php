@@ -53,15 +53,24 @@ class DestinationController extends Controller
         $validated = $request->validate([
             'label' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
+            'cover' => ['required', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2048'],
             'country_id' => ['required', 'exists:countries,id'],
             'is_available' => ['required', 'in:0,1'],
             'action' => ['required', 'string'],
         ]);
 
         try {
+            if ($request->hasFile('cover')) {
+                $file = $request->file('cover');
+                $filename = 'destination_' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('uploads/destinations'), $filename);
+                $validated['cover'] = 'uploads/destinations/' . $filename;
+            }
+
             $destination = Destination::create([
                 'label' => $validated['label'],
                 'description' => $validated['description'] ?? null,
+                'cover' => $validated['cover'] ?? null,
                 'country_id' => $validated['country_id'],
                 'is_available' => (bool) $validated['is_available'],
             ]);
@@ -109,15 +118,28 @@ class DestinationController extends Controller
         $validated = $request->validate([
             'label' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
+            'cover' => ['nullable', 'image', 'mimes:png,jpg,jpeg,webp', 'max:2048'],
             'country_id' => ['required', 'exists:countries,id'],
             'is_available' => ['required', 'in:0,1'],
             'action' => ['required', 'string'],
         ]);
 
         try {
+            if ($request->hasFile('cover')) {
+                if ($destination->cover && file_exists(public_path($destination->cover))) {
+                    unlink(public_path($destination->cover));
+                }
+
+                $file = $request->file('cover');
+                $filename = 'destination_' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('uploads/destinations'), $filename);
+                $validated['cover'] = 'uploads/destinations/' . $filename;
+            }
+
             $destination->update([
                 'label' => $validated['label'],
                 'description' => $validated['description'] ?? null,
+                'cover' => $validated['cover'] ?? $destination->cover,
                 'country_id' => $validated['country_id'],
                 'is_available' => (bool) $validated['is_available'],
             ]);
@@ -146,6 +168,9 @@ class DestinationController extends Controller
     {
         try {
             app(AdminActivityNotifier::class)->notify(Auth::user(), 'deleted', 'destination', $destination);
+            if ($destination->cover && file_exists(public_path($destination->cover))) {
+                unlink(public_path($destination->cover));
+            }
             $destination->delete();
             return redirect()->route('destinations.index')
                 ->with('success', __('infos.destination.deletion-success'));

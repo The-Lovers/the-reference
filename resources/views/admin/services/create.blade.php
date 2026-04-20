@@ -18,7 +18,7 @@
         <div class="container">
             <h2 class="title">{{ __('dashboard.sidebar.service.create') }}</h2>
 
-            <form action="{{ route('services.store') }}" method="POST">
+            <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -36,6 +36,11 @@
                             </select>
                             <label for="is_active">{{ __('forms.service.status.title') }}</label>
                         </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="cover" class="form-label">{{ __('forms.service.cover') }}</label>
+                        <input type="file" class="form-control" id="cover" name="cover" required>
                     </div>
 
                     <div class="col-md-6 mb-3">

@@ -16,12 +16,16 @@
         ],
         [
             'label' => __('missions.index.status.title'),
-            'value' => fn ($mission) => $mission->status ? __('missions.index.status.1') : __('missions.index.status.0'),
+            'value' => fn ($mission) => $mission->status
+                ? '<span class="listing-badge listing-badge--success">' . e(__('missions.index.status.1')) . '</span>'
+                : '<span class="listing-badge listing-badge--danger">' . e(__('missions.index.status.0')) . '</span>',
             'td_class' => 'action',
         ],
         [
             'label' => __('missions.index.featured.title'),
-            'value' => fn ($mission) => $mission->is_featured ? __('missions.index.featured.1') : __('missions.index.featured.0'),
+            'value' => fn ($mission) => $mission->is_featured
+                ? '<span class="listing-badge listing-badge--info">' . e(__('missions.index.featured.1')) . '</span>'
+                : '<span class="listing-badge listing-badge--muted">' . e(__('missions.index.featured.0')) . '</span>',
             'td_class' => 'action',
         ],
         [
