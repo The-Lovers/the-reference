@@ -17,7 +17,7 @@ body{
 }
 header{
     padding-bottom: 25rem;
-    background:linear-gradient(rgba(11,60,93,.75),rgba(11,60,93,.75)),url('../storage/app/public/images/background.jpeg') center/cover;
+    background:linear-gradient(rgba(11,60,93,.75),rgba(11,60,93,.75)),url('../images/background.jpeg') center/cover;
     color:white;
     align-items:center;
     text-align:center;
@@ -401,4 +401,12 @@ h2{
     #avis .card{
         min-height: auto;
     }
+}
+.nxl-caption a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    gap: 0.5rem;
+    flex-direction: row;
 }

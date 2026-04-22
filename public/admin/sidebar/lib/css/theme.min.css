@@ -2612,12 +2612,12 @@ html.minimenu .nxl-navigation .navbar-content .nxl-caption {
 html.minimenu .nxl-navigation .navbar-content .nxl-caption:before {
     top: 0;
     display: flex;
+    flex-direction: row;
     align-items: center;
     width: 100%;
     height: 100%;
     font-size: 16px;
     padding-left: 20px;
-    content: "\e9a4";
     position: absolute;
     font-family: feather !important;
 }
