@@ -13,9 +13,8 @@
             <ul class="nxl-navbar">
                 <li class="nxl-item nxl-caption">
                     <a href="{{ route('dashboard') }}">
-                        <span class="nxl-mtext">
-                            {{ __('dashboard.sidebar.dashboard') }}
-                        </span>
+                        <span class="nxl-micon"><i class="fa-solid fa-airplay"></i></span>
+                        <span class="nxl-mtext">{{ __('dashboard.sidebar.dashboard') }}</span>
                     </a>
                 </li>
                 <li class="nxl-item nxl-hasmenu">

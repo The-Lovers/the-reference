@@ -47,11 +47,11 @@
                     <a href="javascript:void(0);" class="nxl-head-link me-0 nxl-language-link" data-bs-toggle="dropdown" data-bs-auto-close="outside">
                         @if(app()->getLocale() === 'fr')
                             <a class="dropdown-item d-flex align-items-center" href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'fr'])) }}">
-                                <img src="{{ sec_asset('images/flags/fr.svg') }}" class="me-1" alt="Fr">
+                                <img src="{{ sec_asset('images/fr.png') }}" class="me-1" alt="Fr">
                             </a>
                         @else
                             <a class="dropdown-item d-flex align-items-center" href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}">
-                                <img src="{{ sec_asset('images/flags/us.svg') }}" class="me-1" alt="En">
+                                <img src="{{ sec_asset('images/us.png') }}" class="me-1" alt="En">
                             </a>
                         @endif
                         @php
@@ -272,13 +272,13 @@
         const expendButton = document.getElementById('menu-expend-button');
 
         miniButton?.addEventListener('click', function () {
-            document.querySelectorAll('.b-brand .title, .b-brand .nxl-mtext').forEach((element) => {
+            document.querySelectorAll('.b-brand .title, .b-brand .nxl-mtext, .nxl-caption .nxl-mtext').forEach((element) => {
                 element.classList.add('d-none');
             });
         });
 
         expendButton?.addEventListener('click', function () {
-            document.querySelectorAll('.b-brand .title, .b-brand .nxl-mtext').forEach((element) => {
+            document.querySelectorAll('.b-brand .title, .b-brand .nxl-mtext, .nxl-caption .nxl-mtext').forEach((element) => {
                 element.classList.remove('d-none');
             });
         });
