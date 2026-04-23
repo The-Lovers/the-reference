@@ -1,8 +1,8 @@
-<header>
+<header style="--guest-header-bg: url('{{ sec_asset('images/background.jpeg') }}');">
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute w-100">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ route('index') }}">
-                <img src="{{ sec_asset('storage/app/public/logo/logo.png') }}" class="img-fluid" style="height:40px; width:auto;">
+                <img src="{{ sec_asset('images/logo.png') }}" class="img-fluid" style="height:40px; width:auto;" alt="Logo">
 
                 <!-- Caché en mobile -->
                 <span class="title d-none d-lg-inline ms-2 text-white">
@@ -55,6 +55,12 @@
     </div>
 </header>
 <style>
+    header {
+        background:
+            linear-gradient(rgba(11,60,93,.75), rgba(11,60,93,.75)),
+            var(--guest-header-bg) center / cover no-repeat;
+    }
+
     .navbar-toggler {
         border-color: rgba(255,255,255,0.5);
     }

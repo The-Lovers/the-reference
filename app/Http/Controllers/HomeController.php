@@ -202,8 +202,14 @@ class HomeController extends Controller
 
     public function error_404()
     {
-        return view('layouts.not_found');
+        return response()->view('layouts.not_found', [], 404);
     }
+
+    public function error_403()
+    {
+        return response()->view('layouts.access_denied', [], 403);
+    }
+
     public function mail()
     {
         return view('mail.user_create');

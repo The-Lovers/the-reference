@@ -126,4 +126,62 @@ return [
             'reset' => "Réinitialiser",
         ],
     ],
+    'overview' => [
+        'unknown' => 'Element sans titre',
+        'interest_label' => 'Sollicitations',
+        'chart_no_data' => 'Aucune sollicitation pour le moment',
+        'cards' => [
+            'meta' => ':interested element(s) sur :total ont suscite de l interet',
+            'missions' => ['title' => 'Missions'],
+            'domains' => ['title' => 'Domaines'],
+            'services' => ['title' => 'Services'],
+            'destinations' => ['title' => 'Destinations'],
+        ],
+        'charts' => [
+            'services' => [
+                'title' => 'Services les plus sollicites',
+                'subtitle' => 'Nombre de demandes de contact recues par service',
+            ],
+            'missions' => [
+                'title' => 'Missions les plus sollicitees',
+                'subtitle' => 'Interet observe sur les missions',
+            ],
+            'domains' => [
+                'title' => 'Domaines les plus sollicites',
+                'subtitle' => 'Interet observe sur les domaines',
+            ],
+            'destinations' => [
+                'title' => 'Destinations les plus sollicitees',
+                'subtitle' => 'Interet observe sur les destinations',
+            ],
+        ],
+        'best_testimonies' => [
+            'title' => 'Meilleurs temoignages',
+            'subtitle' => 'Avis publies avec les meilleures notes',
+        ],
+        'worst_testimonies' => [
+            'title' => 'Mauvais avis',
+            'subtitle' => 'Avis publies a surveiller en priorite',
+        ],
+        'most_solicited' => [
+            'title' => 'Elements les plus sollicites',
+            'subtitle' => 'Missions, services, domaines et destinations confondus',
+            'count' => ':count demande(s)',
+        ],
+        'user_activity' => [
+            'title' => 'Activite des utilisateurs',
+            'subtitle' => 'Part des creations par utilisateur',
+            'breakdown' => 'Missions : :missions, Domaines : :domains, Services : :services, Destinations : :destinations',
+        ],
+        'empty' => [
+            'best_testimonies' => 'Aucun temoignage positif publie pour le moment.',
+            'worst_testimonies' => 'Aucun mauvais avis publie pour le moment.',
+            'most_solicited' => 'Aucun element n a encore ete sollicite.',
+            'user_activity' => 'Aucune activite de creation enregistree.',
+        ],
+    ],
+    'footer' => [
+        'caption' => ':app administration',
+        'rights' => 'Copyright © :year. Tous droits reserves.',
+    ],
 ];
