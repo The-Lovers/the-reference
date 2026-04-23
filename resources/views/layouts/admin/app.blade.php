@@ -47,6 +47,7 @@
                 </div>
             </div>
             @yield('content_2')
+            @include('layouts.admin.footer')
         </div>
     </main>
 @endsection

@@ -89,4 +89,62 @@ return [
             'reset' => "Clear form",
         ],
     ],
+    'overview' => [
+        'unknown' => 'Untitled item',
+        'interest_label' => 'Requests',
+        'chart_no_data' => 'No requests yet',
+        'cards' => [
+            'meta' => ':interested item(s) out of :total generated interest',
+            'missions' => ['title' => 'Missions'],
+            'domains' => ['title' => 'Domains'],
+            'services' => ['title' => 'Services'],
+            'destinations' => ['title' => 'Destinations'],
+        ],
+        'charts' => [
+            'services' => [
+                'title' => 'Most requested services',
+                'subtitle' => 'Number of contact requests received per service',
+            ],
+            'missions' => [
+                'title' => 'Most requested missions',
+                'subtitle' => 'Measured interest across missions',
+            ],
+            'domains' => [
+                'title' => 'Most requested domains',
+                'subtitle' => 'Measured interest across domains',
+            ],
+            'destinations' => [
+                'title' => 'Most requested destinations',
+                'subtitle' => 'Measured interest across destinations',
+            ],
+        ],
+        'best_testimonies' => [
+            'title' => 'Best testimonies',
+            'subtitle' => 'Published reviews with the highest scores',
+        ],
+        'worst_testimonies' => [
+            'title' => 'Worst reviews',
+            'subtitle' => 'Published reviews that need attention first',
+        ],
+        'most_solicited' => [
+            'title' => 'Most requested items',
+            'subtitle' => 'Across missions, services, domains and destinations',
+            'count' => ':count request(s)',
+        ],
+        'user_activity' => [
+            'title' => 'User activity',
+            'subtitle' => 'Share of created items per user',
+            'breakdown' => 'Missions: :missions, Domains: :domains, Services: :services, Destinations: :destinations',
+        ],
+        'empty' => [
+            'best_testimonies' => 'No positive published testimony yet.',
+            'worst_testimonies' => 'No negative published review yet.',
+            'most_solicited' => 'No item has been requested yet.',
+            'user_activity' => 'No creation activity recorded yet.',
+        ],
+    ],
+    'footer' => [
+        'caption' => ':app administration',
+        'rights' => 'Copyright © :year. All rights reserved.',
+    ],
 ];

@@ -43,35 +43,40 @@
                         </div>
                     </div>
                 </div>
-                <div class="dropdown nxl-h-item nxl-header-language d-none d-sm-flex">
-                    <a href="javascript:void(0);" class="nxl-head-link me-0 nxl-language-link" data-bs-toggle="dropdown" data-bs-auto-close="outside">
-                        @if(app()->getLocale() === 'fr')
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'fr'])) }}">
+                <div class="nxl-h-item nxl-header-language d-none d-sm-flex">
+                    <div class="dropdown">
+                        <a
+                            href="#"
+                            class="nxl-head-link me-0 nxl-language-link"
+                            data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside"
+                            role="button"
+                            aria-expanded="false"
+                        >
+                            @if(app()->getLocale() === 'fr')
                                 <img src="{{ sec_asset('images/fr.png') }}" class="me-1" alt="Fr">
-                            </a>
-                        @else
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}">
+                            @else
                                 <img src="{{ sec_asset('images/us.png') }}" class="me-1" alt="En">
-                            </a>
-                        @endif
-                        @php
-                            $active = 'active';
-                        @endphp
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-language-dropdown">
-                        <div class="language-items-wrapper">
-                            <div class="row px-4 pt-3">
-                                <div class="col-sm-4 col-6 language_select @if(app()->getLocale() === 'fr') {{ $active }} @endif">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ sec_asset('images/fr.png') }}" alt="" class="img-fluid" /></div>
-                                        <span>{{ __('dashboard.header.fr') }}</span>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 col-6 language_select @if(app()->getLocale() === 'en') {{ $active }} @endif">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ sec_asset('images/us.png') }}" alt="" class="img-fluid" /></div>
-                                        <span>{{ __('dashboard.header.en') }}</span>
-                                    </a>
+                            @endif
+                            @php
+                                $active = 'active';
+                            @endphp
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-language-dropdown">
+                            <div class="language-items-wrapper">
+                                <div class="row px-4 pt-3">
+                                    <div class="col-sm-4 col-6 language_select @if(app()->getLocale() === 'fr') {{ $active }} @endif">
+                                        <a href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'fr'])) }}" class="d-flex align-items-center gap-2">
+                                            <div class="avatar-image avatar-sm"><img src="{{ sec_asset('images/fr.png') }}" alt="" class="img-fluid" /></div>
+                                            <span>{{ __('dashboard.header.fr') }}</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-4 col-6 language_select @if(app()->getLocale() === 'en') {{ $active }} @endif">
+                                        <a href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}" class="d-flex align-items-center gap-2">
+                                            <div class="avatar-image avatar-sm"><img src="{{ sec_asset('images/us.png') }}" alt="" class="img-fluid" /></div>
+                                            <span>{{ __('dashboard.header.en') }}</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

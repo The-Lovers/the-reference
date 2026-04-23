@@ -102,6 +102,17 @@ class User extends Authenticatable
     public function missionsCreated(): HasMany {
         return $this->hasMany(Missions::class, 'created_by');
     }
+
+    public function servicesCreated(): HasMany
+    {
+        return $this->hasMany(Services::class, 'created_by');
+    }
+
+    public function destinationsCreated(): HasMany
+    {
+        return $this->hasMany(Destination::class, 'created_by');
+    }
+
     public function localisation(): HasOne {
         return $this->hasOne(Localisation::class);
     }

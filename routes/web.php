@@ -53,7 +53,8 @@ Route::group([
     'middleware' => 'setlocale'
 ], function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
-    Route::get('/not-found', [HomeController::class, 'error_404'])->name('access_denied');
+    Route::get('/access-denied', [HomeController::class, 'error_403'])->name('access_denied');
+    Route::get('/not-found', [HomeController::class, 'error_404'])->name('not_found');
     Route::get('/contact', [HomeController::class, 'contactForm'])->name('public.contact.create');
     Route::post('/contact', [HomeController::class, 'contact'])->name('public.contact.store');
     Route::get('/temoignages/partager', [HomeController::class, 'testimonyForm'])->name('public.testimonies.create');
@@ -141,4 +142,12 @@ Route::group([
             ]
         ]);
     });
+
+    Route::fallback(function () {
+        return response()->view('layouts.not_found', [], 404);
+    });
+});
+
+Route::fallback(function () {
+    return response()->view('layouts.not_found', [], 404);
 });

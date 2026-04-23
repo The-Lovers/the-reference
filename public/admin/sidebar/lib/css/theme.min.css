@@ -1486,7 +1486,7 @@ body.full-screen-helper .full-screen-switcher a .minimize {
 }
 .nxl-header .header-wrapper {
     display: flex;
-    padding: 0 30px;
+    padding: 1.5rem 2rem 0 2rem;
 }
 .nxl-header .header-wrapper ul {
     margin-bottom: 0;
