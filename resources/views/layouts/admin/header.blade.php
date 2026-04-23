@@ -296,6 +296,7 @@
 
                 showPopup('info', `<strong>${title}</strong><br>${message}`, {
                     theme: 'dark',
+                    layout: 'confirm',
                     timeout: 7000
                 });
 

@@ -3,6 +3,31 @@ return [
     'title' => "La Référence",
     'slogan' => "Vous servir, une obligation !",
     'description' => "Votre partenaire de confiance pour les études à l'étranger, les voyages et services administratifs.",
+    'seo' => [
+        'defaults' => [
+            'keywords' => "La Référence, études à l'étranger, accompagnement étudiant, visa étudiant, voyage international, services administratifs, orientation académique, destinations d'études, Yaoundé, Cameroun",
+            'og_type' => "website",
+        ],
+        'home' => [
+            'title' => "La Référence | Études à l'étranger, voyages et services administratifs",
+            'description' => "La Référence vous accompagne pour vos études à l'étranger, vos projets de voyage et vos démarches administratives avec un suivi fiable et personnalisé.",
+            'keywords' => "études à l'étranger, orientation internationale, voyage, visa, bourse, services administratifs, accompagnement étudiant, La Référence",
+        ],
+        'contact' => [
+            'title' => "Contact | La Référence",
+            'description' => "Contactez La Référence pour vos projets d'études à l'étranger, de voyage ou de services administratifs. Réponse rapide par téléphone, WhatsApp ou formulaire.",
+            'keywords' => "contact La Référence, WhatsApp études à l'étranger, contact voyage, contact services administratifs",
+        ],
+        'testimony' => [
+            'title' => "Partager un témoignage | La Référence",
+            'description' => "Partagez votre retour d'expérience avec La Référence après votre accompagnement pour les études à l'étranger, le voyage ou les formalités administratives.",
+            'keywords' => "témoignage La Référence, avis étudiant, retour d'expérience voyage, avis services administratifs",
+        ],
+        'schema' => [
+            'type' => "EducationalOrganization",
+            'description' => "Cabinet d'accompagnement pour les études à l'étranger, les voyages et les services administratifs.",
+        ],
+    ],
     'nav' => [
         'home' => "Accueil",
         'about' => "À propos",

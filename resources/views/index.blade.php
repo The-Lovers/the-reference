@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'La Référence | Vous servir, une obligation')
+@section('title', __('index.seo.home.title'))
+@section('meta_title', __('index.seo.home.title'))
+@section('meta_description', __('index.seo.home.description'))
+@section('meta_keywords', __('index.seo.home.keywords'))
+@section('meta_canonical', route('index', ['locale' => app()->getLocale()]))
+@section('meta_image', sec_asset('images/background.jpeg'))
 
 @section('header')
     @include('layouts.guest.header')
@@ -72,7 +77,7 @@
                                     @if ($mission->is_featured)
                                         <span class="featured-badge">{{ __('index.contain.featured') }}</span>
                                     @endif
-                                    <img src="{{ sec_asset($mission->cover) }}" alt="Étudiants africains à l'international">
+                                    <img src="{{ sec_asset($mission->cover) }}" alt="{{ $mission->title }}">
                                     <span class="second">
                                         <i class="{{ $mission->icon }} icon"></i>
                                     </span>

@@ -19,6 +19,7 @@ use App\Repositories\TestimoniesRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
 {
@@ -154,6 +155,40 @@ class HomeController extends Controller
     public function testimonyForm()
     {
         return view('public.testimony');
+    }
+
+    public function sitemap()
+    {
+        $contentUpdatedAt = collect([
+            Services::query()->max('updated_at'),
+            Destination::query()->max('updated_at'),
+            Missions::query()->max('updated_at'),
+            Domains::query()->max('updated_at'),
+            Testimonies::query()->where('status', true)->max('updated_at'),
+        ])->filter()->map(fn ($date) => Carbon::parse($date))->max();
+
+        $contactUpdatedAt = ContactRequest::query()->max('updated_at');
+
+        $urls = collect(['fr', 'en'])->flatMap(function (string $locale) use ($contentUpdatedAt, $contactUpdatedAt) {
+            return [
+                [
+                    'loc' => route('index', ['locale' => $locale]),
+                    'lastmod' => optional($contentUpdatedAt)->toAtomString(),
+                    'changefreq' => 'weekly',
+                    'priority' => '1.0',
+                ],
+                [
+                    'loc' => route('public.contact.create', ['locale' => $locale]),
+                    'lastmod' => $contactUpdatedAt ? Carbon::parse($contactUpdatedAt)->toAtomString() : null,
+                    'changefreq' => 'monthly',
+                    'priority' => '0.7',
+                ],
+            ];
+        })->values();
+
+        return response()
+            ->view('sitemap', compact('urls'))
+            ->header('Content-Type', 'application/xml');
     }
 
     public function storePublicTestimony(Request $request)

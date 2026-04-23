@@ -1,8 +1,33 @@
 <?php
 return [
     'title' => "La Référence",
-    'slogan' => "You serve, an obligation!",
+    'slogan' => "Serving you is our duty!",
     'description' => "Your trusted partner for studying abroad, travel, and administrative services.",
+    'seo' => [
+        'defaults' => [
+            'keywords' => "La Référence, study abroad, student support, student visa, international travel, administrative services, academic guidance, study destinations, Yaounde, Cameroon",
+            'og_type' => "website",
+        ],
+        'home' => [
+            'title' => "La Référence | Study abroad, travel and administrative services",
+            'description' => "La Référence supports your study abroad plans, travel projects and administrative needs with reliable and personalized guidance.",
+            'keywords' => "study abroad, international guidance, travel, visa, scholarship, administrative services, student support, La Référence",
+        ],
+        'contact' => [
+            'title' => "Contact | La Référence",
+            'description' => "Contact La Référence for study abroad, travel and administrative support. Reach us quickly by phone, WhatsApp or contact form.",
+            'keywords' => "contact La Référence, WhatsApp study abroad, travel contact, administrative services contact",
+        ],
+        'testimony' => [
+            'title' => "Share a testimonial | La Référence",
+            'description' => "Share your experience with La Référence after receiving support for studying abroad, travel or administrative formalities.",
+            'keywords' => "La Référence testimonial, student review, travel feedback, administrative services review",
+        ],
+        'schema' => [
+            'type' => "EducationalOrganization",
+            'description' => "Advisory agency for study abroad, travel and administrative services.",
+        ],
+    ],
     'nav' => [
         'home' => "Home",
         'about' => "About",
