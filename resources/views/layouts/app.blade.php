@@ -1,19 +1,108 @@
 <!DOCTYPE html>
-<html lang="fr">
+@php
+    $siteName = __('index.title');
+    $defaultDescription = __('index.description');
+    $defaultKeywords = __('index.seo.defaults.keywords');
+    $route = request()->route();
+    $routeName = $route?->getName();
+    $routeParameters = $route ? collect($route->parameters())->except('locale')->toArray() : [];
+    $canonicalUrl = trim($__env->yieldContent('meta_canonical')) ?: url()->current();
+    $seoTitle = trim($__env->yieldContent('meta_title', $__env->yieldContent('title', $siteName)));
+    $seoDescription = trim(strip_tags($__env->yieldContent('meta_description', $defaultDescription)));
+    $seoKeywords = trim(strip_tags($__env->yieldContent('meta_keywords', $defaultKeywords)));
+    $seoImage = trim($__env->yieldContent('meta_image', sec_asset('images/logo.png')));
+    $seoRobots = trim($__env->yieldContent('meta_robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'));
+    $seoType = trim($__env->yieldContent('meta_type', __('index.seo.defaults.og_type')));
+    $currentLocale = app()->getLocale();
+    $ogLocale = $currentLocale === 'fr' ? 'fr_FR' : 'en_US';
+    $alternateLocales = collect(['fr', 'en'])->map(function ($locale) use ($routeName, $routeParameters) {
+        if (!$routeName) {
+            return null;
+        }
+
+        return [
+            'locale' => $locale,
+            'href' => route($routeName, array_merge($routeParameters, ['locale' => $locale])),
+        ];
+    })->filter()->values();
+    $structuredData = [
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => __('index.seo.schema.type'),
+                '@id' => rtrim(config('app.url'), '/') . '#organization',
+                'name' => $siteName,
+                'url' => rtrim(config('app.url'), '/'),
+                'logo' => sec_asset('images/logo.png'),
+                'description' => __('index.seo.schema.description'),
+                'telephone' => '+237653476952',
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'addressLocality' => 'Yaounde',
+                    'addressCountry' => 'CM',
+                    'streetAddress' => __('index.contain.contact-card.address-value'),
+                ],
+            ],
+            [
+                '@type' => 'WebSite',
+                '@id' => rtrim(config('app.url'), '/') . '#website',
+                'name' => $siteName,
+                'url' => rtrim(config('app.url'), '/'),
+                'inLanguage' => ['fr', 'en'],
+            ],
+            [
+                '@type' => 'WebPage',
+                'name' => $seoTitle,
+                'description' => $seoDescription,
+                'url' => $canonicalUrl,
+                'inLanguage' => $currentLocale,
+                'isPartOf' => [
+                    '@id' => rtrim(config('app.url'), '/') . '#website',
+                ],
+            ],
+        ],
+    ];
+@endphp
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <meta name="keyword" content="" />
+    <meta name="description" content="{{ $seoDescription }}" />
+    <meta name="keywords" content="{{ $seoKeywords }}" />
     <meta name="author" content="Jango" />
-    <title>@yield('title', 'La Référence')</title>
+    <meta name="robots" content="{{ $seoRobots }}" />
+    <meta name="theme-color" content="#0b3c5d" />
+    <link rel="canonical" href="{{ $canonicalUrl }}">
+    @foreach ($alternateLocales as $alternateLocale)
+        <link rel="alternate" hreflang="{{ $alternateLocale['locale'] }}" href="{{ $alternateLocale['href'] }}">
+    @endforeach
+    @if ($routeName)
+        <link rel="alternate" hreflang="x-default" href="{{ route($routeName, array_merge($routeParameters, ['locale' => 'fr'])) }}">
+    @endif
+    <meta property="og:site_name" content="{{ $siteName }}">
+    <meta property="og:type" content="{{ $seoType }}">
+    <meta property="og:title" content="{{ $seoTitle }}">
+    <meta property="og:description" content="{{ $seoDescription }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:image" content="{{ $seoImage }}">
+    <meta property="og:locale" content="{{ $ogLocale }}">
+    @foreach ($alternateLocales->where('locale', '!=', $currentLocale) as $alternateLocale)
+        <meta property="og:locale:alternate" content="{{ $alternateLocale['locale'] === 'fr' ? 'fr_FR' : 'en_US' }}">
+    @endforeach
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $seoTitle }}">
+    <meta name="twitter:description" content="{{ $seoDescription }}">
+    <meta name="twitter:image" content="{{ $seoImage }}">
+    <title>{{ $seoTitle }}</title>
     <link rel="stylesheet" href="{{ sec_asset('lib/bootstrap-5.3.8/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ sec_asset('lib/font-awesome-6.5.0/css/all.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ sec_asset('lib/select2/select2.min.css') }}">
     <link rel="stylesheet" href="{{ sec_asset('lib/swiper-12.1.0/package/swiper-bundle.css') }}">
     <link rel="stylesheet" href="{{ sec_asset('css/style.css') }}">
     <link rel="shortcut icon" href="{{ sec_asset('images/logo.png') }}" type="image/x-icon">
+    <script type="application/ld+json">{!! json_encode($structuredData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}</script>
+    @yield('structured_data')
     @yield('favicon')
     @yield('css')
 </head>

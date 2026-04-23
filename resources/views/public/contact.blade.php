@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-@section('title', __('index.contain.contact-page'))
+@section('title', __('index.seo.contact.title'))
+@section('meta_title', __('index.seo.contact.title'))
+@section('meta_description', __('index.seo.contact.description'))
+@section('meta_keywords', __('index.seo.contact.keywords'))
+@section('meta_canonical', route('public.contact.create', ['locale' => app()->getLocale()]))
 
 @section('header')
     @include('layouts.guest.header')

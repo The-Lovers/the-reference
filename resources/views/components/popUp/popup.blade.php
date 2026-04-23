@@ -58,6 +58,17 @@
         transform: translate(-50%, -50%);
     }
 
+    .popup.modal-style {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -50%);
+        width: min(92vw, 420px);
+        margin-bottom: 0;
+        z-index: 10000;
+    }
+
     .popup-icon {
         font-size: 22px;
         margin-bottom: 8px;
@@ -132,7 +143,8 @@
         const popup = document.createElement('div');
 
         const theme = options.theme === 'dark' ? 'dark' : 'light';
-        popup.className = `popup ${type} ${theme}`;
+        const modalStyle = options.layout === 'confirm' ? 'modal-style' : '';
+        popup.className = `popup ${type} ${theme} ${modalStyle}`.trim();
 
         popup.innerHTML = `
             <div class="popup-icon">

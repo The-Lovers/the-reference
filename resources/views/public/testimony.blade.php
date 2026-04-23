@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
-@section('title', __('index.contain.testimony-page'))
+@section('title', __('index.seo.testimony.title'))
+@section('meta_title', __('index.seo.testimony.title'))
+@section('meta_description', __('index.seo.testimony.description'))
+@section('meta_keywords', __('index.seo.testimony.keywords'))
+@section('meta_canonical', route('public.testimonies.create', ['locale' => app()->getLocale()]))
+@section('meta_robots', 'noindex,follow')
 
 @section('header')
     @include('layouts.guest.header')

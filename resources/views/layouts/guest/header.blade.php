@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute w-100">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ route('index') }}">
-                <img src="{{ sec_asset('images/logo.png') }}" class="img-fluid" style="height:40px; width:auto;" alt="Logo">
+                <img src="{{ sec_asset('images/logo.png') }}" class="img-fluid" style="height:40px; width:auto;" alt="{{ __('index.title') }}">
 
                 <!-- Caché en mobile -->
                 <span class="title d-none d-lg-inline ms-2 text-white">

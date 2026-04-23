@@ -47,6 +47,7 @@ Route::get('/lang/{lang}', function ($lang) {
 Route::get('/', function () {
     return redirect('/fr');
 });
+Route::get('/sitemap.xml', [HomeController::class, 'sitemap'])->name('sitemap');
 Route::group([
     'prefix' => '{locale?}',
     'where' => ['locale' => 'fr|en'],
