@@ -41,13 +41,8 @@ class DomainController extends Controller
      */
     public function create()
     {
-        $lines = file(storage_path('app/icons.txt'), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        $icons = array_map(function($line) {
-            return trim($line, " \t\n\r\",");
-        }, $lines);
+        $icons = random_icon_classes();
 
-        shuffle($icons);
-        $icons = array_slice($icons, 0, 45);
         return view('admin.domains.create', compact('icons'));
     }
 
@@ -117,15 +112,7 @@ class DomainController extends Controller
      */
     public function edit($locale, Domains $domain)
     {
-        $lines = file(storage_path('app/icons.txt'), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        $icons = array_map(function($line) {
-            return trim($line, " \t\n\r\",");
-        }, $lines);
-        shuffle($icons);
-        $icons = array_slice($icons, 0, 45);
-        if (!in_array($domain->icon, $icons, true)) {
-            array_unshift($icons, $domain->icon);
-        }
+        $icons = random_icon_classes(currentIcon: $domain->icon);
 
         return view('admin.domains.edit', compact('domain', 'icons'));
     }

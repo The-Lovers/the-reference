@@ -41,13 +41,8 @@ class MissionController extends Controller
      */
     public function create()
     {
-        $lines = file(storage_path('app/icons.txt'), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        $icons = array_map(function($line) {
-            return trim($line, " \t\n\r\","); // supprime espaces, guillemets et virgules
-        }, $lines);
-        // Mélanger et prendre 40 lignes
-        shuffle($icons);
-        $icons = array_slice($icons, 0, 45);
+        $icons = random_icon_classes();
+
         return view('admin.missions.create', compact('icons'));
     }
 
@@ -121,15 +116,7 @@ class MissionController extends Controller
      */
     public function edit($locale, Missions $mission)
     {
-        $lines = file(storage_path('app/icons.txt'), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        $icons = array_map(function($line) {
-            return trim($line, " \t\n\r\",");
-        }, $lines);
-        shuffle($icons);
-        $icons = array_slice($icons, 0, 45);
-        if (!in_array($mission->icon, $icons, true)) {
-            array_unshift($icons, $mission->icon);
-        }
+        $icons = random_icon_classes(currentIcon: $mission->icon);
 
         return view('admin.missions.edit', compact('mission', 'icons'));
     }
