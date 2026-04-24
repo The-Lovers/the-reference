@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
                 'username' => 'Jango',
                 'email' => 'djiogaphermann@yahoo.fr',
                 'password' => 'password123',
-                'phone' => '+237651251425',
+                'phone' => '651251425',
                 'code' => '+237',
                 'gender' => 'M',
                 'role' => $superAdminRole
