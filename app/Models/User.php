@@ -16,6 +16,13 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    private const ROLE_HIERARCHY = [
+        'guest' => 1,
+        'user' => 1,
+        'admin' => 2,
+        'super-admin' => 3,
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -67,28 +74,16 @@ class User extends Authenticatable
 
     public function primaryRoleName(): ?string
     {
-        $hierarchy = [
-            'super-admin' => 3,
-            'admin' => 2,
-            'user' => 1,
-        ];
-
         return $this->roles
-            ->sortByDesc(fn ($role) => $hierarchy[$role->name] ?? 0)
+            ->sortByDesc(fn ($role) => self::ROLE_HIERARCHY[$role->name] ?? 0)
             ->pluck('name')
             ->first();
     }
 
     public function highestRoleLevel(): int
     {
-        $hierarchy = [
-            'super-admin' => 3,
-            'admin' => 2,
-            'user' => 1,
-        ];
-
         return (int) $this->roles
-            ->map(fn ($role) => $hierarchy[$role->name] ?? 0)
+            ->map(fn ($role) => self::ROLE_HIERARCHY[$role->name] ?? 0)
             ->max();
     }
 

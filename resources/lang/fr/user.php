@@ -18,6 +18,7 @@ return [
     'roles' => [
         'super-admin' => "Super admin",
         'admin' => "Admin",
+        'guest' => "Invité",
         'user' => "Utilisateur",
     ],
 ];

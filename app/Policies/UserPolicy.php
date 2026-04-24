@@ -32,28 +32,12 @@ class UserPolicy
 
     public function update(User $user, User $model): bool
     {
-        if ($user->hasRole('super-admin')) {
-            return true;
-        }
-
-        if ($user->hasRole('admin')) {
-            return !$model->hasRole('super-admin');
-        }
-
-        return false;
+        return $user->hasRole('super-admin');
     }
 
     public function delete(User $user, User $model): bool
     {
-        if ($user->hasRole('super-admin')) {
-            return true;
-        }
-
-        if ($user->hasRole('admin')) {
-            return !$model->hasRole('super-admin');
-        }
-
-        return false;
+        return $user->hasRole('super-admin');
     }
 
     /**

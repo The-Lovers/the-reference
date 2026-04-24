@@ -5,7 +5,34 @@
     $defaultKeywords = __('index.seo.defaults.keywords');
     $route = request()->route();
     $routeName = $route?->getName();
-    $routeParameters = $route ? collect($route->parameters())->except('locale')->toArray() : [];
+    $normalizeRouteParameters = function (array $parameters): array {
+        return collect($parameters)
+            ->except('locale')
+            ->map(function ($value) {
+                if ($value instanceof \Illuminate\Contracts\Routing\UrlRoutable) {
+                    return $value->getRouteKey();
+                }
+
+                if ($value instanceof \BackedEnum) {
+                    return $value->value;
+                }
+
+                if ($value instanceof \UnitEnum) {
+                    return $value->name;
+                }
+
+                if (is_array($value)) {
+                    return collect($value)
+                        ->flatten()
+                        ->first(fn ($item) => is_scalar($item) || $item instanceof \Stringable);
+                }
+
+                return $value;
+            })
+            ->filter(fn ($value) => !is_null($value) && !is_array($value))
+            ->toArray();
+    };
+    $routeParameters = $route ? $normalizeRouteParameters($route->parameters()) : [];
     $canonicalUrl = trim($__env->yieldContent('meta_canonical')) ?: url()->current();
     $seoTitle = trim($__env->yieldContent('meta_title', $__env->yieldContent('title', $siteName)));
     $seoDescription = trim(strip_tags($__env->yieldContent('meta_description', $defaultDescription)));
@@ -22,7 +49,11 @@
 
         return [
             'locale' => $locale,
-            'href' => route($routeName, array_merge($routeParameters, ['locale' => $locale])),
+            'href' => rescue(
+                fn () => route($routeName, array_merge($routeParameters, ['locale' => $locale])),
+                url()->current(),
+                report: false
+            ),
         ];
     })->filter()->values();
     $structuredData = [
@@ -78,7 +109,7 @@
         <link rel="alternate" hreflang="{{ $alternateLocale['locale'] }}" href="{{ $alternateLocale['href'] }}">
     @endforeach
     @if ($routeName)
-        <link rel="alternate" hreflang="x-default" href="{{ route($routeName, array_merge($routeParameters, ['locale' => 'fr'])) }}">
+        <link rel="alternate" hreflang="x-default" href="{{ rescue(fn () => route($routeName, array_merge($routeParameters, ['locale' => 'fr'])), url()->current(), report: false) }}">
     @endif
     <meta property="og:site_name" content="{{ $siteName }}">
     <meta property="og:type" content="{{ $seoType }}">

@@ -65,7 +65,9 @@
                     <div class="form-floating mb-3">
                         <select class="form-select" id="floatingSelect" aria-label="{{ __('dashboard.register.gender.title') }}" name="role" required>
                             @foreach($roles as $role)
-                                <option value="{{ $role->id }}" {{ $role->id === $user->roles->first()->id  ?  'selected'  :  '' }}  >{{ $role->name }}</option>
+                                <option value="{{ $role->id }}" {{ (string) old('role', $user->roles->first()?->id) === (string) $role->id ? 'selected' : '' }}>
+                                    {{ __("user.roles.{$role->name}") !== "user.roles.{$role->name}" ? __("user.roles.{$role->name}") : $role->name }}
+                                </option>
                             @endforeach
                         </select>
                         <label for="floatingSelect">{{ __('dashboard.register.role.title') }}</label>
