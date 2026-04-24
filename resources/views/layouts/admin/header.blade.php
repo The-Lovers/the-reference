@@ -4,6 +4,36 @@
     $unreadNotificationsCount = $currentUser->unreadNotifications()->count();
     $chatConversations = $currentUser->chatConversationSummaries(8);
     $chatUnreadCount = $currentUser->chatUnreadCount();
+    $currentRoute = Route::current();
+    $routeName = $currentRoute?->getName();
+    $routeParameters = collect($currentRoute?->parameters() ?? [])
+        ->except('locale')
+        ->map(function ($value) {
+            if ($value instanceof \Illuminate\Contracts\Routing\UrlRoutable) {
+                return $value->getRouteKey();
+            }
+
+            if ($value instanceof \BackedEnum) {
+                return $value->value;
+            }
+
+            if ($value instanceof \UnitEnum) {
+                return $value->name;
+            }
+
+            if (is_array($value)) {
+                return collect($value)
+                    ->flatten()
+                    ->first(fn ($item) => is_scalar($item) || $item instanceof \Stringable);
+            }
+
+            return $value;
+        })
+        ->filter(fn ($value) => !is_null($value) && !is_array($value))
+        ->toArray();
+    $localizedRoute = fn (string $locale) => $routeName
+        ? rescue(fn () => route($routeName, array_merge($routeParameters, ['locale' => $locale])), url()->current(), report: false)
+        : url()->current();
 @endphp
 
 <header class="nxl-header">
@@ -66,13 +96,13 @@
                             <div class="language-items-wrapper">
                                 <div class="row px-4 pt-3">
                                     <div class="col-sm-4 col-6 language_select @if(app()->getLocale() === 'fr') {{ $active }} @endif">
-                                        <a href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'fr'])) }}" class="d-flex align-items-center gap-2">
+                                        <a href="{{ $localizedRoute('fr') }}" class="d-flex align-items-center gap-2">
                                             <div class="avatar-image avatar-sm"><img src="{{ sec_asset('images/fr.png') }}" alt="" class="img-fluid" /></div>
                                             <span>{{ __('dashboard.header.fr') }}</span>
                                         </a>
                                     </div>
                                     <div class="col-sm-4 col-6 language_select @if(app()->getLocale() === 'en') {{ $active }} @endif">
-                                        <a href="{{ route(Route::currentRouteName(), array_merge(Route::current()->parameters(), ['locale' => 'en'])) }}" class="d-flex align-items-center gap-2">
+                                        <a href="{{ $localizedRoute('en') }}" class="d-flex align-items-center gap-2">
                                             <div class="avatar-image avatar-sm"><img src="{{ sec_asset('images/us.png') }}" alt="" class="img-fluid" /></div>
                                             <span>{{ __('dashboard.header.en') }}</span>
                                         </a>

@@ -269,13 +269,13 @@ class UserController extends Controller
 
     private function availableRolesFor(User $actor)
     {
-        $roles = $this->roleRepository->getAll();
+        $actorLevel = $actor->highestRoleLevel();
 
-        if ($actor->hasRole('super-admin')) {
-            return $roles;
-        }
-
-        return $roles->reject(fn ($role) => $role->name === 'super-admin')->values();
+        return $this->roleRepository
+            ->getAll()
+            ->filter(fn ($role) => $this->roleLevel($role->name) > 0 && $this->roleLevel($role->name) <= $actorLevel)
+            ->sortByDesc(fn ($role) => $this->roleLevel($role->name))
+            ->values();
     }
 
     private function ensureRoleAssignable(int $roleId): void
@@ -284,10 +284,18 @@ class UserController extends Controller
         $role = $this->roleRepository->getById($roleId);
 
         abort_unless($role, 404);
+        abort_if($this->roleLevel($role->name) === 0, 403);
+        abort_if($this->roleLevel($role->name) > $actor->highestRoleLevel(), 403);
+    }
 
-        if (!$actor->hasRole('super-admin') && $role->name === 'super-admin') {
-            abort(403);
-        }
+    private function roleLevel(?string $roleName): int
+    {
+        return match ($roleName) {
+            'guest', 'user' => 1,
+            'admin' => 2,
+            'super-admin' => 3,
+            default => 0,
+        };
     }
 
     public function show_profile($locale, User $user)

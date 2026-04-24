@@ -10,6 +10,7 @@ use Illuminate\Support\Collection;
 class AdminActivityNotifier
 {
     private const ROLE_HIERARCHY = [
+        'guest' => 1,
         'user' => 1,
         'admin' => 2,
         'super-admin' => 3,
